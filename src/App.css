@@ -6,19 +6,28 @@
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 1fr 8fr;
-  grid-gap: 1em;
+  grid-gap: 0em;
 }
 
 .nav {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
-}
-
-.home-image {
-  background-image: ;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
 }
 
 #home-video {
   position: fixed;
-  
+  z-index: -1;
+}
+
+.background-video {
+  background-color: red;
+}
+
+.video-background {
+  background: url(https://i.imgur.com/oJBMBTk.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  width: 100%;
 }
