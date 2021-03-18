@@ -1,21 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 function NavBar(){
     return (
         <div class="nav">
-                <div class="option opt-logo">
+                <Link className="option opt-logo" to="/">
                     I GOT NEXT
-                </div>
+                </Link>
                 
                 <div>
 
                 </div>
-                <div class="option opt-discover">
+                <Link class="option opt-discover" to="/discover">
                     Discover
-                </div>
-                <div class="option opt-login">
+                </Link>
+                <Link class="option opt-login" to="/login">
                     Login
-                </div>
+                </Link>
         </div>
 
             
