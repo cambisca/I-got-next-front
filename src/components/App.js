@@ -5,6 +5,7 @@ import Discover from './Discover'
 import NavBar from './NavBar'
 import Login from './Login'
 
+
 function App() {
   return (
     <div class="wrapper">

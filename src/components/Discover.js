@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import CourtItem from "./CourtItem"
+import Filter from './Filter'
 
 function Discover(){
     const [courts, setCourts] = useState([])
@@ -15,12 +16,23 @@ function Discover(){
     console.log(courts)
 
     const renderCourtItems = courts.map((court) => {
-        return <CourtItem courtObj={court}/>
+        return <CourtItem key={court.id} courtObj={court}/>
     })
 
     return (
         <div class="discover-container">
-            {renderCourtItems}
+            <Filter />
+            <div class="list-map-container">
+                <div class="empty-spacer">
+
+                </div>
+                <div class="court-list">
+                    {renderCourtItems}
+                </div>
+                <div class="map-box">
+                    MAP
+                </div>
+            </div>
         </div>
     )
 }
