@@ -24,21 +24,18 @@ img {
   z-index: -1;
 }
 
-.background-video {
-  background-color: red;
-}
 
 .video-background {
-  background: url(https://i.imgur.com/oJBMBTk.gif);
+  background: url(https://www.upstatefilms.org/wp-content/uploads/2018/02/dear-basketball.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 50vh;
+  height: 80vh;
   width: 100%;
 }
 
 .login-wrapper{
-  background: url(https://i.imgur.com/oJBMBTk.gif);
+  background: url(https://www.upstatefilms.org/wp-content/uploads/2018/02/dear-basketball.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -90,12 +87,13 @@ img {
 
 .list-map-container {
   display: grid;
-  grid-template-columns: 1fr 3fr 2fr;
+  grid-template-columns: 1fr 4fr 3fr 1fr;
+  grid-gap: 1em;
 }
 
 .court-list {
   display: grid;
-  grid-gap: 1em;
+  grid-gap: 2em;
 }
 
 .court-list-item {
@@ -112,4 +110,18 @@ img {
   height: 200px;
   width: 200px;
   border-radius: 5px;
+}
+
+.map-wrapper {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.leaflet-container {
+  height: 500px;
+  border-radius: 5px;
+}
+
+.court-map-spacer {
+  display: grid;
 }

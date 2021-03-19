@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import CourtItem from "./CourtItem"
 import Filter from './Filter'
+import CourtMap from './CourtMap'
 
 function Discover(){
     const [courts, setCourts] = useState([])
@@ -65,8 +66,17 @@ function Discover(){
                 <div class="court-list">
                     {renderCourtItems}
                 </div>
-                <div class="map-box">
-                    MAP
+                <div class="map-wrapper">
+                    <div class="court-map-spacer">
+                        <CourtMap courts={courtSearch}/>
+                        <div class="empty-spacer">
+
+                        </div>
+
+                    </div>
+                    <div class="map-box-spacer">
+
+                    </div>
                 </div>
             </div>
         </div>
