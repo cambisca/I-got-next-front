@@ -1,4 +1,5 @@
 import '../App.css';
+import {useState, useEffect} from 'react'
 import { Route, Switch } from 'react-router-dom'
 import HomePage from './HomePage'
 import Discover from './Discover'
@@ -8,24 +9,39 @@ import CourtDetail from './CourtDetail'
 
 
 function App() {
+
+  const [currentUser, setCurrentUser] = useState(null)
+
+  useEffect(() => {
+
+    const token = true;
+    if (token)
+    fetch('http://localhost:3000/me')
+    .then((r) => r.json())
+    .then((user) => {
+      setCurrentUser(user)
+    })
+  }, [])
+
+
   return (
     <div class="wrapper">
       <Switch>
         <Route exact path="/">
-          <NavBar />
+          <NavBar currentUser={currentUser}/>
           <HomePage />
         </Route>
         <Route exact path="/discover">
-          <NavBar />
+          <NavBar currentUser={currentUser}/>
           <Discover />
         </Route>
         <Route exact path="/login">
-          <NavBar />
-          <Login />
+          <NavBar currentUser={currentUser}/>
+          <Login setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path="/courts/:id">
-          <NavBar />
-          <CourtDetail />
+          <NavBar currentUser={currentUser}/>
+          <CourtDetail currentUser={currentUser}/>
         </Route>
       </Switch>
       
