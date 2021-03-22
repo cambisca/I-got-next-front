@@ -3,8 +3,8 @@ import CourtItem from "./CourtItem"
 import Filter from './Filter'
 import CourtMap from './CourtMap'
 
-function Discover(){
-    const [courts, setCourts] = useState([])
+function Discover({courts, setCourts}){
+    
     const [search, setSearch] = useState("")
     const [boroughSelect, setBoroughSelect] = useState("All")
     

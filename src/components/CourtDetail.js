@@ -2,13 +2,11 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from "react-router-dom"
 
 
-function CourtDetail({currentUser}){
-    const [court, setCourt] = useState([])
+function CourtDetail({currentUser, courts}){
+    const [court, setCourt] = useState({})
     const [runs, setRuns] = useState([])
+    // const [zip, setZip] = useState([])
 
-    console.log(court)
-    console.log(runs)
-    console.log(currentUser)
 
     const params = useParams()
     const id = params.id
@@ -33,8 +31,12 @@ function CourtDetail({currentUser}){
     //     return train
     // })
 
+    // const nearbyCourts = courts.filter((court) => {
+    //     return 
+
+    // })
+
     function addRun(newRun){
-        // console.log(newFav)
         setRuns([...runs, newRun])
       }
 
@@ -54,7 +56,6 @@ function CourtDetail({currentUser}){
           })
           .then(response => response.json())
           .then((newRun) => {
-              console.log(newRun)
             addRun(newRun);
           })
     }
@@ -63,10 +64,12 @@ function CourtDetail({currentUser}){
     const displayCourtsHoopers = runs.filter((run) => {
         return run.name === court.name
     }).map((run) => {
-        console.log(run.user)
         return <h1> {run.user} </h1>
     })
 
+    const displayNearbyCourts = courts.filter((kourt) => {
+        return kourt.zip_code === court.zip_code
+    })
 
     return (
         <div class="detail-wrapper">
@@ -93,7 +96,12 @@ function CourtDetail({currentUser}){
             <div class="box-7"> 
                 <img src="https://media4.giphy.com/media/fAQHjEYDT9GweWIcBq/giphy.gif"></img>
             </div>
-            <div class="box-8"></div>
+            <div class="box-8"> 
+                <h1>
+                    Nearby Courts
+                    {displayNearbyCourts}
+                </h1>
+            </div>
             <div class="box-9"></div>
             
         </div>

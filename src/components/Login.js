@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 
 function Login({setCurrentUser}){
-
+    const [gifs, setGifs] = useState([])
     const [loginData, setLoginData] = useState({
         username: "", 
         password: "",
@@ -13,6 +13,14 @@ function Login({setCurrentUser}){
     function handleChange(e){
         setLoginData({...loginData, [e.target.name]: e.target.value})
     }
+
+    useEffect(()=> {
+        fetch(`http://localhost:3000/ball_gifs`)
+        .then(response => response.json())
+        .then((gifsArr) => setGifs(gifsArr))
+      }, [])
+
+      console.log(gifs)
 
     function handleSubmit(e){
         e.preventDefault()
@@ -61,7 +69,9 @@ function Login({setCurrentUser}){
             <div class="box-4"> </div>
             <div class="box-5"> </div>
             <div class="box-6"> </div>
-            <div class="box-7"> </div>
+            <div class="box-7"> 
+                <img src="https://media4.giphy.com/media/Woi5vL1MOxSmrp5Umh/giphy.gif"></img>
+            </div>
             <div class="box-8"> </div>
             <div class="box-9"> </div>
 
@@ -70,3 +80,6 @@ function Login({setCurrentUser}){
 }
 
 export default Login;
+
+
+// style={{backgroundImage: `url(${gifs[rand(1...19)]})`}}

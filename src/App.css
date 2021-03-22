@@ -55,12 +55,12 @@ img {
 }
 
 .login-wrapper{
-  background: url(https://www.upstatefilms.org/wp-content/uploads/2018/02/dear-basketball.gif);
+  /* background: url(https://www.upstatefilms.org/wp-content/uploads/2018/02/dear-basketball.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 800px;
-  width: 100%; 
+  width: 100%;  */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;

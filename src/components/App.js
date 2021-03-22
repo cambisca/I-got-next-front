@@ -11,7 +11,9 @@ import CourtDetail from './CourtDetail'
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
+  const [courts, setCourts] = useState([])
 
+  console.log(courts)
   useEffect(() => {
 
     const token = true;
@@ -33,7 +35,10 @@ function App() {
         </Route>
         <Route exact path="/discover">
           <NavBar currentUser={currentUser}/>
-          <Discover />
+          <Discover 
+            courts={courts}
+            setCourts={setCourts}
+          />
         </Route>
         <Route exact path="/login">
           <NavBar currentUser={currentUser}/>
@@ -41,7 +46,11 @@ function App() {
         </Route>
         <Route exact path="/courts/:id">
           <NavBar currentUser={currentUser}/>
-          <CourtDetail currentUser={currentUser}/>
+          <CourtDetail 
+            currentUser={currentUser}
+            courts={courts}
+            setCourts={setCourts}
+          />
         </Route>
       </Switch>
       
