@@ -5,7 +5,6 @@ function Homepage(){
 
     return (
         <div class="home-wrapper">
-            <NavBar />
             <div class="video-background">
 
             </div>
