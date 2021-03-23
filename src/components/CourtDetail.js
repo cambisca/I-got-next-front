@@ -3,21 +3,78 @@ import { useParams } from "react-router-dom"
 
 
 function CourtDetail({currentUser, courts}){
-    const [court, setCourt] = useState({})
+    const [users, setUsers] = useState([]) // ==> findCourt.users
     const [runs, setRuns] = useState([])
+    const [findCourt, setFindCourt] = useState({
+            id: 0,
+            name: "", 
+            address: "", 
+            borough: "",
+            zip_code: 0, 
+            condition: "", 
+            latitude: 0, 
+            longitude: 0, 
+            trains: [], 
+            img_url: ""
+        })
+
+
+    // const [court, setCourt] = useState([])
+    
     // const [zip, setZip] = useState([])
+    console.log("courts", courts)
+    // const [court, setCourt] = useState({
+    //     id: 0,
+    //     name: "", 
+    //     address: "", 
+    //     borough: "",
+    //     zip_code: 0, 
+    //     condition: "", 
+    //     latitude: 0, 
+    //     longitude: 0, 
+    //     trains: [], 
+    //     img_url: ""
+    // })
 
 
     const params = useParams()
     const id = params.id
 
+    console.log(params)
+
+    // let findCourt = {
+    //         id: 0,
+    //         name: "", 
+    //         address: "", 
+    //         borough: "",
+    //         zip_code: 0, 
+    //         condition: "", 
+    //         latitude: 0, 
+    //         longitude: 0, 
+    //         trains: [], 
+    //         img_url: ""
+    //     }
+
+    
+    
+    // if (courtsArray.length > 0) {
+    //     setFindCourt(courtsArray.find(court => 
+    //         court.id === parseInt(id)
+    //     ))
+    // }
+
+
+    // console.log("filter", findCourt)
+
     useEffect(() => {
         fetch(`http://localhost:3000/courts/${id}`)
         .then(response => response.json())
-        .then((courtData)=> {
-            setCourt(courtData)
+        .then( data => {setFindCourt(data)
+        setUsers(data.users)
         })
     },[id])
+
+    console.log("user", users)
 
     useEffect(()=> {
         fetch(`http://localhost:3000/runs`)
@@ -25,6 +82,7 @@ function CourtDetail({currentUser, courts}){
         .then((runsArr) => setRuns(runsArr))
       }, [])
 
+      console.log(runs)
 
 
     // const renderTrains = court.trains.map((train) => {
@@ -36,9 +94,9 @@ function CourtDetail({currentUser, courts}){
 
     // })
 
-    function addRun(newRun){
-        setRuns([...runs, newRun])
-      }
+    // function addRun(newRun){
+    //     setRuns([...runs, newRun])
+    //   }
 
     function handleAyoClick(event){
         event.preventDefault()
@@ -49,27 +107,39 @@ function CourtDetail({currentUser, courts}){
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: court.name,
-                court_id: court.id, 
+                name: findCourt.name,
+                court_id: findCourt.id, 
                 user_id: currentUser.id
             }),
           })
           .then(response => response.json())
           .then((newRun) => {
-            addRun(newRun);
+            setRuns([...runs, newRun]);
           })
+
+          //fetch /users/${runs[-1].user_id}
+          // [...users, fetchedUser]
+
+        
     }
 
+    console.log(runs)
+    console.log(findCourt)
 
-    const displayCourtsHoopers = runs.filter((run) => {
-        return run.name === court.name
-    }).map((run) => {
-        return <h1> {run.user} </h1>
+    let displayCourtsHoopers
+    if (findCourt.name != ""){
+        displayCourtsHoopers = findCourt.users.map((user) => {
+            
+        return <h1> {user.name} </h1>
     })
+    }
+    console.log(displayCourtsHoopers)
 
-    const displayNearbyCourts = courts.filter((kourt) => {
-        return kourt.zip_code === court.zip_code
-    })
+    
+
+    // const displayNearbyCourts = courts.filter((kourt) => {
+    //     return kourt.zip_code === findCourt.zip_code
+    // })
 
     return (
         <div class="detail-wrapper">
@@ -79,12 +149,12 @@ function CourtDetail({currentUser, courts}){
             <div class="box-4"></div>
             <div class="detail-box">
                 <div class="detail-image">
-                    <img src={court.img_url} alt={court.name}></img>
+                    <img src={findCourt.img_url} alt={findCourt.name}></img>
                 </div>
                 <div class="court-details">
-                    <h1> {court.name} </h1>
-                    <h2> {court.address}, {court.borough} {court.zip_code} </h2>
-                    <h3> Condition: {court.condition} </h3>
+                    <h1> {findCourt.name} </h1>
+                    <h2> {findCourt.address}, {findCourt.borough} {findCourt.zip_code} </h2>
+                    <h3> Condition: {findCourt.condition} </h3>
                     { <h3> Nearby trains: renderTrains </h3> }
                     <a class="ign-p detail-icons" onClick={handleAyoClick}> Ayo! </a>
                     <a class="detail-icons"> Fav </a>
@@ -99,7 +169,7 @@ function CourtDetail({currentUser, courts}){
             <div class="box-8"> 
                 <h1>
                     Nearby Courts
-                    {displayNearbyCourts}
+                    {/* {displayNearbyCourts} */}
                 </h1>
             </div>
             <div class="box-9"></div>
