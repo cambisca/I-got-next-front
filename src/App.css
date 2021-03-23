@@ -36,7 +36,7 @@ img {
 
 .nav {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
 }
 
 #home-video {
@@ -171,4 +171,26 @@ img {
 
 .detail-icons:hover {
   color: green;
+}
+
+.other-hoopers-box {
+  display: grid; 
+  grid-template-rows: 1fr 5fr ;
+  /* overflow-y: scroll;
+  scrollbar-color: white; */
+  
+}
+
+.other-hoopers-2 {
+  overflow-y: scroll;
+  scrollbar-color: black; 
+  height: 50vh;
+  width: 15vw;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+
+.other-hoopers-2::-webkit-scrollbar {
+  display: none;
 }

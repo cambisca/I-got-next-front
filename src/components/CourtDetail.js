@@ -129,8 +129,15 @@ function CourtDetail({currentUser, courts}){
     let displayCourtsHoopers
     if (findCourt.name != ""){
         displayCourtsHoopers = findCourt.users.map((user) => {
-            
-        return <h1> {user.name} </h1>
+        
+            return (
+                <div>
+                    <h1> Player Cards</h1>
+                    <h1> {user.name} </h1>
+                </div>
+            )
+
+                
     })
     }
     console.log(displayCourtsHoopers)
@@ -161,7 +168,12 @@ function CourtDetail({currentUser, courts}){
                 </div>
             </div>
             <div class="other-hoopers-box">
-                {displayCourtsHoopers}
+                <div class="other-hoopers-1">
+                    <h1>Other Hoopers coming through</h1>
+                </div>
+                <div class="other-hoopers-2">
+                    {displayCourtsHoopers}
+                </div>
             </div>
             <div class="box-7"> 
                 <img src="https://media4.giphy.com/media/fAQHjEYDT9GweWIcBq/giphy.gif"></img>
