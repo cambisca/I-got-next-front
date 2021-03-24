@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from "react-router-dom"
+import PlayerCard from './PlayerCard'
 
 
 function CourtDetail({currentUser, courts, favorites, setFavorites}){
@@ -20,17 +21,8 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             img_url: ""
         })
 
-
     const params = useParams()
     const id = params.id
-
-    // if (courtsArray.length > 0) {
-    //     setFindCourt(courtsArray.find(court => 
-    //         court.id === parseInt(id)
-    //     ))
-    // }
-
-
 
 
     useEffect(() => {
@@ -40,59 +32,66 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
         })
     },[id])
 
+    
 
     useEffect(()=> {
         fetch(`http://localhost:3000/runs`)
         .then(response => response.json())
-        .then((runsArr) => setRuns(runsArr))
+        .then((runsArr) => {
+            console.log(findCourt)
+            let updatedRuns = runsArr.filter((run) => {
+                return run.court_id === findCourt.id
+            })
+            setRuns(updatedRuns)
+        })
       }, [])
 
-      function handleAyo(e){
-        e.preventDefault()
-        fetch('http://localhost:3000/runs', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: findCourt.name,
-                court_id: findCourt.id, 
-                user_id: currentUser.id
-            }),
-          })
-          .then(response => response.json())
-          .then((newRun) => {
-              console.log(newRun)
-              setRuns([...runs, newRun])
-          })
+    console.log(runs)
 
-      }
+
+    function handleAyo(e){
+    e.preventDefault()
+    fetch('http://localhost:3000/runs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: findCourt.name,
+            court_id: findCourt.id, 
+            user_id: currentUser.id
+        }),
+        })
+        .then(response => response.json())
+        .then((newRun) => {
+            setRuns([...runs, newRun])
+        })
+
+    }
 
 
     //       //fetch /users/${runs[-1].user_id}
     //       // [...users, fetchedUser]
 
 
-    console.log(findCourt.runs)
-    // const displayCourtsHoopers = findCourt.runs.map((run) => {
-    //     return "hi"
-    // })
-
-    // })
+    console.log(runs)
+   
     let displayCourtsHoopers
     if (findCourt.name != ""){
-        displayCourtsHoopers = findCourt.runs.map((run) => {
-        
-            console.log(run.courts)
-            return (
-                <div>
-                    <h1> Player Cards</h1>
-                    <h1>  </h1>
-                </div>
-            )
+        displayCourtsHoopers = runs.map((run) => {
+            console.log(run.user)
+            return <PlayerCard user={run.user}/>
     })
     }
  
+    let nearbyCourts = courts.filter((court) => court.zip_code === findCourt.zip_code)
+    let uniqueNearbyCourts = nearbyCourts.filter((court) => court.name !== findCourt.name)
+    console.log(uniqueNearbyCourts)
+    let displayNearbyCourts = uniqueNearbyCourts.map((court) => {
+        return <h1> {court.name} </h1>
+    })
+    
+    
 
     function handleFavClick(e){
         e.preventDefault()
@@ -154,7 +153,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
                     <h1>Other Hoopers coming through</h1>
                 </div>
                 <div class="other-hoopers-2">
-                    {/* {displayCourtsHoopers} */}
+                    {displayCourtsHoopers}
                 </div>
             </div>
             <div class="box-7"> 
@@ -163,7 +162,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             <div class="box-8"> 
                 <h1>
                     Nearby Courts
-                    {/* {displayNearbyCourts} */}
+                    {displayNearbyCourts}
                 </h1>
             </div>
             <div class="box-9"></div>
