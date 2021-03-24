@@ -10,13 +10,7 @@ function Discover({courts, setCourts}){
     
 
     // ******************* Fetch *************************
-    useEffect(()=>{
-        fetch(`http://localhost:3000/courts`)
-        .then((response) => response.json())
-        .then(data => {
-            setCourts(data)
-        })
-    },[])
+    
 
     // ************** Setter Functions ***************
 

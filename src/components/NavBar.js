@@ -18,15 +18,15 @@ function NavBar({currentUser}){
                             Discover
                         </Link>
 
-                        <Link class="option opt-discover" to="/discover">
+                        <Link class="option opt-favorite" to="/favorites">
                             Home Courts
                         </Link>
                     
-                        <Link class="option opt-login" to="/login">
+                        <Link class="option opt-profile" to="/login">
                             Profile
                         </Link>
 
-                        <Link class="option opt-login" to="/login">
+                        <Link class="option opt-logout" to="/login">
                             Logout
                         </Link>
                 </>

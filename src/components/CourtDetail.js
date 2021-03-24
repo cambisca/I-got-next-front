@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from "react-router-dom"
 
 
-function CourtDetail({currentUser, courts}){
+function CourtDetail({currentUser, courts, favorites, setFavorites}){
     const [users, setUsers] = useState([]) // ==> findCourt.users
     const [runs, setRuns] = useState([])
+    const [activeFav, setActiveFav] = useState(false)
+
     const [findCourt, setFindCourt] = useState({
             id: 0,
             name: "", 
@@ -19,44 +21,9 @@ function CourtDetail({currentUser, courts}){
         })
 
 
-    // const [court, setCourt] = useState([])
-    
-    // const [zip, setZip] = useState([])
-    console.log("courts", courts)
-    // const [court, setCourt] = useState({
-    //     id: 0,
-    //     name: "", 
-    //     address: "", 
-    //     borough: "",
-    //     zip_code: 0, 
-    //     condition: "", 
-    //     latitude: 0, 
-    //     longitude: 0, 
-    //     trains: [], 
-    //     img_url: ""
-    // })
-
-
     const params = useParams()
     const id = params.id
 
-    console.log(params)
-
-    // let findCourt = {
-    //         id: 0,
-    //         name: "", 
-    //         address: "", 
-    //         borough: "",
-    //         zip_code: 0, 
-    //         condition: "", 
-    //         latitude: 0, 
-    //         longitude: 0, 
-    //         trains: [], 
-    //         img_url: ""
-    //     }
-
-    
-    
     // if (courtsArray.length > 0) {
     //     setFindCourt(courtsArray.find(court => 
     //         court.id === parseInt(id)
@@ -64,17 +31,18 @@ function CourtDetail({currentUser, courts}){
     // }
 
 
-    // console.log("filter", findCourt)
+
 
     useEffect(() => {
         fetch(`http://localhost:3000/courts/${id}`)
         .then(response => response.json())
         .then( data => {setFindCourt(data)
-        setUsers(data.users)
+            console.log(data)
+            
         })
     },[id])
 
-    console.log("user", users)
+
 
     useEffect(()=> {
         fetch(`http://localhost:3000/runs`)
@@ -82,7 +50,7 @@ function CourtDetail({currentUser, courts}){
         .then((runsArr) => setRuns(runsArr))
       }, [])
 
-      console.log(runs)
+
 
 
     // const renderTrains = court.trains.map((train) => {
@@ -108,8 +76,8 @@ function CourtDetail({currentUser, courts}){
             },
             body: JSON.stringify({
                 name: findCourt.name,
-                court_id: findCourt.id, 
-                user_id: currentUser.id
+                court: findCourt, 
+                user: currentUser
             }),
           })
           .then(response => response.json())
@@ -123,9 +91,6 @@ function CourtDetail({currentUser, courts}){
         
     }
 
-    console.log(runs)
-    console.log(findCourt)
-
     let displayCourtsHoopers
     if (findCourt.name != ""){
         displayCourtsHoopers = findCourt.users.map((user) => {
@@ -137,16 +102,39 @@ function CourtDetail({currentUser, courts}){
                 </div>
             )
 
-                
     })
     }
-    console.log(displayCourtsHoopers)
-
-    
+ 
 
     // const displayNearbyCourts = courts.filter((kourt) => {
     //     return kourt.zip_code === findCourt.zip_code
     // })
+
+    function handleFavClick(e){
+        e.preventDefault()
+        setActiveFav(!activeFav)
+    
+        fetch('http://localhost:3000/favorites', 
+        {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+                    },
+            body: JSON.stringify({court_id: findCourt.id, user_id: currentUser.id }),
+                })
+            .then(response => response.json())
+            .then((newFavorite) => {
+                console.log(newFavorite)
+            }) 
+    }
+
+    function handleDeleteFav(id){
+        console.log(id)
+        setActiveFav(!activeFav)
+        const updatedFavs = favorites.filter(favorite => favorite.id !== id)
+        setFavorites(updatedFavs)
+        
+    }
 
     return (
         <div class="detail-wrapper">
@@ -164,7 +152,8 @@ function CourtDetail({currentUser, courts}){
                     <h3> Condition: {findCourt.condition} </h3>
                     { <h3> Nearby trains: renderTrains </h3> }
                     <a class="ign-p detail-icons" onClick={handleAyoClick}> Ayo! </a>
-                    <a class="detail-icons"> Fav </a>
+                    {!activeFav ? <a class="detail-icons" onClick={handleFavClick}> Fav </a> : <a class="detail-icons" onClick={handleDeleteFav}> nvm </a>}
+                    
                 </div>
             </div>
             <div class="other-hoopers-box">
