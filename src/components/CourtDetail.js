@@ -37,11 +37,8 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
         fetch(`http://localhost:3000/courts/${id}`)
         .then(response => response.json())
         .then( data => {setFindCourt(data)
-            console.log(data)
-            
         })
     },[id])
-
 
 
     useEffect(()=> {
@@ -50,25 +47,8 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
         .then((runsArr) => setRuns(runsArr))
       }, [])
 
-
-
-
-    // const renderTrains = court.trains.map((train) => {
-    //     return train
-    // })
-
-    // const nearbyCourts = courts.filter((court) => {
-    //     return 
-
-    // })
-
-    // function addRun(newRun){
-    //     setRuns([...runs, newRun])
-    //   }
-
-    function handleAyoClick(event){
-        event.preventDefault()
-
+      function handleAyo(e){
+        e.preventDefault()
         fetch('http://localhost:3000/runs', {
             method: 'POST',
             headers: {
@@ -76,39 +56,43 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             },
             body: JSON.stringify({
                 name: findCourt.name,
-                court: findCourt, 
-                user: currentUser
+                court_id: findCourt.id, 
+                user_id: currentUser.id
             }),
           })
           .then(response => response.json())
           .then((newRun) => {
-            setRuns([...runs, newRun]);
+              console.log(newRun)
+              setRuns([...runs, newRun])
           })
 
-          //fetch /users/${runs[-1].user_id}
-          // [...users, fetchedUser]
+      }
 
-        
-    }
 
+    //       //fetch /users/${runs[-1].user_id}
+    //       // [...users, fetchedUser]
+
+
+    console.log(findCourt.runs)
+    // const displayCourtsHoopers = findCourt.runs.map((run) => {
+    //     return "hi"
+    // })
+
+    // })
     let displayCourtsHoopers
     if (findCourt.name != ""){
-        displayCourtsHoopers = findCourt.users.map((user) => {
+        displayCourtsHoopers = findCourt.runs.map((run) => {
         
+            console.log(run.courts)
             return (
                 <div>
                     <h1> Player Cards</h1>
-                    <h1> {user.name} </h1>
+                    <h1>  </h1>
                 </div>
             )
-
     })
     }
  
-
-    // const displayNearbyCourts = courts.filter((kourt) => {
-    //     return kourt.zip_code === findCourt.zip_code
-    // })
 
     function handleFavClick(e){
         e.preventDefault()
@@ -128,22 +112,22 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             }) 
     }
 
-    function handleDeleteFav(id){
-        console.log(id)
-        setActiveFav(!activeFav)
-        const updatedFavs = favorites.filter(favorite => favorite.id !== id)
-        setFavorites(updatedFavs)
+    // function handleDeleteFav(id){
+    //     console.log(id)
+    //     setActiveFav(!activeFav)
+    //     const updatedFavs = favorites.filter(favorite => favorite.id !== id)
+    //     setFavorites(updatedFavs)
         
-    }
+    // }
 
-    function deleteFavRequest(id){
-        fetch(`http://localhost:3000/favorites/${id}`,{
-            method: 'DELETE',
-        })
-        .then(response => response.json())
-        .then((favData) => {
-            handleDeleteFav(favData.id)})
-    }
+    // function deleteFavRequest(id){
+    //     fetch(`http://localhost:3000/favorites/${id}`,{
+    //         method: 'DELETE',
+    //     })
+    //     .then(response => response.json())
+    //     .then((favData) => {
+    //         handleDeleteFav(favData.id)})
+    // }
 
     return (
         <div class="detail-wrapper">
@@ -160,8 +144,8 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
                     <h2> {findCourt.address}, {findCourt.borough} {findCourt.zip_code} </h2>
                     <h3> Condition: {findCourt.condition} </h3>
                     { <h3> Nearby trains: renderTrains </h3> }
-                    <a class="ign-p detail-icons" onClick={handleAyoClick}> Ayo! </a>
-                    {!activeFav ? <a class="detail-icons" onClick={handleFavClick}> Fav </a> : <a class="detail-icons" onClick={handleDeleteFav}> nvm </a>}
+                    <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button>
+                    {!activeFav ? <a class="detail-icons" > Fav </a> : <a class="detail-icons" > nvm </a>}
                     
                 </div>
             </div>
@@ -170,7 +154,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
                     <h1>Other Hoopers coming through</h1>
                 </div>
                 <div class="other-hoopers-2">
-                    {displayCourtsHoopers}
+                    {/* {displayCourtsHoopers} */}
                 </div>
             </div>
             <div class="box-7"> 

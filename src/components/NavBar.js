@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-function NavBar({currentUser}){
+function NavBar({currentUser, setCurrentUser}){
     return (
         <div class="nav-wrapper">
             <div class="nav">
@@ -26,7 +26,7 @@ function NavBar({currentUser}){
                             Profile
                         </Link>
 
-                        <Link class="option opt-logout" to="/login">
+                        <Link class="option opt-logout" to="/" onClick={()=> setCurrentUser(null)}>
                             Logout
                         </Link>
                 </>

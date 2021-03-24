@@ -41,6 +41,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <NavBar 
+            setCurrentUser={setCurrentUser}
             currentUser={currentUser}
           />
           <HomePage />
@@ -48,6 +49,7 @@ function App() {
         <Route exact path="/discover">
           <NavBar 
             currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
           />
           <Discover 
             courts={courts}
@@ -57,6 +59,7 @@ function App() {
         <Route exact path="/login">
           <NavBar 
             currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
           />
           <Login 
             setCurrentUser={setCurrentUser}
@@ -65,6 +68,7 @@ function App() {
         <Route exact path="/courts/:id">
           <NavBar 
             currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
           />
           <CourtDetail 
             currentUser={currentUser}
@@ -76,7 +80,9 @@ function App() {
         </Route>
         <Route exact path="/favorites">
           <NavBar 
-            currentUser={currentUser}/>
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+          />
           <Favorites 
             favorites={favorites}
             setFavorites={setFavorites}

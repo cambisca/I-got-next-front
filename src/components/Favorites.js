@@ -5,7 +5,7 @@ import FavCard from './FavCard'
 function Favorites({ currentUser, favorites, setFavorites }){
 
     
-    
+    console.log(currentUser.favorites)
 
     useEffect(() => {
         fetch(`http://localhost:3000/favorites`)
@@ -15,13 +15,12 @@ function Favorites({ currentUser, favorites, setFavorites }){
         })
     },[])
 
-    console.log(favorites)
+    console.log(currentUser)
 
     const renderFavorites = favorites.map((fav) => {
         return <FavCard court={fav.court}/>
     })
 
-    console.log(currentUser)
     return (
         <div>
             {renderFavorites}
