@@ -136,6 +136,15 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
         
     }
 
+    function deleteFavRequest(id){
+        fetch(`http://localhost:3000/favorites/${id}`,{
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then((favData) => {
+            handleDeleteFav(favData.id)})
+    }
+
     return (
         <div class="detail-wrapper">
             <div class="box-1"></div>
