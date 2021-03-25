@@ -7,6 +7,12 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
     const [users, setUsers] = useState([]) // ==> findCourt.users
     const [runs, setRuns] = useState([])
     const [activeFav, setActiveFav] = useState(false)
+    const [toggleComment, setToggleComment] = useState(false)
+    const [commentForm, setCommentForm] = useState({
+        comment: ""
+    })
+
+    console.log(commentForm)
 
     const [findCourt, setFindCourt] = useState({
             id: 0,
@@ -39,7 +45,6 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         fetch(`http://localhost:3000/runs`)
         .then(response => response.json())
         .then((runsArr) => {
-            console.log(findCourt)
             let updatedRuns = runsArr.filter((run) => {
                 return run.court_id === findCourt.id
             })
@@ -47,7 +52,6 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         })
       }, [])
 
-    console.log(runs)
 
 
     function handleAyo(e){
@@ -70,12 +74,6 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
 
     }
 
-
-    //       //fetch /users/${runs[-1].user_id}
-    //       // [...users, fetchedUser]
-
-
-    console.log(runs)
    
     let displayCourtsHoopers
     if (findCourt.name != ""){
@@ -87,33 +85,18 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
  
     let nearbyCourts = courts.filter((court) => court.zip_code === findCourt.zip_code)
     let uniqueNearbyCourts = nearbyCourts.filter((court) => court.name !== findCourt.name)
-    console.log(uniqueNearbyCourts)
     let displayNearbyCourts = uniqueNearbyCourts.map((court) => {
         return <h1> {court.name} </h1>
     })
     
     
 
-    // function handleFavClick(e){
-    //     e.preventDefault()
-    //     setActiveFav(!activeFav)
-    
-    //     fetch('http://localhost:3000/favorites', 
-    //     {
-    //         method: 'POST', 
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //                 },
-    //         body: JSON.stringify({court_id: findCourt.id, user_id: currentUser.id }),
-    //     })
-    //     .then(response => response.json())
-    //     .then((newFavorite) => {
-    //         console.log(newFavorite)
-    //     }) 
-    // }
+   
 
-    console.log(currentUser)
     function handleFavOn(e){
+        e.preventDefault()
+        setActiveFav(!activeFav)
+
         fetch('http://localhost:3000/favorites', 
         {
             method: 'POST', 
@@ -124,10 +107,40 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         })
         .then(response => response.json())
         .then((newFavorite) => {
-            console.log(newFavorite)
+            setFavorites([...favorites, newFavorite])
         }) 
     }
 
+    function toggleLeaveComment(){
+        console.log('hit')
+        setToggleComment(!toggleComment)
+    }
+
+    function handleCommentSubmit(e){
+        e.preventDefault()
+
+        const newReview = {
+            comment: commentForm.comment
+        }
+
+        fetch('http://localhost:3000/reviews', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+                },
+        body: JSON.stringify(newReview),
+            })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data)
+        }) 
+        // history.push(`/courts/${id}`)
+    }
+
+    function handleCommentChange(e){
+        setCommentForm({...commentForm,
+            [e.target.comment]: e.target.value })
+    }
     // function handleDeleteFav(id){
     //     console.log(id)
     //     setActiveFav(!activeFav)
@@ -164,7 +177,20 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
                     { <h3> Nearby trains: renderTrains </h3> }
                     <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button>
                     {!activeFav ? <button class="detail-icons" onClick={handleFavOn}> Fav </button> : <button class="detail-icons" > nvm </button>}
-                    
+                    {!toggleComment ? 
+                        <button class="leave-comment" onClick={toggleLeaveComment}>Leave a comment</button> 
+                        : 
+                        <form class="comment-form" onSubmit={handleCommentSubmit}>
+                            <label htmlFor="comment"></label>
+                            <textarea 
+                                name="comment" 
+                                value={commentForm.comment} 
+                                onChange={handleCommentChange} 
+                                placeholder="Leave a comment"
+                            />
+                            <button type="submit"> add comment </button>
+                        </form>
+                        }
                 </div>
             </div>
             <div class="other-hoopers-box">

@@ -2,11 +2,11 @@ import React from 'react'
 
 function PlayerCard({user}){
 
-    const {name, height} = user
+    const {name, username, height} = user
     console.log(user)
     return (
         <div class="player-card">
-            <h1> {name} </h1>
+            <h1> {username} </h1>
         </div>
     )
 }
