@@ -165,11 +165,30 @@ img {
 
 .detail-wrapper {
   display: grid;
-  grid-gap: 1em;
-  grid-template-columns: .75fr 1.25fr 1fr;
+  grid-gap: 3em;
+  grid-template-columns: .75fr 1fr .75fr;
   grid-template-rows: .25fr 2fr 1fr;
+  /* background-image: url("https://c0.wallpaperflare.com/preview/632/701/168/basketball-hoop-reflecting-on-water.jpg");
+  background-repeat: no-repeat; */
+  background: url("https://cdn.wallpapersafari.com/15/95/gz19tT.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }  
 
+.detail-box {
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px;
+  border-color: black;
+}
+
+.detail-image {
+  width: 100%;
+  height: 35vh;
+}
 
 .detail-icons {
   font-family: "Permanent Marker";
@@ -182,12 +201,47 @@ img {
 .other-hoopers-box {
   display: grid; 
   grid-template-rows: 1fr 5fr ;
+  text-align: center;
   /* overflow-y: scroll;
   scrollbar-color: white; */
-  
+  background-color: white;
+  box-shadow: 5px 5px;
+  border-color: black;
 }
 
 .other-hoopers-2 {
+  text-align: center;
+  overflow-y: scroll;
+  scrollbar-color: black; 
+  height: 50vh;
+  width: 15vw;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  
+}
+
+.other-hoopers-2::-webkit-scrollbar {
+  display: none;
+}
+
+.box-4 {
+  text-align: center;
+}
+
+.reviews-container {
+  width: 20vw;
+  text-align: center;
+  padding: 5px;
+  background-color: white;
+  border-color: black;
+  box-shadow: 5px 5px;
+  border-radius: 5px;
+  margin: 20px;
+  margin-left: 20px;
+}
+
+.review-card-container {
   overflow-y: scroll;
   scrollbar-color: black; 
   height: 50vh;
@@ -197,6 +251,16 @@ img {
   padding: 5px;
 }
 
-.other-hoopers-2::-webkit-scrollbar {
+.review-card-container::-webkit-scrollbar {
   display: none;
+}
+
+
+
+.box-8 {
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px;
+  border-color: black;
 }

@@ -5,7 +5,7 @@ import ReviewCard from './ReviewCard'
 
 
 function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, setRerender}){
-    const [users, setUsers] = useState([]) // ==> findCourt.users
+
     const [runs, setRuns] = useState([])
     const [activeFav, setActiveFav] = useState(false)
     const [toggleComment, setToggleComment] = useState(false)
@@ -46,38 +46,29 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         fetch(`http://localhost:3000/runs`)
         .then(response => response.json())
         .then((runsArr) => {
-            console.log(runsArr)
-            console.log(findCourt)
-            console.log(id)
             let updatedRuns = runsArr.filter((run) => run.court_id === id)
-            
             setRuns(updatedRuns)
         })
       }, [])
-
-    console.log('runs', runs)
 
     useEffect(()=> {
     fetch(`http://localhost:3000/reviews`)
     .then(response => response.json())
     .then((reviewsArr) => {
-        console.log(reviewsArr)
-        let test = reviewsArr.map((rev) => {
-            return rev.court
-        })
-        console.log(test)
-        setCourtReviews(test)
-        
-        // let updatedReviews = reviewsArr.filter((rev) => {
-        //     return rev.court.id === findCourt.id
+        // console.log(reviewsArr)
+        // let test = reviewsArr.map((rev) => {
+        //     return rev.court
         // })
-        // setCourtReviews(updatedReviews)
-        // console.log(updatedReviews)
+        // console.log(test)
+        // setCourtReviews(test)
+        console.log(id)
+        console.log(reviewsArr)
+        
+        let updatedReviews = reviewsArr.filter((rev) => rev.court.id === id)
+        setCourtReviews(updatedReviews)
         
     })
     }, [])
-
-    console.log(courtReviews)
     
 
     function handleAyo(e){
@@ -104,8 +95,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
     let displayCourtsHoopers
     if (findCourt.name != ""){
         displayCourtsHoopers = runs.map((run) => {
-            console.log(run.user)
-            return <PlayerCard user={run.user}/>
+            return <PlayerCard key={run.id} user={run.user}/>
     })
     }
  
@@ -114,8 +104,18 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
     let displayNearbyCourts = uniqueNearbyCourts.map((court) => {
         return <h1> {court.name} </h1>
     })
+
+    let displayCourtReviews = courtReviews.map((rev) => {
+        return <ReviewCard 
+            rev={rev} 
+            user={rev.user} 
+            currentUser={currentUser} 
+            paramsId={id} 
+            commentForm={commentForm} 
+            onHandleCommentChange={handleCommentChange}
+        />
+    })
     
-    console.log(findCourt.reviews)
     // let renderReviews = findCourt.reviews.map((review) => {
     //     return <ReviewCard review={review}/>
     // })
@@ -148,8 +148,13 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         e.preventDefault()
 
         const newReview = {
-            comment: commentForm.comment
+            rating: null,
+            comment: commentForm.comment, 
+            user_id: currentUser.id,
+            court_id: id
         }
+
+        console.log(newReview)
 
         fetch('http://localhost:3000/reviews', {
         method: 'POST', 
@@ -167,7 +172,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
 
     function handleCommentChange(e){
         setCommentForm({...commentForm,
-            [e.target.comment]: e.target.value })
+            [e.target.name]: e.target.value })
     }
     // function handleDeleteFav(id){
     //     console.log(id)
@@ -195,13 +200,20 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
             <div class="box-3"></div>
 
             <div class="box-4">
-            <h1> Court Reviews </h1>
+                <div class="reviews-container">
+                    <div class="reviews-header">
+                        <h1> Court Reviews </h1>
+                    </div>
+                    <div class="review-card-container">
+                        {displayCourtReviews}
+                    </div>
+                </div>
             </div>
 
             <div class="detail-box">
-                <div class="detail-image">
-                    <img src={findCourt.img_url} alt={findCourt.name}></img>
-                </div>
+                {/* <div class="detail-image"> */}
+                    <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"></img>
+                {/* </div> */}
                 <div class="court-details">
                     <h1> {findCourt.name} </h1>
 
@@ -237,13 +249,12 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
                     <h1>Other Hoopers coming through</h1>
                 </div>
                 <div class="other-hoopers-2">
-                    {console.log('other hoopers')}
                     {displayCourtsHoopers}
                 </div>
             </div>
 
             <div class="box-7"> 
-                <img src="https://media4.giphy.com/media/fAQHjEYDT9GweWIcBq/giphy.gif"></img>
+                
             </div>
 
             <div class="box-8"> 
