@@ -120,6 +120,8 @@ img {
   display: grid;
   grid-template-columns: 1fr 4fr 3fr 1fr;
   grid-gap: 1em;
+  background-color: #ed8200;
+  background-image: url("https://www.transparenttextures.com/patterns/basketball.png"); 
 }
 
 .court-list {
@@ -134,7 +136,8 @@ img {
   grid-gap: 1em;
   border: 2px solid black;
   border-radius: 5px;
-  box-shadow: 2px 2px;
+  box-shadow: 3px 3px;
+  background: white;
 }
 
 .court-thumbnail-image {
@@ -149,8 +152,11 @@ img {
 }
 
 .leaflet-container {
-  height: 500px;
+  height: 400px;
+  width: 400px;
   border-radius: 5px;
+  box-shadow: 3px 3px;
+  border-color: black;
 }
 
 .court-map-spacer {

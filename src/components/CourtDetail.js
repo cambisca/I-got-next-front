@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import PlayerCard from './PlayerCard'
 
 
-function CourtDetail({currentUser, courts, favorites, setFavorites}){
+function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, setRerender}){
     const [users, setUsers] = useState([]) // ==> findCourt.users
     const [runs, setRuns] = useState([])
     const [activeFav, setActiveFav] = useState(false)
@@ -20,6 +20,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             trains: [], 
             img_url: ""
         })
+
 
     const params = useParams()
     const id = params.id
@@ -93,10 +94,26 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
     
     
 
-    function handleFavClick(e){
-        e.preventDefault()
-        setActiveFav(!activeFav)
+    // function handleFavClick(e){
+    //     e.preventDefault()
+    //     setActiveFav(!activeFav)
     
+    //     fetch('http://localhost:3000/favorites', 
+    //     {
+    //         method: 'POST', 
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //                 },
+    //         body: JSON.stringify({court_id: findCourt.id, user_id: currentUser.id }),
+    //     })
+    //     .then(response => response.json())
+    //     .then((newFavorite) => {
+    //         console.log(newFavorite)
+    //     }) 
+    // }
+
+    console.log(currentUser)
+    function handleFavOn(e){
         fetch('http://localhost:3000/favorites', 
         {
             method: 'POST', 
@@ -104,11 +121,11 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
                 'Content-Type': 'application/json',
                     },
             body: JSON.stringify({court_id: findCourt.id, user_id: currentUser.id }),
-                })
-            .then(response => response.json())
-            .then((newFavorite) => {
-                console.log(newFavorite)
-            }) 
+        })
+        .then(response => response.json())
+        .then((newFavorite) => {
+            console.log(newFavorite)
+        }) 
     }
 
     // function handleDeleteFav(id){
@@ -133,7 +150,9 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             <div class="box-1"></div>
             <div class="box-2"></div>
             <div class="box-3"></div>
-            <div class="box-4"></div>
+            <div class="box-4">
+                <h1> Court Reviews </h1>
+            </div>
             <div class="detail-box">
                 <div class="detail-image">
                     <img src={findCourt.img_url} alt={findCourt.name}></img>
@@ -144,7 +163,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
                     <h3> Condition: {findCourt.condition} </h3>
                     { <h3> Nearby trains: renderTrains </h3> }
                     <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button>
-                    {!activeFav ? <a class="detail-icons" > Fav </a> : <a class="detail-icons" > nvm </a>}
+                    {!activeFav ? <button class="detail-icons" onClick={handleFavOn}> Fav </button> : <button class="detail-icons" > nvm </button>}
                     
                 </div>
             </div>

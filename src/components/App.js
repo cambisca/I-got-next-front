@@ -14,6 +14,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [courts, setCourts] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [rerender, setRerender] = useState(false)
 
   useEffect(()=>{
     fetch(`http://localhost:3000/courts`)
@@ -76,6 +77,8 @@ function App() {
             setCourts={setCourts}
             favorites={favorites}
             setFavorites={setFavorites}
+            setRerender={setRerender}
+            rerender={rerender}
           />
         </Route>
         <Route exact path="/favorites">

@@ -5,7 +5,7 @@ import FavCard from './FavCard'
 function Favorites({ currentUser, favorites, setFavorites }){
 
     
-    console.log(currentUser.favorites)
+    console.log(favorites)
 
     useEffect(() => {
         fetch(`http://localhost:3000/favorites`)
@@ -15,11 +15,30 @@ function Favorites({ currentUser, favorites, setFavorites }){
         })
     },[])
 
-    console.log(currentUser)
+   function handleDeleteFav(id){
+       const updatedArray = favorites.filter((fav) => {
+           return fav.id !== id 
+       })
+       setFavorites(updatedArray)
+   }
 
-    const renderFavorites = favorites.map((fav) => {
-        return <FavCard court={fav.court}/>
-    })
+//    let displayCourtsHoopers
+//     if (findCourt.name != ""){
+//         displayCourtsHoopers = runs.map((run) => {
+//             console.log(run.user)
+//             return <PlayerCard user={run.user}/>
+//     })
+//     }
+
+    let renderFavorites
+    if (favorites != []) { 
+        const renderFavorites = favorites.map((fav) => {
+            return <FavCard key={fav.id} fav={fav} onDeleteFav={handleDeleteFav}/>
+        }
+    )} else {
+        return <h1>No Favs</h1>
+        } 
+    
 
     return (
         <div>
