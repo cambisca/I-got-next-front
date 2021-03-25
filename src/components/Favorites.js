@@ -3,10 +3,7 @@ import FavCard from './FavCard'
 
 
 function Favorites({ favorites, setFavorites }){
-    
 
-    
-    console.log(favorites)
 
     useEffect(() => {
         fetch(`http://localhost:3000/favorites`)
@@ -23,17 +20,16 @@ function Favorites({ favorites, setFavorites }){
        setFavorites(updatedArray)
    }
 
-    let renderFavorites
-    if (favorites != []) { 
+    // let renderFavorites
+    // if (favorites.length > 0) { 
         const renderFavorites = favorites.map((fav) => {
             return <FavCard key={fav.id} fav={fav} onDeleteFav={handleDeleteFav}/>
         })
-    } 
+    // } 
     
 
     return (
         <div>
-            hello
            {renderFavorites}
         </div>
     )
