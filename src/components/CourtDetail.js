@@ -29,11 +29,8 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         })
 
 
-
-    console.log(findCourt)
-
     const params = useParams()
-    const id = params.id
+    const id = parseInt(params.id)
     
 
     useEffect(() => {
@@ -49,28 +46,32 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         fetch(`http://localhost:3000/runs`)
         .then(response => response.json())
         .then((runsArr) => {
-            let updatedRuns = runsArr.filter((run) => {
-                return run.court_id === findCourt.id
-            })
+            console.log(runsArr)
+            console.log(findCourt)
+            console.log(id)
+            let updatedRuns = runsArr.filter((run) => run.court_id === id)
+            
             setRuns(updatedRuns)
         })
       }, [])
+
+    console.log('runs', runs)
 
     useEffect(()=> {
     fetch(`http://localhost:3000/reviews`)
     .then(response => response.json())
     .then((reviewsArr) => {
         console.log(reviewsArr)
-        // let test = reviewsArr.map((rev) => {
-        //     return rev.court.id
-        // })
-        // console.log(test)
-        // setCourtReviews(test)
-        
-        let updatedReviews = reviewsArr.filter((rev) => {
-            return rev.court.name === findCourt.name
+        let test = reviewsArr.map((rev) => {
+            return rev.court
         })
-        setCourtReviews(updatedReviews)
+        console.log(test)
+        setCourtReviews(test)
+        
+        // let updatedReviews = reviewsArr.filter((rev) => {
+        //     return rev.court.id === findCourt.id
+        // })
+        // setCourtReviews(updatedReviews)
         // console.log(updatedReviews)
         
     })
@@ -194,7 +195,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
             <div class="box-3"></div>
 
             <div class="box-4">
-                <h1> Court Reviews </h1>
+            <h1> Court Reviews </h1>
             </div>
 
             <div class="detail-box">
@@ -236,6 +237,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
                     <h1>Other Hoopers coming through</h1>
                 </div>
                 <div class="other-hoopers-2">
+                    {console.log('other hoopers')}
                     {displayCourtsHoopers}
                 </div>
             </div>
