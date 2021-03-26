@@ -1,6 +1,6 @@
 import React, {useState} from 'react' 
 
-function ReviewCard({rev, user, currentUser, commentForm}){
+function ReviewCard({rev, user, currentUser, commentForm, onHandleUpdateComment}){
    
     const [editToggle, setEditToggle] = useState(false)
     const [updatedComment, setUpdatedComment] = useState(commentForm.comment)
@@ -23,7 +23,9 @@ function ReviewCard({rev, user, currentUser, commentForm}){
             }),
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then((data) => {
+            onHandleUpdateComment(data)
+        })
 
     }
 

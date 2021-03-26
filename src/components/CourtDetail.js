@@ -113,6 +113,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
             paramsId={id} 
             commentForm={commentForm} 
             onHandleCommentChange={handleCommentChange}
+            onHandleUpdateComment={handleUpdateComment}
         />
     })
     
@@ -173,6 +174,17 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
     function handleCommentChange(e){
         setCommentForm({...commentForm,
             [e.target.name]: e.target.value })
+    }
+
+    function handleUpdateComment(updatedComment){
+        let updatedCommentsArr = courtReviews.map((rev) => {
+            if (rev.id === updatedComment.id) {
+                return updatedComment
+            } else {
+                return rev
+            }
+        })
+        setCourtReviews(updatedCommentsArr)
     }
     // function handleDeleteFav(id){
     //     console.log(id)
