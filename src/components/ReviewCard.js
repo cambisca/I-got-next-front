@@ -25,6 +25,7 @@ function ReviewCard({rev, user, currentUser, commentForm, onHandleUpdateComment}
         .then(response => response.json())
         .then((data) => {
             onHandleUpdateComment(data)
+            setEditToggle(!editToggle)
         })
 
     }

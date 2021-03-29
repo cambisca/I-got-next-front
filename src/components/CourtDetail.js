@@ -4,12 +4,14 @@ import PlayerCard from './PlayerCard'
 import ReviewCard from './ReviewCard'
 
 
-function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, setRerender}){
+function CourtDetail({currentUser, courts, favorites, setFavorites}){
 
     const [runs, setRuns] = useState([])
     const [activeFav, setActiveFav] = useState(false)
+    const [activeAyo, setActiveAyo] = useState(false)
     const [toggleComment, setToggleComment] = useState(false)
     const [courtReviews, setCourtReviews] = useState([])
+    // const [commentSubmit, setCommentSubmit] = useState(false)
 
     const [commentForm, setCommentForm] = useState({
         comment: ""
@@ -73,6 +75,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
 
     function handleAyo(e){
     e.preventDefault()
+    setActiveAyo(!activeAyo)
     fetch('http://localhost:3000/runs', {
         method: 'POST',
         headers: {
@@ -89,6 +92,21 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
             setRuns([...runs, newRun])
         })
 
+    }
+
+    function handleDeleteAyo(){
+        console.log('hit')
+        // fetch(`http://localhost:3000/favorites/${id}`, {
+        //     method: 'DELETE',
+        // })
+        // .then(resp => resp.json)
+        // .then(onDeleteFav(id))
+        // onDeleteFav(id)
+
+        // const updatedArray = favorites.filter((fav) => {
+        //     return fav.id !== id 
+        // })
+        // setFavorites(updatedArray)
     }
 
    
@@ -140,6 +158,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         }) 
     }
 
+
     function toggleLeaveComment(){
         console.log('hit')
         setToggleComment(!toggleComment)
@@ -155,8 +174,6 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
             court_id: id
         }
 
-        console.log(newReview)
-
         fetch('http://localhost:3000/reviews', {
         method: 'POST', 
         headers: {
@@ -165,9 +182,10 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
         body: JSON.stringify(newReview),
             })
         .then(response => response.json())
-        .then((data) => {
-            console.log(data)
+        .then((newComment) => {
+            setCourtReviews([...courtReviews, newComment])
         }) 
+        setToggleComment(!toggleComment)
         // history.push(`/courts/${id}`)
     }
 
@@ -235,7 +253,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites, rerender, se
 
                     <h3> Nearby trains: </h3>
 
-                    <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button>
+                    {!activeAyo ? <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button> : <button class="ign-p detail-icons" onClick={handleDeleteAyo}> Nvm </button> }
 
                     {!activeFav ? <button class="detail-icons" onClick={handleFavOn}> Fav </button> : <button class="detail-icons" > nvm </button>}
 

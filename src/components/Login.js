@@ -7,6 +7,8 @@ function Login({setCurrentUser}){
         username: "", 
         password: "",
     });
+    const [errors, setErrors] = useState([])
+    console.log(errors)
 
     const history = useHistory()
 
@@ -20,7 +22,6 @@ function Login({setCurrentUser}){
         .then((gifsArr) => setGifs(gifsArr))
       }, [])
 
-      console.log(gifs)
 
     function handleSubmit(e){
         e.preventDefault()
@@ -32,12 +33,22 @@ function Login({setCurrentUser}){
             },
             body: JSON.stringify(loginData),
             })
-            .then(response => response.json())
+            .then((response) => {
+                return response.json().then(data => {
+                    if (response.ok) {
+                        return data 
+                    } else {
+                        throw data
+                    }
+                })
+            })
             .then((user) => {
-                console.log(user)
-            setCurrentUser(user);
-            history.push("/")
-        })
+                    setCurrentUser(user);
+                    history.push("/")
+            })
+            .catch((error) => {
+                setErrors(error.errors)
+            })
     }
 
     return (
@@ -61,7 +72,11 @@ function Login({setCurrentUser}){
                             value={FormData.password}
                             onChange={handleChange}
                         />
-
+                        { errors.map((error) => (
+                            <p style={{ color: "red" }} key={error}>
+                                {error}
+                            </p>
+                        ))}
                         <input type="submit" value="Login" className='input-button' />
                 </form>
             </div>

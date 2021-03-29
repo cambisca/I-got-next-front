@@ -16,6 +16,8 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [rerender, setRerender] = useState(false)
 
+  console.log(currentUser)
+
   useEffect(()=>{
     fetch(`http://localhost:3000/courts`)
     .then((response) => response.json())
