@@ -11,6 +11,7 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
     const [activeAyo, setActiveAyo] = useState(false)
     const [toggleComment, setToggleComment] = useState(false)
     const [courtReviews, setCourtReviews] = useState([])
+    const [currentRun, setCurrentRun] = useState(null)
     // const [commentSubmit, setCommentSubmit] = useState(false)
 
     const [commentForm, setCommentForm] = useState({
@@ -63,8 +64,6 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
         // })
         // console.log(test)
         // setCourtReviews(test)
-        console.log(id)
-        console.log(reviewsArr)
         
         let updatedReviews = reviewsArr.filter((rev) => rev.court.id === id)
         setCourtReviews(updatedReviews)
@@ -74,39 +73,43 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
     
 
     function handleAyo(e){
-    e.preventDefault()
-    setActiveAyo(!activeAyo)
-    fetch('http://localhost:3000/runs', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            name: findCourt.name,
-            court_id: findCourt.id, 
-            user_id: currentUser.id
-        }),
-        })
-        .then(response => response.json())
-        .then((newRun) => {
-            setRuns([...runs, newRun])
-        })
+        e.preventDefault()
+        setActiveAyo(!activeAyo)
+        fetch('http://localhost:3000/runs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: findCourt.name,
+                court_id: findCourt.id, 
+                user_id: currentUser.id
+            }),
+            })
+            .then(response => response.json())
+            .then((newRun) => {
+                console.log(newRun.id)
+                setRuns([...runs, newRun])
+                setCurrentRun(newRun.id)
+                
+            })
 
     }
 
-    function handleDeleteAyo(){
-        console.log('hit')
-        // fetch(`http://localhost:3000/favorites/${id}`, {
-        //     method: 'DELETE',
-        // })
-        // .then(resp => resp.json)
-        // .then(onDeleteFav(id))
-        // onDeleteFav(id)
+    function deleteAyoHelper(id){
+        const updatedArray = runs.filter((run) => {
+            return run.id !== currentRun 
+        })
+        setRuns(updatedArray)
+    }
 
-        // const updatedArray = favorites.filter((fav) => {
-        //     return fav.id !== id 
-        // })
-        // setFavorites(updatedArray)
+    function handleDeleteAyo(){
+        fetch(`http://localhost:3000/runs/${currentRun}`, {
+            method: 'DELETE',
+        })
+        .then(resp => resp.json)
+        .then(deleteAyoHelper(currentRun))
+        setActiveAyo(!activeAyo)
     }
 
    
@@ -253,7 +256,11 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
 
                     <h3> Nearby trains: </h3>
 
-                    {!activeAyo ? <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button> : <button class="ign-p detail-icons" onClick={handleDeleteAyo}> Nvm </button> }
+                    {!activeAyo ? 
+                        <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button> 
+                    : 
+                        <button class="ign-p detail-icons" onClick={handleDeleteAyo}> Nvm </button> 
+                    }
 
                     {!activeFav ? <button class="detail-icons" onClick={handleFavOn}> Fav </button> : <button class="detail-icons" > nvm </button>}
 
