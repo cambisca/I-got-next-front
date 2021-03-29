@@ -27,6 +27,7 @@ img {
   height: 100%;
 }
 
+
 .home-wrapper {
   display: grid;
   grid-template-columns: 100%;
@@ -39,19 +40,17 @@ img {
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
 }
 
-#home-video {
-  position: fixed;
-  z-index: -1;
-}
+
 
 
 .video-background {
-  /* background: url(https://www.upstatefilms.org/wp-content/uploads/2018/02/dear-basketball.gif);
+  background: url(https://www.upstatefilms.org/wp-content/uploads/2018/02/dear-basketball.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
-  width: 100%; */
+  width: 100%;
+  
 }
 
 .login-wrapper{
@@ -258,9 +257,42 @@ img {
 
 
 .box-8 {
-  text-align: center;
+  /* text-align: center;
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 5px;
-  border-color: black;
+  border-color: black; */
+}
+
+.signup-wrapper {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+
+.signup-box {
+  position: relative;
+  display: block;
+  height: 30%;
+  width: 30%;
+  margin: 0 auto;
+  top: 25%;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  /* width: 400px; */
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+  margin-top: 4px;
+  font-size: larger;
+  text-align: center;
+  justify-content: center;
 }

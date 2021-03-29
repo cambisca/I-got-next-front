@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 function Login({setCurrentUser}){
     const [gifs, setGifs] = useState([])
@@ -42,9 +42,11 @@ function Login({setCurrentUser}){
                     }
                 })
             })
-            .then((user) => {
-                    setCurrentUser(user);
-                    history.push("/")
+            .then((data) => {
+                const { user, token } = data 
+                localStorage.setItem("token", token)
+                setCurrentUser(user);
+                history.push("/")
             })
             .catch((error) => {
                 setErrors(error.errors)
@@ -77,18 +79,20 @@ function Login({setCurrentUser}){
                                 {error}
                             </p>
                         ))}
+                        
                         <input type="submit" value="Login" className='input-button' />
+                        <Link className="signup-option" to="/signup">
+                            Sign up 
+                        </Link>
                 </form>
             </div>
             <div class="box-3"> </div>
             <div class="box-4"> </div>
             <div class="box-5"> </div>
             <div class="box-6"> </div>
-            <div class="box-7"> 
-                <img src="https://media4.giphy.com/media/Woi5vL1MOxSmrp5Umh/giphy.gif"></img>
-            </div>
-            <div class="box-8"> </div>
-            <div class="box-9"> </div>
+            <div class="box-7"> <img src="https://media1.giphy.com/media/gfGvtlxqgYKIEqSEdE/giphy.gif"></img> </div>
+            <div class="box-8"> <img src="https://media1.giphy.com/media/gfGvtlxqgYKIEqSEdE/giphy.gif"></img> </div>
+            <div class="box-9"> <img src="https://media1.giphy.com/media/gfGvtlxqgYKIEqSEdE/giphy.gif"></img> </div>
 
         </div>
     )

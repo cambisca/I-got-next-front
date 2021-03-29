@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 function NavBar({currentUser, setCurrentUser}){
+
+    function logout(){
+        localStorage.removeItem("token")
+        setCurrentUser(null)
+    }
+
+
     return (
         <div class="nav-wrapper">
             <div class="nav">
@@ -26,7 +33,7 @@ function NavBar({currentUser, setCurrentUser}){
                             Profile
                         </Link>
 
-                        <Link class="option opt-logout" to="/" onClick={()=> setCurrentUser(null)}>
+                        <Link class="option opt-logout" to="/" onClick={logout}>
                             Logout
                         </Link>
                 </>
@@ -39,13 +46,13 @@ function NavBar({currentUser, setCurrentUser}){
                         <div></div>
 
                         <div></div>
+
+                        <div></div>
                         
-                        <Link class="option opt-discover" to="/discover">
-                            Discover
-                        </Link>
+                        <div></div>
 
                         <Link class="option opt-login" to="/login">
-                            Login/Signup
+                            Login
                         </Link>
                     
                     </>

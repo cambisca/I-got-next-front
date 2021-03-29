@@ -7,6 +7,7 @@ import NavBar from './NavBar'
 import Login from './Login'
 import CourtDetail from './CourtDetail'
 import Favorites from './Favorites'
+import Signup from './Signup'
 
 
 function App() {
@@ -29,9 +30,14 @@ function App() {
 
   useEffect(() => {
 
-    const token = true;
-    if (token)
-    fetch('http://localhost:3000/me')
+    // const token = true;
+    // if (token)
+    const token = localStorage.getItem("token")
+    fetch('http://localhost:3000/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+    })
     .then((r) => r.json())
     .then((user) => {
       setCurrentUser(user)
@@ -66,6 +72,15 @@ function App() {
           />
           <Login 
             setCurrentUser={setCurrentUser}
+          />
+        </Route>
+        <Route exact path="/signup">
+          <NavBar 
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+          />
+          <Signup 
+            setUser={setCurrentUser}
           />
         </Route>
         <Route exact path="/courts/:id">
