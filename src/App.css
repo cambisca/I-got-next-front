@@ -179,9 +179,9 @@ img {
   text-align: center;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 5px 5px rgb(70, 72, 79);
-  height: 100%;
-  
+  box-shadow: 5px 5px rgb(209, 210, 220);
+  height: 55vh;
+  width: 100%;
 }
 
 .detail-image {
@@ -225,7 +225,7 @@ img {
   scrollbar-color: white; */
   background-color: white;
   border-radius: 5px;
-  box-shadow: 5px 5px rgb(70, 72, 79);
+  box-shadow: 5px 5px rgb(209, 210, 220);
   align-items: center;
   text-align: center;
 }
@@ -262,10 +262,13 @@ img {
 
 .box-4 {
   text-align: center;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
 }
 
 .reviews-container {
   width: 25vw;
+  height: 55vh;
   text-align: center;
   padding: 5px;
   background-color: white;
@@ -279,7 +282,7 @@ img {
 .review-card-container {
   overflow-y: scroll;
   scrollbar-color: black; 
-  height: 50vh;
+  height: 55vh;
   width: 100%;
   align-items: center;
   text-align: center;
