@@ -1,9 +1,12 @@
 import React, {useState} from 'react' 
+import { Button, Comment, Header, Form } from 'semantic-ui-react'
 
 function ReviewCard({rev, user, currentUser, commentForm, onHandleUpdateComment}){
    
     const [editToggle, setEditToggle] = useState(false)
     const [updatedComment, setUpdatedComment] = useState(commentForm.comment)
+
+    console.log(rev)
   
 
     function handleEditToggle(){
@@ -31,6 +34,17 @@ function ReviewCard({rev, user, currentUser, commentForm, onHandleUpdateComment}
     }
 
     return (
+        // <Comment>
+        //     <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
+        //     <Comment.Content>
+        //     <Comment.Author as='a'>{rev.user.username}</Comment.Author>
+        //     <Comment.Metadata>
+        //         <span>{rev.created_at}</span>
+        //     </Comment.Metadata>
+        //     <Comment.Text>{rev.comment}</Comment.Text>
+            
+        //     </Comment.Content>
+        // </Comment>
         <div>
             {!editToggle ? 
                 <div>
@@ -53,7 +67,10 @@ function ReviewCard({rev, user, currentUser, commentForm, onHandleUpdateComment}
                 
             }
         </div>
+    
     )
+            
+    
 }
 
 export default ReviewCard;

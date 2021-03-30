@@ -50,7 +50,6 @@ img {
   background-size: cover;
   height: 80vh;
   width: 100%;
-  
 }
 
 .login-wrapper{
@@ -102,6 +101,7 @@ img {
   text-align: center;
   background: white;
   border-bottom: 3px solid black;
+  height: 5vh;
 }
 
 .discover-container {
@@ -166,22 +166,22 @@ img {
   display: grid;
   grid-gap: 3em;
   grid-template-columns: .75fr 1fr .75fr;
-  grid-template-rows: .25fr 2fr 1fr;
-  /* background-image: url("https://c0.wallpaperflare.com/preview/632/701/168/basketball-hoop-reflecting-on-water.jpg");
-  background-repeat: no-repeat; */
-  background: url("https://cdn.wallpapersafari.com/15/95/gz19tT.jpg") no-repeat center center fixed; 
+  grid-template-rows: .15fr 2fr 1fr;
+  /* background: url("https://4.bp.blogspot.com/-oXMR-1OpziI/WwMJ4c3O95I/AAAAAAAAwPs/QzzeJjkLkSM1-4ToD4zvNqviaV01zodZQCLcBGAs/s1600/Black%2BAsphalt%2B5.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
+  background-color: rgb(20, 26, 44);
 }  
 
 .detail-box {
   text-align: center;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 5px 5px;
-  border-color: black;
+  box-shadow: 5px 5px rgb(255, 98, 0);
+  height: 100%;
+  
 }
 
 .detail-image {
@@ -193,19 +193,45 @@ img {
   font-family: "Permanent Marker";
 }
 
-.detail-icons:hover {
-  color: green;
+.modal-background {
+  opacity: 0; 
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  position: absolute;
+  background: black; 
+  display: flex;
+}
+
+.modalShowing-true {
+  opacity: 1;
+  pointer-events: showing;
+}
+
+.modal-inner {
+  width: 300px;
+  max-width: calc(100% - 60px);
+  margin: auto;
+  display: flex;
+
 }
 
 .other-hoopers-box {
   display: grid; 
+  width: 90%;
+  height: 55vh;
   grid-template-rows: 1fr 5fr ;
   text-align: center;
   /* overflow-y: scroll;
   scrollbar-color: white; */
   background-color: white;
-  box-shadow: 5px 5px;
-  border-color: black;
+  border-radius: 5px;
+  box-shadow: 5px 5px rgb(255, 98, 0);
+  align-items: center;
+  text-align: center;
+}
+
+.other-hoopers-box::-webkit-scrollbar {
+  display: none;
 }
 
 .other-hoopers-2 {
@@ -224,12 +250,22 @@ img {
   display: none;
 }
 
+.player-card {
+  height: 20vh;
+  width: 10vw;
+}
+
+.player-card-image {
+  height: 75%;
+  width: 90%;
+}
+
 .box-4 {
   text-align: center;
 }
 
 .reviews-container {
-  width: 20vw;
+  width: 25vw;
   text-align: center;
   padding: 5px;
   background-color: white;
@@ -244,16 +280,22 @@ img {
   overflow-y: scroll;
   scrollbar-color: black; 
   height: 50vh;
-  width: 15vw;
+  width: 100%;
   align-items: center;
   text-align: center;
   padding: 5px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px rgb(255, 98, 0);
 }
 
 .review-card-container::-webkit-scrollbar {
   display: none;
 }
 
+.comments {
+  background: white;
+}
 
 
 .box-8 {

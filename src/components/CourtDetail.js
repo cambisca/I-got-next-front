@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import PlayerCard from './PlayerCard'
 import ReviewCard from './ReviewCard'
+import 'semantic-ui-css/semantic.min.css'
+import {Modal, Button} from 'semantic-ui-react'
+// import { Button, Comment, Header, Form } from 'semantic-ui-react'
 
 
 function CourtDetail({currentUser, courts, favorites, setFavorites}){
@@ -11,12 +14,15 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
     const [activeAyo, setActiveAyo] = useState(false)
     const [toggleComment, setToggleComment] = useState(false)
     const [courtReviews, setCourtReviews] = useState([])
-    const [currentRun, setCurrentRun] = useState(null)
+    const [currentRun, setCurrentRun] = useState(0)
+    const [open, setOpen] = useState(false)
     // const [commentSubmit, setCommentSubmit] = useState(false)
 
     const [commentForm, setCommentForm] = useState({
         comment: ""
     })
+
+    console.log(currentRun)
 
     const [findCourt, setFindCourt] = useState({
             id: 0,
@@ -58,22 +64,15 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
     fetch(`http://localhost:3000/reviews`)
     .then(response => response.json())
     .then((reviewsArr) => {
-        // console.log(reviewsArr)
-        // let test = reviewsArr.map((rev) => {
-        //     return rev.court
-        // })
-        // console.log(test)
-        // setCourtReviews(test)
-        
         let updatedReviews = reviewsArr.filter((rev) => rev.court.id === id)
         setCourtReviews(updatedReviews)
-        
     })
     }, [])
     
 
     function handleAyo(e){
         e.preventDefault()
+        // setModalState(!modalState)
         setActiveAyo(!activeAyo)
         fetch('http://localhost:3000/runs', {
             method: 'POST',
@@ -91,31 +90,37 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
                 console.log(newRun.id)
                 setRuns([...runs, newRun])
                 setCurrentRun(newRun.id)
-                
             })
 
     }
 
+    console.log(currentRun)
+
     function deleteAyoHelper(id){
+        console.log(id, 'hello')
         const updatedArray = runs.filter((run) => {
             return run.id !== currentRun 
         })
         setRuns(updatedArray)
     }
 
+    console.log(runs)
+
     function handleDeleteAyo(){
         fetch(`http://localhost:3000/runs/${currentRun}`, {
             method: 'DELETE',
         })
-        .then(resp => resp.json)
+        .then(resp => resp.json())
         .then(deleteAyoHelper(currentRun))
         setActiveAyo(!activeAyo)
+        // history.push("/")
     }
 
    
     let displayCourtsHoopers
     if (findCourt.name != ""){
         displayCourtsHoopers = runs.map((run) => {
+            console.log(run.user)
             return <PlayerCard key={run.id} user={run.user}/>
     })
     }
@@ -153,7 +158,10 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             headers: {
                 'Content-Type': 'application/json',
                     },
-            body: JSON.stringify({court_id: findCourt.id, user_id: currentUser.id }),
+            body: JSON.stringify({
+                court_id: findCourt.id, 
+                user_id: currentUser.id 
+            }),
         })
         .then(response => response.json())
         .then((newFavorite) => {
@@ -224,6 +232,10 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
     //         handleDeleteFav(favData.id)})
     // }
 
+    console.log(!activeAyo)
+
+    // setTimeout(function(){ if open ? setOpen(false)}, 3000)
+
     return (
         <div class="detail-wrapper">
             <div class="box-1"></div>
@@ -233,21 +245,17 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
             <div class="box-3"></div>
 
             <div class="box-4">
-                <div class="reviews-container">
-                    <div class="reviews-header">
-                        <h1> Court Reviews </h1>
-                    </div>
-                    <div class="review-card-container">
-                        {displayCourtReviews}
-                    </div>
-                </div>
+                { <div class="review-card-container">
+                    {displayCourtReviews}
+                </div> }
             </div>
 
             <div class="detail-box">
                 {/* <div class="detail-image"> */}
                     <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"></img>
                 {/* </div> */}
-                <div class="court-details">
+                {/* {!modalState ?  */}
+                    <div class="court-details">
                     <h1> {findCourt.name} </h1>
 
                     <h2> {findCourt.address}, {findCourt.borough} {findCourt.zip_code} </h2>
@@ -256,16 +264,33 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
 
                     <h3> Nearby trains: </h3>
 
-                    {!activeAyo ? 
-                        <button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </button> 
-                    : 
-                        <button class="ign-p detail-icons" onClick={handleDeleteAyo}> Nvm </button> 
-                    }
+                    
+                
+                        <Modal 
+                            basic
+                            onClose={() => setOpen(false)}
+                            onOpen={() => setOpen(true)}
+                            open={open}
+                            size="small"
+                            trigger={ 
+                                activeAyo ?  
+                                    <Button class="ign-p detail-icons" onClick={handleDeleteAyo}> Nvm </Button> 
+                                : 
+                                    <Button class="ign-p detail-icons" onClick={handleAyo}> Ayo! </Button>
+                            }
+                        >
+                            {activeAyo ? 'AYO! I GOT NEXT' 
+                            : 
+                            'NAH IM OUT' 
+                            }
+                        </Modal>
+                        
+    
 
-                    {!activeFav ? <button class="detail-icons" onClick={handleFavOn}> Fav </button> : <button class="detail-icons" > nvm </button>}
+                    {!activeFav ? <Button class="detail-icons" onClick={handleFavOn}> Fav </Button> : <Button class="detail-icons" > nvm </Button>}
 
                     {!toggleComment ? 
-                        <button class="leave-comment" onClick={toggleLeaveComment}>Leave a comment</button> 
+                        <Button class="leave-comment" onClick={toggleLeaveComment}>Leave a comment</Button> 
                     : 
                         <form class="comment-form" onSubmit={handleCommentSubmit}>
                             <label htmlFor="comment"></label>
@@ -275,10 +300,21 @@ function CourtDetail({currentUser, courts, favorites, setFavorites}){
                                 onChange={handleCommentChange} 
                                 placeholder="Leave a comment"
                             />
-                            <button type="submit"> add comment </button>
+                            <Button type="submit"> add comment </Button>
                         </form>
                     }
                 </div>
+                 {/* :  */}
+                 {/* <div className="modal-wrapper"> 
+                     <div className={`modal-background modalShowing-${modalState}`}>
+                         <div className="modal-inner"> 
+                             <h1> AYO! </h1>
+                             <h1> I GOT NEXT </h1>
+                         </div> 
+                    </div>
+                </div> */}
+                {/* // } */}
+                
             </div>
 
             <div class="other-hoopers-box">
