@@ -1,4 +1,4 @@
-import NavBar from './NavBar'
+
 
 function Homepage(){
     
@@ -8,7 +8,6 @@ function Homepage(){
             <div class="video-background">
                 
             </div>
-            
         </div>
     )
 }

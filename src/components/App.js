@@ -28,21 +28,21 @@ function App() {
   },[])
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    // const token = true;
-    // if (token)
-    const token = localStorage.getItem("token")
-    fetch('http://localhost:3000/me', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-    })
-    .then((r) => r.json())
-    .then((user) => {
-      setCurrentUser(user)
-    })
-  }, [])
+  //   // const token = true;
+  //   // if (token)
+  //   const token = localStorage.getItem("token")
+  //   fetch('http://localhost:3000/me', {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //   })
+  //   .then((r) => r.json())
+  //   .then((user) => {
+  //     setCurrentUser(user)
+  //   })
+  // }, [])
 
 
   return (

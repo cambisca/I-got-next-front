@@ -60,22 +60,20 @@ img {
   height: 800px;
   width: 100%;  */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-rows: .5fr 1fr .5fr;
   height: 100%;
 }
 
 
 .login-form-box {
-  position: relative;
-  display: block;
-  border: 2px solid black;
-  box-shadow: 3px 3px;
+  border: solid black;
   height: 100%;
-  width: 80%;
+  width: 40%;
   margin: 0 auto;
   top: 25%;
   text-align: center;
+  justify-content: space-evenly;
   color: black;
   background-color: white;
   border-radius: 10px;
@@ -87,7 +85,9 @@ img {
   margin: 0 auto;
   padding: 0 1rem 1rem;
   margin-top: 4px;
-  
+  text-align: center;
+  justify-content: space-evenly;
+  background: white;
 }
 
 .animated-gif {
@@ -179,7 +179,7 @@ img {
   text-align: center;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 5px 5px rgb(255, 98, 0);
+  box-shadow: 5px 5px rgb(70, 72, 79);
   height: 100%;
   
 }
@@ -225,7 +225,7 @@ img {
   scrollbar-color: white; */
   background-color: white;
   border-radius: 5px;
-  box-shadow: 5px 5px rgb(255, 98, 0);
+  box-shadow: 5px 5px rgb(70, 72, 79);
   align-items: center;
   text-align: center;
 }
@@ -286,7 +286,7 @@ img {
   padding: 5px;
   background: white;
   border-radius: 5px;
-  box-shadow: 5px 5px rgb(255, 98, 0);
+  box-shadow: 5px 5px rgb(209, 210, 220);
 }
 
 .review-card-container::-webkit-scrollbar {
