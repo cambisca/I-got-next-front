@@ -7609,6 +7609,11 @@
   "resolved" "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz"
   "version" "2.1.2"
 
+"mta-subway-bullets@^0.5.1":
+  "integrity" "sha512-ATmczrDUoSbjPmQW0M9MU9AecnlDtOD6nuVPawZb5rXMdNc1zFazjXkHo3e9uNUlDscKGJ0OJVV2W4KQ2+n/Sg=="
+  "resolved" "https://registry.npmjs.org/mta-subway-bullets/-/mta-subway-bullets-0.5.1.tgz"
+  "version" "0.5.1"
+
 "multicast-dns-service-types@^1.1.0":
   "integrity" "sha1-iZ8R2WhuXgXLkbNdXw5jt3PPyQE="
   "resolved" "https://registry.yarnpkg.com/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz"

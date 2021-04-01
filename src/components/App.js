@@ -17,7 +17,6 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [rerender, setRerender] = useState(false)
 
-  console.log(currentUser)
 
   useEffect(()=>{
     fetch(`http://localhost:3000/courts`)
@@ -28,21 +27,21 @@ function App() {
   },[])
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   // const token = true;
-  //   // if (token)
-  //   const token = localStorage.getItem("token")
-  //   fetch('http://localhost:3000/me', {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //   })
-  //   .then((r) => r.json())
-  //   .then((user) => {
-  //     setCurrentUser(user)
-  //   })
-  // }, [])
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch('http://localhost:3000/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+    })
+    .then((r) => r.json())
+    .then((user) => {
+      setCurrentUser(user)
+    })
+    }
+  }, [])
 
 
   return (
@@ -90,6 +89,7 @@ function App() {
           />
           <CourtDetail 
             currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
             courts={courts}
             setCourts={setCourts}
             favorites={favorites}

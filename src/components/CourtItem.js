@@ -1,24 +1,41 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Card, Image, Reveal, Icon } from 'semantic-ui-react'
 
 function CourtItem({courtObj}){
 
     const {id, name, address, borough, zip_code, condition, trains, img_url} = courtObj
     return (
-        <div class="court-list-item">
-            <div class="court-thumbnail-box">
-                <img src={img_url} alt={name} class="court-thumbnail-image"></img>
-            </div>
-            <div class="court-detail-box">
-                <Link to={`/courts/${id}`}>
-                    <h1> {name} </h1>
-                </Link>
-                <h2> {address}, {borough} {zip_code} </h2>
-                <h3> condition: {condition} </h3>
-                <h4> Nearby trains: {trains} </h4>
-            </div>
-           
-        </div>
+        
+        <Reveal animated='move up'>
+            <Reveal.Content visible>
+                <Image src={img_url} size='medium' />
+            </Reveal.Content>
+            <Reveal.Content hidden>
+                {/* <Card
+                    header={<Link to={`/courts/${id}`}> {name}</Link>}
+                    meta={borough}
+                    description={<Icon name='fire' /> {condition}}
+                /> */}
+                <Card id="court-card">
+                    <Card.Content>
+                        <Card.Header> 
+                            <Link to={`/courts/${id}`}>
+                                {name}
+                            </Link> 
+                        </Card.Header>
+                        <Card.Description> {address}, {borough} NY {zip_code} </Card.Description>
+                        <Card.Description>
+                            <Icon name='fire'> <p class="court-item-condition">{condition}</p> </Icon>
+                        </Card.Description>
+                        <Card.Description>
+                            <Icon name='train'/>  <p class="court-item-condition">{trains}</p>
+                        </Card.Description>
+                    </Card.Content>
+                </Card>
+            </Reveal.Content>
+        </Reveal>
+        
     )
 }
 

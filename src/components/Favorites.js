@@ -23,15 +23,22 @@ function Favorites({ favorites, setFavorites }){
     // let renderFavorites
     // if (favorites.length > 0) { 
         const renderFavorites = favorites.map((fav) => {
-            return <FavCard key={fav.id} fav={fav} onDeleteFav={handleDeleteFav}/>
+            
+            return <FavCard key={fav.id} court={fav.court} onDeleteFav={handleDeleteFav}/>
         })
     // } 
     
 
     return (
-        <div>
-           {renderFavorites}
+        <div class="fav-wrapper">
+            <div class="all-favs">
+                {renderFavorites}
+            </div>
+            <div class="ball-decal">
+                <img src="https://cdn.wallpapersafari.com/44/12/9EuaTb.gif" class="decal-image"/>
+            </div>
         </div>
+        
     )
 }
 

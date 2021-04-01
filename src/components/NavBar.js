@@ -68,35 +68,49 @@ function NavBar({currentUser, setCurrentUser}){
             <div class="nav">
                 {currentUser ? (
                 <>
-                        <Link className="option opt-logo" to="/">
+                        <Link className="option" to="/" id="opt-logo">
                             I GOT NEXT
                         </Link>
-                        
+
                         <div>
-                            
+                            <img src="https://media1.giphy.com/media/WpxeQuE1hfvLow9Ir3/source.gif" class="ja-dances"></img>
                         </div>
 
-                        <div> </div>
-
-                        <Link class="option opt-discover" to="/discover">
+                        <Link class="option" to="/discover" id="opt-discover">
                             Discover
                         </Link>
 
-                        <Link class="option opt-favorite" to="/favorites">
+                        <div>
+                            <img src="https://media1.giphy.com/media/gfGvtlxqgYKIEqSEdE/giphy.gif" class="ja-dances"></img>
+                        </div>
+
+                        <Link class="option" to="/favorites" id="opt-home-court">
                             Home Courts
                         </Link>
                 
 
-                        <Link class="option opt-logout" to="/" onClick={logout}>
+                        <div> 
+                            <img src="https://media0.giphy.com/media/TFCZhTQytF04Y0dbXE/giphy.gif" class="ja-dances"></img>
+                        </div>
+
+                        <Link class="option" to="/" onClick={logout} id="opt-logout">
                             Logout
                         </Link>
+
+                        <div> 
+                            <img src="https://media2.giphy.com/media/cj3Aaxo5Ljjmmq6Aaz/giphy.gif" class="ja-dances"></img>
+                        </div>
                 </>
                 ) : (
                     <>
-                        <Link className="option opt-logo" to="/">
+                        <Link className="option opt-logo" to="/" id="opt-logo">
                             I GOT NEXT
                         </Link>
                         
+                        <div></div>
+
+                        <div></div>
+
                         <div></div>
 
                         <div></div>
@@ -111,7 +125,7 @@ function NavBar({currentUser, setCurrentUser}){
                             open={loginModal}
                             size="small"
                             trigger={ 
-                                <Link class="option opt-login">
+                                <Link class="option" id="opt-logo">
                                     Login
                                 </Link>
                             }
@@ -148,7 +162,7 @@ function NavBar({currentUser, setCurrentUser}){
                                     ))}
                                 </Form.Field>
                                 <Button type='submit'>Submit</Button>
-                                <Link className="signup-option" to="/signup">
+                                <Link id="opt-signup" to="/signup">
                                     Sign up 
                                 </Link>
                             </Form>

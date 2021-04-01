@@ -1,32 +1,43 @@
 import React from 'react' 
-// import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 function PlayerCard({user}){
+    const { image, username, style, height, location, position, age } = user
+
+    const extra = (
+        <a>
+          <Icon name='location arrow' />
+          {location}
+        </a>
+      )
 
     return (
-        <div>
-            <h1>
-                {user.name}
-            </h1>
-        </div>
-        // <Card className="player-card">
-        //     <Image src='https://fansided.com/wp-content/uploads/getty-images/2020/04/1137840592.jpeg' wrapped ui={false} className="player-card-image"/>
-        //     <Card.Content>
-        //     <Card.Header>{user.name}</Card.Header>
-        //     <Card.Meta>
-        //         <span className='date'>{user.username}</span>
-        //     </Card.Meta>
-        //     <Card.Description>
-        //         {user.location}
-        //     </Card.Description>
-        //     </Card.Content>
-        //     <Card.Content extra>
-        //     <a>
-        //         <Icon name='user' />
-        //         22 Friends
-        //     </a>
-        //     </Card.Content>
-        // </Card>
+        // <Card
+        //     image={image}
+        //     header={username}
+        //     meta={position}
+        //     description={style}
+        //     extra={extra}
+        //     id="player-card"
+        // />
+        <Card id="player-card">
+            <Image src={image} wrapped ui={false} />
+            <Card.Content>
+            <Card.Header>{user.name}</Card.Header>
+            <Card.Meta>
+                <span className='date'>{user.position}</span>
+            </Card.Meta>
+            <Card.Description>
+                {user.style}
+            </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+            <a>
+                <Icon name='user' />
+                {location}
+            </a>
+            </Card.Content>
+        </Card>
     )
 }
 

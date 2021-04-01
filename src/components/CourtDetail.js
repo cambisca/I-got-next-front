@@ -3,17 +3,18 @@ import { useParams } from "react-router-dom";
 import PlayerCard from "./PlayerCard";
 import ReviewCard from "./ReviewCard";
 import "semantic-ui-css/semantic.min.css";
-import { Modal, Button } from "semantic-ui-react";
+import { Button, Modal, Icon, Popup, Form, Message, Card, Image } from "semantic-ui-react";
 // import { Button, Comment, Header, Form } from 'semantic-ui-react'
 
-function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
+function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites }) {
   const [runs, setRuns] = useState([]);
   const [activeFav, setActiveFav] = useState(false);
   const [activeAyo, setActiveAyo] = useState(false);
   const [toggleComment, setToggleComment] = useState(false);
   const [courtReviews, setCourtReviews] = useState([]);
   const [currentRun, setCurrentRun] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [runErrorMessages, setRunErrorMessages] = useState(null)
   // const [commentSubmit, setCommentSubmit] = useState(false)
 
   const [commentForm, setCommentForm] = useState({
@@ -33,6 +34,7 @@ function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
     trains: [],
     img_url: "",
   });
+
 
   const params = useParams();
   const id = parseInt(params.id);
@@ -77,14 +79,19 @@ function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
         user_id: currentUser.id,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+          if(response.ok) {
+            setRunErrorMessages(null)
+            return response.json()
+          } else {
+              return response.json().then(errorData => {throw errorData})
+          }
+        })
       .then((newRun) => {
         setRuns([...runs, newRun]);
         setCurrentRun(newRun.id);
-      });
+      }).catch(errorData => { setRunErrorMessages(errorData.errors)})
   }
-
-  console.log(currentRun);
 
   function deleteAyoHelper(id) {
     console.log(id, "hello");
@@ -100,8 +107,7 @@ function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
     })
       .then((resp) => resp.json())
       .then(deleteAyoHelper(currentRun));
-    setActiveAyo(!activeAyo);
-    // history.push("/")
+        setActiveAyo(!activeAyo);
   }
 
   let displayCourtsHoopers;
@@ -125,12 +131,14 @@ function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
     return (
       <ReviewCard
         rev={rev}
-        user={rev.user}
         currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
         paramsId={id}
         commentForm={commentForm}
         onHandleCommentChange={handleCommentChange}
         onHandleUpdateComment={handleUpdateComment}
+        courtReviews={courtReviews} 
+        setCourtReviews={setCourtReviews}
       />
     );
   });
@@ -165,6 +173,7 @@ function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
 
   function handleCommentSubmit(e) {
     e.preventDefault();
+    setOpen(false)
 
     const newReview = {
       rating: null,
@@ -202,76 +211,113 @@ function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
     });
     setCourtReviews(updatedCommentsArr);
   }
-  // function handleDeleteFav(id){
-  //     console.log(id)
-  //     setActiveFav(!activeFav)
-  //     const updatedFavs = favorites.filter(favorite => favorite.id !== id)
-  //     setFavorites(updatedFavs)
 
-  // }
 
-  // function deleteFavRequest(id){
-  //     fetch(`http://localhost:3000/favorites/${id}`,{
-  //         method: 'DELETE',
-  //     })
-  //     .then(response => response.json())
-  //     .then((favData) => {
-  //         handleDeleteFav(favData.id)})
-  // }
-
-  
-
-//   let displayCourtsHoopers;
-//   if (findCourt.name !== "") {
-//     displayCourtsHoopers = runs.map((run) => {
-//       return <PlayerCard key={run.id} user={run.user} />;
-//     });
-//   }
-    
-    console.log(runs)
     let courtActivity;
     if (runs.length > 40) {
-        let courtActivity = "🔥🔥🔥🔥🔥"
-    } else if (runs.length > 30 && runs.length < 40) {
-        let courtActivity = "🔥🔥🔥🔥"
-    } if (runs.length > 20 && runs.length < 30) {
-        let courtActivity = "🔥🔥🔥"
-    } if (runs.length > 10 && runs.length < 20) {
-        let courtActivity = "🔥🔥"
-    } if (runs.length < 5 ) {
-        let courtActivity = "🔥"
+        courtActivity = "🔥🔥🔥🔥🔥"
+    } else if (runs.length > 20 && findCourt.runs.length < 30) {
+        courtActivity = "🔥🔥🔥🔥"
+    } else if (runs.length > 10 && findCourt.runs.length < 20) {
+        courtActivity = "🔥🔥🔥"
+    } else if (runs.length > 5 && findCourt.runs.length < 10) {
+        courtActivity = "🔥🔥"
+    } else if (runs.length < 5) {
+        courtActivity = "🔥"
     }
 
 
-    // if (findCourt.runs.length > 40) {
-    //     let courtActivity = "🔥🔥🔥🔥🔥"
-    // } else if (findCourt.runs.length > 30 && findCourt.runs.length < 40) {
-    //     let courtActivity = "🔥🔥🔥🔥"
-    // } else if (findCourt.runs.length > 20 && findCourt.runs.length < 30) {
-    //     let courtActivity = "🔥🔥🔥"
-    // } else if (findCourt.runs.length > 10 && findCourt.runs.length < 0) {
-    //     let courtActivity = "🔥🔥"
-    // } else if (findCourt.runs.length < 10) {
-    //     let courtActivity = "🔥"
-    // }
+    const style = {
+        borderRadius: 0,
+        opacity: 1.7,
+        padding: '2em',
+      }
+
+  let displayTrains;
+  if (findCourt.trains.length > 0) {
+    displayTrains = findCourt.trains.map((train) => train).join(', ')
+  }
+
+  console.log(displayTrains)
 
   return (
     <div class="detail-wrapper">
-      <div class="box-1"></div>
+        <div class="box-1"></div>
 
-      <div class="box-2"></div>
+        <div class="box-2"></div>
 
-      <div class="box-3"></div>
+        <div class="box-3"></div>
 
-      <div class="box-4">
-        <div class="review-card-container">{displayCourtReviews}</div>
-        <div class="comment-box">
-            {!toggleComment ? (
-                <Button class="leave-comment" onClick={toggleLeaveComment}>
-                    Leave a comment
-                </Button>
-            ) : (
-                <form class="comment-form" onSubmit={handleCommentSubmit}>
+        {/* <div class="box-4"> */}
+        <div class="other-hoopers-box">
+            <div class="other-hoopers-1"> 
+                <h1 class="comments-header">Comments</h1>
+            </div>
+
+            <div class="other-hoopers-2"> 
+              {displayCourtReviews} 
+            </div>
+        </div>
+        {/* </div> */}
+
+      <div class="detail-box">
+      
+        <img
+          src={findCourt.img_url}
+          alt={findCourt.name}
+          class="detail-image"
+        ></img>
+        <div>
+            
+        </div>
+        
+        <div class="court-details">
+          <h1> {findCourt.name} </h1>
+
+          <h3>
+            {" "}
+            {findCourt.address}, {findCourt.borough} {findCourt.zip_code}{" "}
+          </h3>
+
+          <h3> Condition: {findCourt.condition} </h3>
+
+          <p> {courtActivity} </p>
+
+          <h3> <Icon name='train'/> {displayTrains} </h3>
+
+            {
+              activeAyo ? (
+                <Popup
+                    trigger={<Button icon='hand peace' onClick={handleDeleteAyo}/>}
+                    content="Nevermind I'M OUT!"
+                    style={style}
+                    inverted
+                />
+              ) : (
+                <Popup
+                    trigger={<Button icon='basketball ball' onClick={handleAyo}/>}
+                    content='AYO! I GOT NEXT!'
+                    style={style}
+                    inverted
+                />
+                
+               )
+            }
+
+          <Button class="detail-icons" onClick={handleFavOn}>
+           
+            🖤 
+          </Button>
+
+          <Modal
+            basic
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
+            open={open}
+            size='small'
+            trigger={<Button class="leave-comment" onClick={toggleLeaveComment}>Leave a comment</Button>}
+            >
+            <Form class="comment-form" onSubmit={handleCommentSubmit}>
                 <label htmlFor="comment"></label>
                 <textarea
                     name="comment"
@@ -279,100 +325,34 @@ function CourtDetail({ currentUser, courts, favorites, setFavorites }) {
                     onChange={handleCommentChange}
                     placeholder="Leave a comment"
                 />
-                <Button type="submit"> add comment </Button>
-                </form>
-            )}
-        </div>
-      </div>
-
-      <div class="detail-box">
-        {/* <div class="detail-image"> */}
-        <img
-          src={findCourt.img_url}
-          alt={findCourt.name}
-          class="detail-image"
-        ></img>
-        <div>
-            {courtActivity}
-        </div>
-        
-        <div class="court-details">
-          <h1> {findCourt.name} </h1>
-
-          <h2>
-            {" "}
-            {findCourt.address}, {findCourt.borough} {findCourt.zip_code}{" "}
-          </h2>
-
-          <h3> Condition: {findCourt.condition} </h3>
-
-          <h3> Nearby trains: </h3>
-
-          {/* <Modal
-            basic
-            onClose={() => setOpen(false)}
-            onOpen={() => setOpen(true)}
-            open={open}
-            size="small"
-            trigger= */}
-            {
-              activeAyo ? (
-                <Button class="ign-p detail-icons" onClick={handleDeleteAyo}>
-                  {" "}
-                  Nvm{" "}
+                <Button type="submit" color='green' inverted> <Icon name='checkmark' /> add comment </Button>
+                <Button basic color='red' inverted onClick={() => setOpen(false)}>
+                    <Icon name='remove' /> Close
                 </Button>
-              ) : (
-                <Button class="ign-p detail-icons" onClick={handleAyo} animated="vertical">
-                    <Button.Content hidden> I GOT NEXT </Button.Content>
-                    <Button.Content visible> 
-                        {" "}
-                        Ayo!{" "}
-                    </Button.Content>
-                </Button>
-            //     <Button animated='vertical'>
-            //     <Button.Content hidden>Shop</Button.Content>
-            //     <Button.Content visible>
-            //       <Icon name='shop' />
-            //     </Button.Content>
-            //   </Button>
-              )
-            }
-          {/* >
-            {activeAyo ? "AYO! I GOT NEXT" : "NAH IM OUT"}
-          </Modal> */}
-            
-          <Button class="detail-icons" onClick={handleFavOn}>
-            {" "}
-            🖤 {" "}
-          </Button>
-
-        </div>
-        {/* :  */}
-        {/* <div className="modal-wrapper"> 
-                     <div className={`modal-background modalShowing-${modalState}`}>
-                         <div className="modal-inner"> 
-                             <h1> AYO! </h1>
-                             <h1> I GOT NEXT </h1>
-                         </div> 
-                    </div>
-                </div> */}
-        {/* // } */}
+            </Form>
+        </Modal> 
+        </div> 
+     
       </div>
 
       <div class="other-hoopers-box">
         <div class="other-hoopers-1">
-          <h1>Other Hoopers coming through</h1>
+          <h1 class="others-coming-through">Other Hoopers coming through</h1>
         </div>
-        <div class="other-hoopers-2">{displayCourtsHoopers}</div>
+        <div class="other-hoopers-2">
+          {displayCourtsHoopers}
+        </div>
       </div>
 
-      <div class="box-7"></div>
+      <div class="box-7">
+      
+      </div>
 
       <div class="box-8">
-        <h1>
-          Nearby Courts
-          {displayNearbyCourts}
-        </h1>
+      {runErrorMessages && <Message warning list={runErrorMessages}>
+        <Message.Header>We heard you the first time! </Message.Header>
+        
+    </Message>}
       </div>
 
       <div class="box-9"></div>

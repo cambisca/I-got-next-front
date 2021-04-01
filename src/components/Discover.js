@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import CourtItem from "./CourtItem"
 import Filter from './Filter'
 import CourtMap from './CourtMap'
+import { Card } from 'semantic-ui-react'
 
 function Discover({courts, setCourts}){
     
@@ -53,26 +54,24 @@ function Discover({courts, setCourts}){
                 onSearchChange={handleSearchChange}
                 onBoroughSelect={handleBoroughSelect}
             />
-            <div class="list-map-container">
-                <div class="empty-spacer">
-
+            <div class="map-container-wrapper">
+                <div>
+                    
                 </div>
-                <div class="court-list">
-                    {renderCourtItems}
+                <div class="map-container">
+                    <CourtMap courts={courtSearch}/>
                 </div>
-                <div class="map-wrapper">
-                    <div class="court-map-spacer">
-                        <CourtMap courts={courtSearch}/>
-                        <div class="empty-spacer">
-
-                        </div>
-
-                    </div>
-                    <div class="map-box-spacer">
-
-                    </div>
+                <div>
+                    
                 </div>
             </div>
+            
+                
+            <div itemsPerRow={4} id="court-item-list">
+                {renderCourtItems}
+            </div>
+                
+                
         </div>
     )
 }
