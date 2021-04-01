@@ -150,7 +150,7 @@ function NavBar({currentUser, setCurrentUser}){
                                     <label>Password</label>
                                     <input 
                                         placeholder='Password' 
-                                        type="text"
+                                        type="password"
                                         name="password"
                                         onChange={handleChange}
                                         value={loginData.password}

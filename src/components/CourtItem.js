@@ -26,7 +26,10 @@ function CourtItem({courtObj}){
                         </Card.Header>
                         <Card.Description> {address}, {borough} NY {zip_code} </Card.Description>
                         <Card.Description>
-                            <Icon name='fire'> <p class="court-item-condition">{condition}</p> </Icon>
+                            <div class="item-condition">
+                                <Icon name='fire'/>
+                                <p class="court-item-condition">{condition}</p>
+                            </div>
                         </Card.Description>
                         <Card.Description>
                             <Icon name='train'/>  <p class="court-item-condition">{trains}</p>
