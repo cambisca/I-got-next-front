@@ -258,7 +258,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
               {displayCourtReviews} 
             </div>
         </div>
-        {/* </div> */}
 
       <div class="detail-box">
       

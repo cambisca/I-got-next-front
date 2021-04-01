@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 function CourtMap({position, courts }){
@@ -12,7 +13,7 @@ function CourtMap({position, courts }){
             {courts.map((court) => {
                 return (<Marker position={[court.latitude, court.longitude]}>
                     <Popup>
-                        {court.name}
+                        <Link to={`/courts/${court.id}`}> {court.name} </Link>
                     </Popup>
                 </Marker>
             )})}

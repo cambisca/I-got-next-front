@@ -23,7 +23,7 @@ function PlayerCard({user}){
         <Card id="player-card">
             <Image src={image} wrapped ui={false} />
             <Card.Content>
-            <Card.Header>{user.name}</Card.Header>
+            <Card.Header>{user.username}</Card.Header>
             <Card.Meta>
                 <span className='date'>{user.position}</span>
             </Card.Meta>
