@@ -10,11 +10,6 @@ function Discover({courts, setCourts}){
     const [boroughSelect, setBoroughSelect] = useState("All")
     
 
-    // ******************* Fetch *************************
-    
-
-    // ************** Setter Functions ***************
-
     function handleSearchChange(e){
         setSearch(e.target.value)
     }

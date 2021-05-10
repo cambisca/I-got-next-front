@@ -220,7 +220,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         courtActivity = "🔥🔥🔥🔥"
     } else if (runs.length > 10 && findCourt.runs.length < 20) {
         courtActivity = "🔥🔥🔥"
-    } else if (runs.length > 5 && findCourt.runs.length < 10) {
+    } else if (runs.length > 5 && findCourt.runs.length <= 10) {
         courtActivity = "🔥🔥"
     } else if (runs.length < 5) {
         courtActivity = "🔥"

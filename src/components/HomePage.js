@@ -5,9 +5,15 @@ function Homepage(){
 
     return (
         <div class="home-wrapper">
-            {/* <div class="video-background">
-                
-            </div> */}
+            <div></div> 
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="home-page-gif"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     )
 }
