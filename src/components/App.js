@@ -48,20 +48,20 @@ function App() {
     <div class="wrapper">
       <Switch>
         <Route exact path="/">
+          <HomePage />
           <NavBar 
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
           />
-          <HomePage />
         </Route>
         <Route exact path="/discover">
-          <NavBar 
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
           <Discover 
             courts={courts}
             setCourts={setCourts}
+          />
+          <NavBar 
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
           />
         </Route>
         <Route exact path="/login">

@@ -69,7 +69,7 @@ function NavBar({currentUser, setCurrentUser}){
                 {currentUser ? (
                 <>
                         <Link className="option" to="/" id="opt-logo">
-                            I GOT NEXT
+                            IGN
                         </Link>
 
                         <div>
@@ -77,7 +77,7 @@ function NavBar({currentUser, setCurrentUser}){
                         </div>
 
                         <Link class="option" to="/discover" id="opt-discover">
-                            Discover
+                            D
                         </Link>
 
                         <div>
@@ -85,7 +85,7 @@ function NavBar({currentUser, setCurrentUser}){
                         </div>
 
                         <Link class="option" to="/favorites" id="opt-home-court">
-                            Home Courts
+                            HC
                         </Link>
                 
 
@@ -94,7 +94,7 @@ function NavBar({currentUser, setCurrentUser}){
                         </div>
 
                         <Link class="option" to="/" onClick={logout} id="opt-logout">
-                            Logout
+                            L
                         </Link>
 
                         <div> 

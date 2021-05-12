@@ -1,22 +1,27 @@
 import React from 'react'
+import { Dropdown, Input } from 'semantic-ui-react'
 
 
 function Filter({search, onSearchChange, onBoroughSelect}){
+
+    const options = [
+        {key: "Bronx", text: "Bronx", value: "Bronx"},
+        {key: "Brooklyn", text: "Brooklyn", value: "Brooklyn"}, 
+        {key: "Manhattan", text: "Manhattan", value: "Manhattan"}, 
+        {key: "Queens", text: "Queens", value: "Queens"}, 
+        {key: "Staten Island", text: "Staten Island", value: "Staten Island"}
+    ]
+
+
     return (
         <div class="filter-wrapper">
-            <div class="box1-filter-spacer">
-
-            </div>
-            {/* <form id="content">
-                <input type="text" name="input" class="input" id="search-input">
-                <button type="reset" class="search" id="search-btn"></button>
-            </form> */}
-            <div class="search-bar">
-                <input name="search" value={search} onChange={onSearchChange} placeholder = "Search..." /> 
+            <div class="search-bar" align="center">
+                {/* <input id="search-input" name="search" value={search} onChange={onSearchChange} placeholder = "Search..." />  */}
+                <Input focus placeholder='Search...' value={search} onChange={onSearchChange}/>
             </div>
     
             <div class="borough-select">
-                <label class="borough-select-label"> Select a Borough </label>
+                {/* <label class="borough-select-label"> Select a Borough </label>
                 <select name="borough" onChange={onBoroughSelect}> 
                     <option value="All"> All </option>
                     <option value="Brooklyn"> Brooklyn </option>
@@ -24,11 +29,9 @@ function Filter({search, onSearchChange, onBoroughSelect}){
                     <option value="New York"> Manhattan </option>
                     <option value="Bronx"> Bronx </option>
                     <option value="Staten Island"> Staten Island </option>
-                </select>
-            </div>
-            <div class="box4-filter-spacer">
-
-            </div>      
+                </select> */}
+                <Dropdown placeholder='Borough' fluid multiple selection options={options} />
+            </div> 
         </div>
     )
 }

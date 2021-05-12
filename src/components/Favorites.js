@@ -34,9 +34,9 @@ function Favorites({ favorites, setFavorites }){
             <div class="all-favs">
                 {renderFavorites}
             </div>
-            <div class="ball-decal">
+            {/* <div class="ball-decal">
                 <img src="https://cdn.wallpapersafari.com/44/12/9EuaTb.gif" class="decal-image"/>
-            </div>
+            </div> */}
         </div>
         
     )

@@ -5,7 +5,7 @@ import { Card, Image, Reveal, Icon, Button } from 'semantic-ui-react'
 function FavCard({court, onDeleteFav}){
 
     const {id, name, address, borough, zip_code, condition, trains, img_url} = court
-    console.log(court)
+  
 
     function handleDeleteClick(){
         fetch(`http://localhost:3000/favorites/${id}`, {
