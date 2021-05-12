@@ -185,46 +185,6 @@ img {
   margin: auto;
 }
 
-/* input{
-  width: 100%;
-  display: flex;
-  padding: 15px;
-  background-color: white;
-  border: 2px solid black;
-  color: #111;
-  font-size: 15px;
-  box-shadow: 3px 1px 0px 2px, 0px -1px 0px 2px rgba(0, 0, 0, 0.62);
-  height: 58px;    
-  transform: skew(-3deg, 1deg);
-  font-family: 'Knewave', cursive;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  &:focus,
-  &:valid{
-    outline: none;
-    ~ ul li{
-      @for $i from 1 through 6 {
-        &:nth-child(#{$i}){
-          &::before{
-            filter: blur(20px);
-            transform: translate(0, -35px) rotate(-210deg);
-          }
-          &::after{
-            filter: blur(0);
-            transform: scale(1) rotate(0);
-          }
-        }
-      }
-      @for $i from 1 through 6{
-        &:nth-child(#{$i}){
-          &::after{
-            transition-delay: 200ms + ($i * 200ms);
-          }
-        }
-      }
-    }
-  }
-} */
 label{
   position: relative;
 }
@@ -235,25 +195,38 @@ label{
   grid-gap: 2em;
 }
 
-/* .court-list-item {
+.court-item-wrapper {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr;
-  grid-gap: 1em;
+  /* grid-gap: 1em; */
+  height: 12vh;
+  width: 90vw;
   border: 2px solid black;
   border-radius: 5px;
-  box-shadow: 3px 3px;
   background: white;
-  box-shadow: 5px 5px rgb(209, 210, 220);
-} */
+}
+
+.court-card-pic {
+  height: 100%;
+  width: 100%;
+  background: rgb(249, 132, 132);
+}
 
 .court-item-image {
-  height: 10vh;
+  height: 100%;
   width: 100%;
 }
 
-.court-item-condition {
-  font-size: 2rem;
+.court-card-info {
+  height: 100%;
+  width: 100%;
+  background: black;
+  color: white;
+}
+
+.court-card-name {
+  color: white;
 }
 
 .court-thumbnail-image {
@@ -275,17 +248,18 @@ label{
   /* grid-template-columns: .5fr 1fr .5fr; */
   grid-template-rows: .1fr .25fr;
   align-items: center;
+  height: 100%;
   
 }
 
 #map {
   width: 100%;
-  height: 100%;
+  height: 50%;
 }
 
 
 .leaflet-container {
-  height: 400px;
+  height: 35vh;
   width: 100%;
   border-radius: 5px;
   /* box-shadow: 5px 5px rgb(255, 95, 2); */
@@ -318,16 +292,20 @@ label{
 
  #court-item-list {
   display: grid;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  grid-template-columns: auto auto;
-  grid-gap: 2rem;
-  margin: auto;
-  margin-top: 40px;
+  grid-template-columns: auto;
+  grid-gap: 1rem;
+  width: 100%;
+  align-items: center;
+  /* margin: auto; */
+  /* margin-top: 40px;
   margin-bottom: 40px;
   margin-right: 40px;
-  margin-left: 40px;  
+  margin-left: 40px;   */
  }
+
+
 
 
 .detail-wrapper {

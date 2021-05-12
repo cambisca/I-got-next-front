@@ -4,7 +4,7 @@ import Filter from './Filter'
 import CourtMap from './CourtMap'
 import { Dropdown } from 'semantic-ui-react'
 
-function Discover({courts, setCourts}){
+function Discover({courts, setCourts, courtActivity}){
     
     const [search, setSearch] = useState("")
     const [boroughSelect, setBoroughSelect] = useState("All")
@@ -39,7 +39,7 @@ function Discover({courts, setCourts}){
     })
 
     const renderCourtItems = courtSearch.map((court) => {
-        return <CourtItem key={court.id} courtObj={court}/>
+        return <CourtItem key={court.id} courtObj={court} courtActivity={courtActivity}/>
     })
 
     return (

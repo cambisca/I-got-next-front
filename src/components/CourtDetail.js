@@ -6,8 +6,8 @@ import "semantic-ui-css/semantic.min.css";
 import { Button, Modal, Icon, Popup, Form, Message, Card, Image } from "semantic-ui-react";
 // import { Button, Comment, Header, Form } from 'semantic-ui-react'
 
-function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites }) {
-  const [runs, setRuns] = useState([]);
+function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites, courtActivity, findCourt, setFindCourt, runs, setRuns }) {
+  // const [runs, setRuns] = useState([]);
   const [activeFav, setActiveFav] = useState(false);
   const [activeAyo, setActiveAyo] = useState(false);
   const [toggleComment, setToggleComment] = useState(false);
@@ -22,18 +22,18 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   });
 
 
-  const [findCourt, setFindCourt] = useState({
-    id: 0,
-    name: "",
-    address: "",
-    borough: "",
-    zip_code: 0,
-    condition: "",
-    latitude: 0,
-    longitude: 0,
-    trains: [],
-    img_url: "",
-  });
+  // const [findCourt, setFindCourt] = useState({
+  //   id: 0,
+  //   name: "",
+  //   address: "",
+  //   borough: "",
+  //   zip_code: 0,
+  //   condition: "",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   trains: [],
+  //   img_url: "",
+  // });
 
 
   const params = useParams();
@@ -213,18 +213,18 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   }
 
 
-    let courtActivity;
-    if (runs.length > 40) {
-        courtActivity = "🔥🔥🔥🔥🔥"
-    } else if (runs.length > 20 && findCourt.runs.length < 30) {
-        courtActivity = "🔥🔥🔥🔥"
-    } else if (runs.length > 10 && findCourt.runs.length < 20) {
-        courtActivity = "🔥🔥🔥"
-    } else if (runs.length > 5 && findCourt.runs.length <= 10) {
-        courtActivity = "🔥🔥"
-    } else if (runs.length < 5) {
-        courtActivity = "🔥"
-    }
+    // let courtActivity;
+    // if (runs.length > 40) {
+    //     courtActivity = "🔥🔥🔥🔥🔥"
+    // } else if (runs.length > 20 && findCourt.runs.length < 30) {
+    //     courtActivity = "🔥🔥🔥🔥"
+    // } else if (runs.length > 10 && findCourt.runs.length < 20) {
+    //     courtActivity = "🔥🔥🔥"
+    // } else if (runs.length > 5 && findCourt.runs.length <= 10) {
+    //     courtActivity = "🔥🔥"
+    // } else if (runs.length < 5) {
+    //     courtActivity = "🔥"
+    // }
 
 
     const style = {

@@ -16,6 +16,20 @@ function App() {
   const [courts, setCourts] = useState([])
   const [favorites, setFavorites] = useState([])
   const [rerender, setRerender] = useState(false)
+  const [runs, setRuns] = useState([]);
+
+  const [findCourt, setFindCourt] = useState({
+    id: 0,
+    name: "",
+    address: "",
+    borough: "",
+    zip_code: 0,
+    condition: "",
+    latitude: 0,
+    longitude: 0,
+    trains: [],
+    img_url: "",
+  });
 
 
   useEffect(()=>{
@@ -43,6 +57,19 @@ function App() {
     }
   }, [])
 
+  let courtActivity;
+    if (runs.length > 40) {
+        courtActivity = "🔥🔥🔥🔥🔥"
+    } else if (runs.length > 20 && findCourt.runs.length < 30) {
+        courtActivity = "🔥🔥🔥🔥"
+    } else if (runs.length > 10 && findCourt.runs.length < 20) {
+        courtActivity = "🔥🔥🔥"
+    } else if (runs.length > 5 && findCourt.runs.length <= 10) {
+        courtActivity = "🔥🔥"
+    } else if (runs.length < 5) {
+        courtActivity = "🔥"
+    }
+
 
   return (
     <div class="wrapper">
@@ -58,6 +85,7 @@ function App() {
           <Discover 
             courts={courts}
             setCourts={setCourts}
+            courtActivity={courtActivity}
           />
           <NavBar 
             currentUser={currentUser}
@@ -96,6 +124,10 @@ function App() {
             setFavorites={setFavorites}
             setRerender={setRerender}
             rerender={rerender}
+            findCourt={findCourt}
+            setFindCourt={setFindCourt}
+            runs={runs} 
+            setRuns={setRuns}
           />
         </Route>
         <Route exact path="/favorites">

@@ -3,12 +3,21 @@ import { Link } from 'react-router-dom'
 import { Card, Image, Icon } from 'semantic-ui-react' 
 // semantic imports removed: Reveal
 
-function CourtItem({courtObj}){
+function CourtItem({courtObj, courtActivity }){
 
     const {id, name, address, borough, zip_code, condition, trains, img_url} = courtObj
     return (
-        <div>
-            Court
+        <div class="court-item-wrapper">
+            <div class="court-card-pic">   
+                <img src={img_url} alt={name} class="court-item-image"></img>
+            </div>
+            <div class="court-card-info">
+                <div> <Link to={`/courts/${id}`} className="court-card-name"> {name} </Link> </div>
+                <div> {address}, {borough} {zip_code} </div>
+                <div> {condition} </div>
+                <div> {courtActivity} </div>
+            </div>
+            
         </div>
         // <Reveal animated='move up'>
         //     <Reveal.Content visible>
