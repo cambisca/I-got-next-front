@@ -49,8 +49,7 @@ img {
 
 .nav {
   display: grid;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   font-family: "Permanent Marker";
   font-size: 25px;
