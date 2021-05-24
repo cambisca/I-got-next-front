@@ -93,28 +93,24 @@ function App() {
           />
         </Route>
         <Route exact path="/login">
-          <NavBar 
-            currentUser={currentUser}
+          <Login 
             setCurrentUser={setCurrentUser}
           />
-          <Login 
+          <NavBar 
+            currentUser={currentUser}
             setCurrentUser={setCurrentUser}
           />
         </Route>
         <Route exact path="/signup">
-          <NavBar 
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
           <Signup 
             setUser={setCurrentUser}
           />
-        </Route>
-        <Route exact path="/courts/:id">
           <NavBar 
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
           />
+        </Route>
+        <Route exact path="/courts/:id">
           <CourtDetail 
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
@@ -129,16 +125,20 @@ function App() {
             runs={runs} 
             setRuns={setRuns}
           />
-        </Route>
-        <Route exact path="/favorites">
           <NavBar 
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
           />
+        </Route>
+        <Route exact path="/favorites">
           <Favorites 
             favorites={favorites}
             setFavorites={setFavorites}
             currentUser={currentUser}
+          />
+          <NavBar 
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
           />
         </Route>
       </Switch>

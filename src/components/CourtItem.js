@@ -6,6 +6,23 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 function CourtItem({courtObj, courtActivity }){
 
     const {id, name, address, borough, zip_code, condition, trains, img_url} = courtObj
+
+    console.log(courtObj)
+
+    let fuegoActivity;
+    if (courtObj.runs.length > 40) {
+        fuegoActivity = "🔥🔥🔥🔥🔥"
+    } else if (courtObj.runs.length > 20 && courtObj.runs.length < 30) {
+        fuegoActivity = "🔥🔥🔥🔥"
+    } else if (courtObj.runs.length > 10 && courtObj.runs.length < 20) {
+        fuegoActivity = "🔥🔥🔥"
+    } else if (courtObj.runs.length > 5 && courtObj.runs.length <= 10) {
+        fuegoActivity = "🔥🔥"
+    } else if (courtObj.runs.length < 5) {
+        fuegoActivity = "🔥"
+    }
+
+
     return (
         <div class="court-item-wrapper">
             <div class="court-card-pic">   
@@ -15,7 +32,7 @@ function CourtItem({courtObj, courtActivity }){
                 <div> <Link to={`/courts/${id}`} className="court-card-name"> {name} </Link> </div>
                 <div> {address}, {borough} {zip_code} </div>
                 <div> {condition} </div>
-                <div> {courtActivity} </div>
+                <div> {fuegoActivity} </div>
             </div>
             
         </div>

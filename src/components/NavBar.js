@@ -72,34 +72,25 @@ function NavBar({currentUser, setCurrentUser}){
                             IGN
                         </Link>
 
-                        <div>
-                            <img src="https://media1.giphy.com/media/WpxeQuE1hfvLow9Ir3/source.gif" class="ja-dances"></img>
-                        </div>
 
                         <Link class="option" to="/discover" id="opt-discover">
                             D
                         </Link>
 
-                        <div>
-                            <img src="https://media1.giphy.com/media/gfGvtlxqgYKIEqSEdE/giphy.gif" class="ja-dances"></img>
-                        </div>
+                
 
                         <Link class="option" to="/favorites" id="opt-home-court">
                             HC
                         </Link>
                 
 
-                        <div> 
-                            <img src="https://media0.giphy.com/media/TFCZhTQytF04Y0dbXE/giphy.gif" class="ja-dances"></img>
-                        </div>
+                       
 
                         <Link class="option" to="/" onClick={logout} id="opt-logout">
                             L
                         </Link>
 
-                        <div> 
-                            <img src="https://media2.giphy.com/media/cj3Aaxo5Ljjmmq6Aaz/giphy.gif" class="ja-dances"></img>
-                        </div>
+                       
                 </>
                 ) : (
                     <>
@@ -107,15 +98,7 @@ function NavBar({currentUser, setCurrentUser}){
                             I GOT NEXT
                         </Link>
                         
-                        <div></div>
-
-                        <div></div>
-
-                        <div></div>
-
-                        <div></div>
-
-                        <div></div>
+            
                         
                         <div></div>
                         <Modal 
