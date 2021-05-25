@@ -31,6 +31,9 @@ function Favorites({ favorites, setFavorites }){
 
     return (
         <div class="fav-wrapper">
+            <div>
+                <h1 class="home-courts-header" align="center"> Home Courts </h1>
+            </div>
             <div class="all-favs">
                 {renderFavorites}
             </div>
