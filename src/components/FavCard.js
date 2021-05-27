@@ -18,16 +18,25 @@ function FavCard({court, onDeleteFav}){
 
     return (
         <div class="fav-card-container">
-            <Reveal animated='move up'>
+           
+<Card>
+    <Image src={img_url} wrapped ui={false} id="fav-image" />
+    
+    <Card.Content extra>
+      <a>
+      <Link to={`/courts/${id}`}>
+            {name}
+        </Link>
+      </a>
+    </Card.Content>
+  </Card>
+
+            {/* <Reveal animated='move up'>
                 <Reveal.Content visible>
-                    <Image src={img_url} size='medium' />
+                    <Image src={img_url} size='medium' id="fav-image"/>
                 </Reveal.Content>
                 <Reveal.Content hidden>
-                    {/* <Card
-                        header={<Link to={`/courts/${id}`}> {name}</Link>}
-                        meta={borough}
-                        description={<Icon name='fire' /> {condition}}
-                    /> */}
+                    
                     <Card id="court-card">
                         <Card.Content>
                             <Card.Header> 
@@ -44,9 +53,9 @@ function FavCard({court, onDeleteFav}){
                             </Card.Description>
                             <Button class="delete-fav-button" onClick={handleDeleteClick}> Delete </Button>
                         </Card.Content>
-                    </Card>
-                </Reveal.Content>
-            </Reveal>
+                     </Card>
+                 </Reveal.Content>
+            </Reveal> */}
         </div>
         
         // <div>

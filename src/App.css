@@ -510,8 +510,8 @@ label{
 
 .fav-wrapper {
   display: grid;
-  grid-template-rows: .1fr 3fr;
-  height: 100%;
+  /* grid-template-rows: .1fr 3fr;  */
+  height: 100vh;
   background: black;
   align-items: center;
 }
@@ -521,11 +521,11 @@ label{
   justify-content: space-between;
   align-items: center; 
   grid-template-columns: auto;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
   padding: 0 2rem 2rem;
   margin-bottom: 5px;
   background: black;
-  height: 100%;
+  height: 82vh;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -540,10 +540,16 @@ label{
   margin-left: 10px;
 }
 
+.fav-image {
+  height: 100%;
+  width: 100%;
+}
+
 .home-courts-header {
   color: white;
   top: 0;
   position: fixed;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
