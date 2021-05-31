@@ -87,7 +87,7 @@ function NavBar({currentUser, setCurrentUser}){
                        
 
                         <Link class="option" to="/" onClick={logout} id="opt-logout">
-                            L
+                            Lo
                         </Link>
 
                        
