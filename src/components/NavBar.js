@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Login from './Login'
 import { Link, useHistory } from 'react-router-dom'
 import {Modal, Button, Form} from 'semantic-ui-react'
 
@@ -25,12 +26,6 @@ function NavBar({currentUser, setCurrentUser}){
     function handleChange(e){
         setLoginData({...loginData, [e.target.name]: e.target.value})
     }
-
-    useEffect(()=> {
-        fetch(`http://localhost:3000/ball_gifs`)
-        .then(response => response.json())
-        .then((gifsArr) => setGifs(gifsArr))
-      }, [])
 
 
     function handleSubmit(e){
@@ -63,9 +58,16 @@ function NavBar({currentUser, setCurrentUser}){
             })
     }
 
+    let navIndicator;
+    if (currentUser) {
+        navIndicator = "nav"
+    } else {
+        navIndicator = "nav-login"
+    }
+
     return (
         <div class="nav-wrapper">
-            <div class="nav">
+            <div class={navIndicator}>
                 {currentUser ? (
                 <>
                         <Link className="option" to="/" id="opt-logo">
@@ -87,7 +89,7 @@ function NavBar({currentUser, setCurrentUser}){
                        
 
                         <Link class="option" to="/" onClick={logout} id="opt-logout">
-                            Lo
+                            Logout
                         </Link>
 
                        
@@ -98,58 +100,9 @@ function NavBar({currentUser, setCurrentUser}){
                             I GOT NEXT
                         </Link>
                         
-            
-                        
-                        <div></div>
-                        <Modal 
-                            basic
-                            onClose={() => setLoginModal(false)}
-                            onOpen={() => setLoginModal(true)}
-                            open={loginModal}
-                            size="small"
-                            trigger={ 
-                                <Link class="option" id="opt-logo">
-                                    Login
-                                </Link>
-                            }
-                        >
-                            <Form className="login-form" onSubmit={handleSubmit}>
-                                <Form.Field>
-                                        <label>Username</label>
-                                        <input 
-                                            placeholder='Username' 
-                                            type="text"
-                                            name="username"
-                                            onChange={handleChange}
-                                            value={loginData.username}
-                                        />
-                                        { errors.map((error) => (
-                                            <p style={{ color: "red" }} key={error}>
-                                                {error}
-                                            </p>
-                                        ))}
-                                </Form.Field> 
-                                <Form.Field>
-                                    <label>Password</label>
-                                    <input 
-                                        placeholder='Password' 
-                                        type="password"
-                                        name="password"
-                                        onChange={handleChange}
-                                        value={loginData.password}
-                                    />
-                                    { errors.map((error) => (
-                                        <p style={{ color: "red" }} key={error}>
-                                            {error}
-                                        </p>
-                                    ))}
-                                </Form.Field>
-                                <Button type='submit'>Submit</Button>
-                                <Link id="opt-signup" to="/signup">
-                                    Sign up 
-                                </Link>
-                            </Form>
-                        </Modal>
+                        <Link to="/login" class="option" id="opt-logo">
+                            Log in
+                        </Link>
                             
                     
                     </>

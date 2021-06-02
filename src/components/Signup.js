@@ -23,13 +23,13 @@ function Signup({setUser}){
             body: JSON.stringify(signUpFormData),
             })
             .then((response) => {
-                return response.json().then(data => {
-                    if (response.ok) {
-                        return data 
-                    } else {
-                        throw data
-                    }
-                })
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    return response.json().then((responseData) => {
+                        throw responseData;
+                    });
+                }
             })
             .then((data) => {
                 const { user, token } = data 
@@ -37,8 +37,8 @@ function Signup({setUser}){
                 setUser(user);
                 history.push("/")
             })
-            .catch((error) => {
-                setErrors(error.errors)
+            .catch((responseData) => {
+                setErrors(responseData.errors)
             })
     }
 
