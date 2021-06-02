@@ -556,9 +556,26 @@ label{
   margin-left: 10px;
 }
 
+.fav-card {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  height: 25vh;
+  width: 50vw;
+}
+
+.fav-image-box {
+  height: 100%;
+  width: 100%;
+  background-color: orangered;
+}
+
 .fav-image {
   height: 100%;
   width: 100%;
+}
+
+.fav-name {
+  background-color: palegreen;
 }
 
 .home-courts-header {

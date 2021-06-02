@@ -6,6 +6,7 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 function CourtItem({courtObj, courtActivity }){
 
     const {id, name, address, borough, zip_code, condition, trains, img_url} = courtObj
+    console.log(courtObj)
 
     let fuegoActivity;
     if (courtObj.runs.length > 40) {
