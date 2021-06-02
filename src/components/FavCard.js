@@ -2,9 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Image, Reveal, Icon, Button } from 'semantic-ui-react'
 
-function FavCard({court, onDeleteFav}){
+function FavCard({court, onDeleteFav, courts}){
+
+    console.log(courts)
 
     const {id, name, address, borough, zip_code, condition, trains, img_url} = court
+
+    const favCourtObj = courts.find(court => court.id === id)
 
     function handleDeleteClick(){
         fetch(`http://localhost:3000/favorites/${id}`, {
@@ -15,6 +19,19 @@ function FavCard({court, onDeleteFav}){
         onDeleteFav(id)
     }
 
+    let favActivity;
+    if (favCourtObj.runs.length > 40) {
+        favActivity = "🔥🔥🔥🔥🔥"
+    } else if (favCourtObj.runs.length > 20 && favCourtObj.runs.length < 30) {
+        favActivity = "🔥🔥🔥🔥"
+    } else if (favCourtObj.runs.length > 10 && favCourtObj.runs.length < 20) {
+        favActivity = "🔥🔥🔥"
+    } else if (favCourtObj.runs.length > 5 && favCourtObj.runs.length <= 10) {
+        favActivity = "🔥🔥"
+    } else if (favCourtObj.runs.length < 5) {
+        favActivity = "🔥"
+    }
+
     return (
         <div class="fav-card-container" align="center">
             <div class="fav-card" align="center">
@@ -23,8 +40,8 @@ function FavCard({court, onDeleteFav}){
                 </div>
                 
                 <div class="fav-name">
-                   <p>{name}</p>
-
+                    <p>{name}</p>
+                    <p> {favActivity} </p>
                 </div>
 
             </div>

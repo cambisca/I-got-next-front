@@ -4,10 +4,10 @@ import Filter from './Filter'
 import CourtMap from './CourtMap'
 import { Dropdown } from 'semantic-ui-react'
 
-function Discover({courts, setCourts, courtActivity}){
+function Discover({courts, courtActivity, search, setSearch, setBoroughSelect, courtSearch}){
     
-    const [search, setSearch] = useState("")
-    const [boroughSelect, setBoroughSelect] = useState("All")
+    // const [search, setSearch] = useState("")
+    // const [boroughSelect, setBoroughSelect] = useState("All")
     
 
     function handleSearchChange(e){
@@ -18,25 +18,25 @@ function Discover({courts, setCourts, courtActivity}){
         setBoroughSelect(e.target.value)
     }
 
-    const filteredBorough = courts.filter((court) => {
-        if (boroughSelect === "All") {
-          return courts
-        } else if (boroughSelect === "Brooklyn") {
-          return court.borough === "Brooklyn"
-        } else if (boroughSelect === "Queens") {
-          return court.borough === "Queens"
-        } else if (boroughSelect === "New York") {
-          return court.borough === "New York"
-        } else if (boroughSelect === "Bronx") {
-            return court.borough === "Bronx"
-        } else if (boroughSelect === "Staten Island") {
-            return court.borough === "Staten Island"
-        }
-      });
+    // const filteredBorough = courts.filter((court) => {
+    //     if (boroughSelect === "All") {
+    //       return courts
+    //     } else if (boroughSelect === "Brooklyn") {
+    //       return court.borough === "Brooklyn"
+    //     } else if (boroughSelect === "Queens") {
+    //       return court.borough === "Queens"
+    //     } else if (boroughSelect === "New York") {
+    //       return court.borough === "New York"
+    //     } else if (boroughSelect === "Bronx") {
+    //         return court.borough === "Bronx"
+    //     } else if (boroughSelect === "Staten Island") {
+    //         return court.borough === "Staten Island"
+    //     }
+    //   });
 
-    const courtSearch = filteredBorough.filter((court) => {
-        return court.name.includes(search)
-    })
+    // const courtSearch = filteredBorough.filter((court) => {
+    //     return court.name.includes(search)
+    // })
 
     const renderCourtItems = courtSearch.map((court) => {
         return <CourtItem key={court.id} courtObj={court} courtActivity={courtActivity}/>

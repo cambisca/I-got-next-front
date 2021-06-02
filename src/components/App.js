@@ -17,6 +17,8 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [rerender, setRerender] = useState(false)
   const [runs, setRuns] = useState([]);
+  const [boroughSelect, setBoroughSelect] = useState("All")
+  const [search, setSearch] = useState("")
 
   const [findCourt, setFindCourt] = useState({
     id: 0,
@@ -70,6 +72,28 @@ function App() {
         courtActivity = "🔥"
     }
 
+    // const wholeCourtObj = courts.filter(court => key)
+
+    const filteredBorough = courts.filter((court) => {
+      if (boroughSelect === "All") {
+        return courts
+      } else if (boroughSelect === "Brooklyn") {
+        return court.borough === "Brooklyn"
+      } else if (boroughSelect === "Queens") {
+        return court.borough === "Queens"
+      } else if (boroughSelect === "New York") {
+        return court.borough === "New York"
+      } else if (boroughSelect === "Bronx") {
+          return court.borough === "Bronx"
+      } else if (boroughSelect === "Staten Island") {
+          return court.borough === "Staten Island"
+      }
+    });
+
+  const courtSearch = filteredBorough.filter((court) => {
+      return court.name.includes(search)
+  })
+
 
   return (
     <div class="wrapper">
@@ -86,6 +110,10 @@ function App() {
             courts={courts}
             setCourts={setCourts}
             courtActivity={courtActivity}
+            search={search}
+            setSearch={setSearch}
+            setBoroughSelect={setBoroughSelect}
+            courtSearch={courtSearch}
           />
           <NavBar 
             currentUser={currentUser}
@@ -132,6 +160,7 @@ function App() {
         </Route>
         <Route exact path="/favorites">
           <Favorites 
+            courts={courts}
             favorites={favorites}
             setFavorites={setFavorites}
             currentUser={currentUser}
