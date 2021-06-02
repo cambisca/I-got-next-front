@@ -33,31 +33,22 @@ function FavCard({court, onDeleteFav, courts}){
     }
 
     return (
-        <div class="fav-card-container" align="center">
+        // <div class="fav-card-container" align="center">
             <div class="fav-card" align="center">
                 <div class="fav-image-box">
                     <img src={img_url} alt={name} class="fav-image"></img>
                 </div>
                 
                 <div class="fav-name">
-                    <p>{name}</p>
+                    <p class="fav-card-text">
+                        <Link to={`/courts/${id}`}> {name} </Link>
+                    </p>
                     <p> {favActivity} </p>
                 </div>
 
             </div>
-            {/* <Card>
-                <Image src={img_url} wrapped ui={false} id="fav-image" />
-                
-                <Card.Content extra>
-                <a>
-                <Link to={`/courts/${id}`}>
-                        {name}
-                    </Link>
-                </a>
-                </Card.Content>
-            </Card> */}
 
-        </div>
+        // </div>
         
         // <div>
         //     {court.name}

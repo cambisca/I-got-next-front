@@ -232,7 +232,6 @@ label{
 .court-card-pic {
   height: 100%;
   width: 100%;
-  background: rgb(249, 132, 132);
 }
 
 .court-item-image {
@@ -534,7 +533,7 @@ label{
 
 .all-favs {
   display: grid;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center; 
   grid-template-columns: auto;
   grid-gap: 1rem;
@@ -558,14 +557,18 @@ label{
 .fav-card {
   display: grid;
   grid-template-rows: 3fr 1fr;
-  height: 25vh;
-  width: 50vw;
+  height: 28vh;
+  width: 60vw;
+  border: 2px solid black;
+  border-radius: 5px;
+  border: solid;
+  border-color: rgb(34, 34, 34);
+  background: rgb(21, 20, 20);
 }
 
 .fav-image-box {
   height: 100%;
   width: 100%;
-  background-color: orangered;
 }
 
 .fav-image {
@@ -574,7 +577,11 @@ label{
 }
 
 .fav-name {
-  background-color: palegreen;
+  color: white;
+}
+
+.fav-card-text {
+  color: white;
 }
 
 .home-courts-header {

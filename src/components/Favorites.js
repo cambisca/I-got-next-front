@@ -32,7 +32,7 @@ function Favorites({ courts, favorites, setFavorites }){
             <div class="home-courts-header" align="center">
                 <h1 align="center"> Home Courts </h1>
             </div>
-            <div class="all-favs">
+            <div class="all-favs" align="center">
                 {renderFavorites}
             </div>
         </div>
