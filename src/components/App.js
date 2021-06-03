@@ -100,10 +100,10 @@ function App() {
       <Switch>
         <Route exact path="/">
           <HomePage />
-          <NavBar 
+          {/* <NavBar 
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
-          />
+          /> */}
         </Route>
         <Route exact path="/discover">
           <Discover 
@@ -124,10 +124,10 @@ function App() {
           <Login 
             setCurrentUser={setCurrentUser}
           />
-          <NavBar 
+          {/* <NavBar 
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
-          />
+          /> */}
         </Route>
         <Route exact path="/signup">
           <Signup 
