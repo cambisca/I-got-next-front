@@ -6,7 +6,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Button, Modal, Icon, Popup, Form, Message, Card, Image } from "semantic-ui-react";
 // import { Button, Comment, Header, Form } from 'semantic-ui-react'
 
-function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites, courtActivity, findCourt, setFindCourt, runs, setRuns }) {
+function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites, findCourt, setFindCourt, runs, setRuns }) {
   // const [runs, setRuns] = useState([]);
   const [activeFav, setActiveFav] = useState(false);
   const [activeAyo, setActiveAyo] = useState(false);
@@ -21,20 +21,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
     comment: "",
   });
 
-
-  // const [findCourt, setFindCourt] = useState({
-  //   id: 0,
-  //   name: "",
-  //   address: "",
-  //   borough: "",
-  //   zip_code: 0,
-  //   condition: "",
-  //   latitude: 0,
-  //   longitude: 0,
-  //   trains: [],
-  //   img_url: "",
-  // });
-
+  console.log(runs)
 
   const params = useParams();
   const id = parseInt(params.id);
@@ -143,10 +130,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
     );
   });
 
-  // let renderReviews = findCourt.reviews.map((review) => {
-  //     return <ReviewCard review={review}/>
-  // })
-
   function handleFavOn(e) {
     e.preventDefault();
     setActiveFav(!activeFav);
@@ -194,7 +177,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         setCourtReviews([...courtReviews, newComment]);
       });
     setToggleComment(!toggleComment);
-    // history.push(`/courts/${id}`)
   }
 
   function handleCommentChange(e) {
@@ -213,20 +195,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   }
 
 
-    // let courtActivity;
-    // if (runs.length > 40) {
-    //     courtActivity = "🔥🔥🔥🔥🔥"
-    // } else if (runs.length > 20 && findCourt.runs.length < 30) {
-    //     courtActivity = "🔥🔥🔥🔥"
-    // } else if (runs.length > 10 && findCourt.runs.length < 20) {
-    //     courtActivity = "🔥🔥🔥"
-    // } else if (runs.length > 5 && findCourt.runs.length <= 10) {
-    //     courtActivity = "🔥🔥"
-    // } else if (runs.length < 5) {
-    //     courtActivity = "🔥"
-    // }
-
-
     const style = {
         borderRadius: 0,
         opacity: 1.7,
@@ -238,37 +206,26 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
     displayTrains = findCourt.trains.map((train) => train).join(', ')
   }
 
-  console.log(displayTrains)
+  let courtDetailActivity;
+  if (runs.length > 40) {
+    courtDetailActivity = "🔥🔥🔥🔥🔥"
+  } else if (runs.length > 20 && findCourt.runs.length < 30) {
+      courtDetailActivity = "🔥🔥🔥🔥"
+  } else if (runs.length > 10 && findCourt.runs.length < 20) {
+      courtDetailActivity = "🔥🔥🔥"
+  } else if (runs.length > 5 && findCourt.runs.length <= 10) {
+      courtDetailActivity = "🔥🔥"
+  } else if (runs.length < 5) {
+      courtDetailActivity = "🔥"
+  }
 
   return (
     <div class="detail-wrapper">
-        <div class="box-1"></div>
-
-        <div class="box-2"></div>
-
-        <div class="box-3"></div>
-
-        {/* <div class="box-4"> */}
-        <div class="other-hoopers-box">
-            <div class="other-hoopers-1"> 
-                <h1 class="comments-header">Comments</h1>
-            </div>
-
-            <div class="other-hoopers-2"> 
-              {displayCourtReviews} 
-            </div>
-        </div>
-
-      <div class="detail-box">
-      
-        <img
-          src={findCourt.img_url}
-          alt={findCourt.name}
-          class="detail-image"
-        ></img>
-        <div>
+      <div class="detail-image">
+        <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"></img>
+      <div>
             
-        </div>
+    </div>
         
         <div class="court-details">
           <h1> {findCourt.name} </h1>
@@ -280,7 +237,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
           <h3> Condition: {findCourt.condition} </h3>
 
-          <p> {courtActivity} </p>
+          <p> {courtDetailActivity} </p>
 
           <h3> <Icon name='train'/> {displayTrains} </h3>
 
@@ -343,18 +300,12 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         </div>
       </div>
 
-      <div class="box-7">
-      
-      </div>
-
       <div class="box-8">
       {runErrorMessages && <Message warning list={runErrorMessages}>
         <Message.Header>We heard you the first time! </Message.Header>
         
     </Message>}
       </div>
-
-      <div class="box-9"></div>
     </div>
   );
 }

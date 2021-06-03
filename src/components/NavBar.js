@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Login from './Login'
 import { Link, useHistory } from 'react-router-dom'
-import {Modal, Button, Form} from 'semantic-ui-react'
+import {Modal, Button, Form, Icon} from 'semantic-ui-react'
 
 function NavBar({currentUser, setCurrentUser}){
     const [loginModal, setLoginModal] = useState(false)
@@ -71,25 +71,25 @@ function NavBar({currentUser, setCurrentUser}){
                 {currentUser ? (
                 <>
                         <Link className="option" to="/" id="opt-logo">
-                            IGN
+                            <Icon name="home" className="option" size="large"/>
                         </Link>
 
 
                         <Link class="option" to="/discover" id="opt-discover">
-                            D
+                            <Icon name="search" className="option" size="large"/>
                         </Link>
 
                 
 
                         <Link class="option" to="/favorites" id="opt-home-court">
-                            HC
+                            <Icon name="basketball ball" className="option" size="large"/>
                         </Link>
                 
 
                        
 
                         <Link class="option" to="/" onClick={logout} id="opt-logout">
-                            Logout
+                            <Icon name="hand peace" className="option" size="large"/>
                         </Link>
 
                        

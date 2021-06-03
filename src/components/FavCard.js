@@ -4,8 +4,6 @@ import { Card, Image, Reveal, Icon, Button } from 'semantic-ui-react'
 
 function FavCard({court, onDeleteFav, courts}){
 
-    console.log(courts)
-
     const {id, name, address, borough, zip_code, condition, trains, img_url} = court
 
     const favCourtObj = courts.find(court => court.id === id)
@@ -41,7 +39,7 @@ function FavCard({court, onDeleteFav, courts}){
                 
                 <div class="fav-name">
                     <p class="fav-card-text">
-                        <Link to={`/courts/${id}`}> {name} </Link>
+                        <Link to={`/courts/${id}`} className="fav-card-text"> {name} </Link>
                     </p>
                     <p> {favActivity} </p>
                 </div>

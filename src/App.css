@@ -47,6 +47,10 @@ img {
   width: 100%;
 }
 
+.nav-wrapper {
+  background: palegreen;
+}
+
 .nav {
   display: grid;
   position: fixed;
@@ -61,6 +65,7 @@ img {
   border: solid;
   border-color: black;
   bottom: 0;
+  background: rgb(175, 175, 175);
 }
 
 .nav-login {
@@ -334,15 +339,8 @@ label{
 .detail-wrapper {
   display: grid;
   grid-gap: 3em;
-  grid-template-columns: .75fr 1fr .75fr;
-  grid-template-rows: .25fr 2fr 1fr;
+  /* grid-template-rows: .25fr 2fr 1fr; */
   background: linear-gradient(to top, #000000 57%, #53473c 100%);
-  /* background-image: url("https://cdn.wallpapersafari.com/44/12/9EuaTb.gif");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100%; */
 }  
 
 .detail-box {

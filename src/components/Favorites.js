@@ -4,8 +4,6 @@ import FavCard from './FavCard'
 
 function Favorites({ courts, favorites, setFavorites }){
 
-    console.log(favorites)
-
     useEffect(() => {
         fetch(`http://localhost:3000/favorites`)
         .then(response => response.json())
