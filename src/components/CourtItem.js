@@ -9,16 +9,14 @@ function CourtItem({courtObj, courtActivity }){
     console.log(courtObj)
 
     let fuegoActivity;
-    if (courtObj.runs.length > 40) {
-        fuegoActivity = "🔥🔥🔥🔥🔥"
-    } else if (courtObj.runs.length > 20 && courtObj.runs.length < 30) {
-        fuegoActivity = "🔥🔥🔥🔥"
+    if (courtObj.runs.length > 20) {
+        fuegoActivity = <h3 class="hot-indicator activity-indicator">hot</h3>
     } else if (courtObj.runs.length > 10 && courtObj.runs.length < 20) {
-        fuegoActivity = "🔥🔥🔥"
+        fuegoActivity = <h3 class="decent-indicator activity-indicator">decent</h3>
     } else if (courtObj.runs.length > 5 && courtObj.runs.length <= 10) {
-        fuegoActivity = "🔥🔥"
+        fuegoActivity = <h3 class="chill-indicator activity-indicator">chill</h3>
     } else if (courtObj.runs.length < 5) {
-        fuegoActivity = "🔥"
+        fuegoActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
     }
 
 

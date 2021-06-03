@@ -343,15 +343,12 @@ label{
   background: linear-gradient(to top, #000000 57%, #53473c 100%);
 }  
 
-.detail-box {
+.court-details {
   text-align: center;
-  background-color: white;
-  border-radius: 5px;
-  -moz-box-shadow:    inset 0 0 10px #000000;
-   -webkit-box-shadow: inset 0 0 10px #000000;
-   box-shadow:         inset 0 0 10px #000000;
-  height: 60vh;
+  background-color: black;
+  height: 38vh;
   width: 100%;
+  color: white;
 }
 
 .detail-image {
@@ -589,4 +586,24 @@ label{
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.activity-indicator {
+
+}
+
+.hot-indicator {
+  color: red;
+}
+
+.decent-indicator {
+  color: orange;
+}
+
+.chill-indicator {
+  color: yellow;
+}
+
+.slow-indicator {
+  color: green;
 }

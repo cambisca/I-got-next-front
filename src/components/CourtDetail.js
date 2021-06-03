@@ -207,16 +207,14 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   }
 
   let courtDetailActivity;
-  if (runs.length > 40) {
-    courtDetailActivity = "🔥🔥🔥🔥🔥"
-  } else if (runs.length > 20 && findCourt.runs.length < 30) {
-      courtDetailActivity = "🔥🔥🔥🔥"
+  if (runs.length > 20 ) {
+      courtDetailActivity = <h3 class="hot-indicator activity-indicator">hot</h3>
   } else if (runs.length > 10 && findCourt.runs.length < 20) {
-      courtDetailActivity = "🔥🔥🔥"
+      courtDetailActivity = <h3 class="decent-indicator activity-indicator">decent</h3>
   } else if (runs.length > 5 && findCourt.runs.length <= 10) {
-      courtDetailActivity = "🔥🔥"
+      courtDetailActivity = <h3 class="chill-indicator activity-indicator">chill</h3>
   } else if (runs.length < 5) {
-      courtDetailActivity = "🔥"
+      courtDetailActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
   }
 
   return (
@@ -224,16 +222,13 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       <div class="detail-image">
         <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"></img>
       <div>
-            
-    </div>
-        
-        <div class="court-details">
-          <h1> {findCourt.name} </h1>
+          
+      <div class="court-details">
+        <h1> {findCourt.name} </h1>
 
-          <h3>
-            {" "}
-            {findCourt.address}, {findCourt.borough} {findCourt.zip_code}{" "}
-          </h3>
+        <h3>
+          {findCourt.address}, {findCourt.borough} {findCourt.zip_code}
+        </h3>
 
           <h3> Condition: {findCourt.condition} </h3>
 
@@ -256,14 +251,10 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
                     style={style}
                     inverted
                 />
-                
                )
             }
 
-          <Button class="detail-icons" onClick={handleFavOn}>
-           
-            🖤 
-          </Button>
+          <Button class="detail-icons" onClick={handleFavOn}> 🖤  </Button>
 
           <Modal
             basic
@@ -286,7 +277,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
                     <Icon name='remove' /> Close
                 </Button>
             </Form>
-        </Modal> 
+          </Modal> 
         </div> 
      
       </div>
@@ -301,11 +292,16 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       </div>
 
       <div class="box-8">
-      {runErrorMessages && <Message warning list={runErrorMessages}>
-        <Message.Header>We heard you the first time! </Message.Header>
+        {runErrorMessages && <Message warning list={runErrorMessages}>
+          <Message.Header>We heard you the first time! </Message.Header>
         
-    </Message>}
+        </Message>}
       </div>
+    </div>
+
+    {/* <div>
+      {displayCourtReviews} 
+    </div> */}
     </div>
   );
 }
