@@ -2,7 +2,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Link } from 'react-router-dom'
 import { Button } from "semantic-ui-react";
 
-function Homepage(){
+function Homepage({currentUser}){
     
 
     return (
@@ -14,9 +14,9 @@ function Homepage(){
             </div>
 
             <div class="homepage-filler" align="center">
-                <Button id="login-button">
+                {currentUser ? null : <Button id="login-button">
                     <Link to="/login" className="login-button-text"> Login </Link>
-                </Button>
+                </Button>}
             </div>
         </div>
     )

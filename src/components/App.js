@@ -99,11 +99,11 @@ function App() {
     <div class="wrapper">
       <Switch>
         <Route exact path="/">
-          <HomePage />
-          {/* <NavBar 
+          <HomePage currentUser={currentUser}/>
+          {currentUser ? <NavBar 
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
-          /> */}
+          /> : null }
         </Route>
         <Route exact path="/discover">
           <Discover 

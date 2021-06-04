@@ -224,11 +224,15 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       <div>
           
       <div class="court-details">
-        <h1> {findCourt.name} </h1>
-
-        <h3>
+        <h1 class="court-name"> {findCourt.name} </h1>
+        <div class="court-specs">
+          <h3> 
+            <Icon name='point'/> 
+              {findCourt.address}, {findCourt.borough} {findCourt.zip_code} 
+          </h3>
+        {/* <h3 align="center">
           {findCourt.address}, {findCourt.borough} {findCourt.zip_code}
-        </h3>
+        </h3> */}
 
           <h3> Condition: {findCourt.condition} </h3>
 
@@ -278,6 +282,8 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
                 </Button>
             </Form>
           </Modal> 
+        </div>
+        
         </div> 
      
       </div>

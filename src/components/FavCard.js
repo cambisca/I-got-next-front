@@ -18,16 +18,14 @@ function FavCard({court, onDeleteFav, courts}){
     }
 
     let favActivity;
-    if (favCourtObj.runs.length > 40) {
-        favActivity = "🔥🔥🔥🔥🔥"
-    } else if (favCourtObj.runs.length > 20 && favCourtObj.runs.length < 30) {
-        favActivity = "🔥🔥🔥🔥"
+    if (favCourtObj.runs.length > 20 && favCourtObj.runs.length < 30) {
+        favActivity = <h3 class="hot-indicator activity-indicator">hot</h3>
     } else if (favCourtObj.runs.length > 10 && favCourtObj.runs.length < 20) {
-        favActivity = "🔥🔥🔥"
+        favActivity = <h3 class="decent-indicator activity-indicator">decent</h3>
     } else if (favCourtObj.runs.length > 5 && favCourtObj.runs.length <= 10) {
-        favActivity = "🔥🔥"
+        favActivity = <h3 class="chill-indicator activity-indicator">chill</h3>
     } else if (favCourtObj.runs.length < 5) {
-        favActivity = "🔥"
+        favActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
     }
 
     return (
