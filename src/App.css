@@ -19,7 +19,7 @@ img {
 
 
 .wrapper {
-  height: 100%; 
+  height: 100vh; 
   width: 100%;
 }
 
@@ -49,30 +49,36 @@ img {
   justify-content: center;
 }
 
+
+
 #login-button {
   display: block;
   margin: auto !important;
   width: 30%;
   cursor: pointer;
   border-radius: 5em;
-  color: #fff;
-  background: linear-gradient(to right, #2929fa, #fa7929);
+  color: linear-gradient(to right, #0616f7, #fc7006);;
+  background: linear-gradient(to right, #ffffff, #fcfcfc);
   border: 0;
-  padding-left: 40px;
+  /* padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 10px; */
   font-family: 'Ubuntu', sans-serif;
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  align-items: center;
+  justify-content: center;
 }
 
 .login-button-text {
-  color: white;
+  background: -webkit-linear-gradient(rgb(0, 17, 255), rgb(255, 89, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-wrapper {
-  background: palegreen;
+  
 }
 
 .nav {
@@ -82,14 +88,13 @@ img {
   font-family: "Permanent Marker";
   font-size: 25px;
   text-align: center;
-  background: white;
   height: 8vh;
   width: 100%;
   z-index: 1;
   border: solid;
   border-color: black;
   bottom: 0;
-  background: rgb(175, 175, 175);
+  background: rgb(225, 225, 225);
 }
 
 .nav-login {
@@ -104,7 +109,7 @@ img {
   width: 100%;
   z-index: 1;
   border: solid;
-  border-color: black;
+  border-color: rgb(225, 225, 225);
   bottom: 0;
 }
 
@@ -114,21 +119,15 @@ img {
 }
 
 .login-wrapper{
-  /* background: url(https://www.upstatefilms.org/wp-content/uploads/2018/02/dear-basketball.gif);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 800px;
-  width: 100%;  */
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
-  grid-template-rows: .5fr 1fr .5fr;
   height: 100%;
+  width: 100%;
+  background: black;
 }
 
 
 .login-form-box {
-  border: solid black;
+  border: solid white;
   height: 100%;
   width: 40%;
   margin: 0 auto;
@@ -143,23 +142,44 @@ img {
 .login-form {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  padding: 0 1rem 1rem;
-  margin-top: 4px;
+  margin: auto;
+  /* padding: 0 1rem 1rem; */
+  /* margin-top: 4px; */
+  border: solid rgb(58, 58, 58);
+  border-radius: 10px 10px;
+  border-width: 3px;
   text-align: center;
+  align-items: center;
   justify-content: space-evenly;
   background: black;
-  height: 35vh;
+  height: 30%;
+  width: 75%;
   color: white;
 }
 
-#form-labels {
-  color: rgb(216, 214, 214);
+#password-label {
+  color: orangered;
+  margin: auto;
 }
+
+#username-label {
+  color: blue;
+}
+
+.login-inputs {
+  width: 75%;
+}
+
 
 .animated-gif {
   /*background: url(https://media4.giphy.com/media/fAQHjEYDT9GweWIcBq/giphy.gif); */
   background: rgb(205, 205, 205) url(https://media4.giphy.com/media/fAQHjEYDT9GweWIcBq/giphy.gif) no-repeat center center;
+}
+
+#opt-signup {
+  background: -webkit-linear-gradient(rgb(0, 17, 255), rgb(255, 89, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #opt-discover {
@@ -200,7 +220,7 @@ img {
   /* grid-template-rows: 1fr 12fr; before discover makeover */
   grid-template-rows: .1fr 1fr;
   /* grid-gap: 2rem; */
-  /* background-color: linear-gradient(to top, #965300, #413530, #2d2523, #1a1616, #000000); */
+  /* background-color: lineargradient-(to top, #965300, #413530, #2d2523, #1a1616, #000000); */
   /* background-image: url("https://i.gifer.com/origin/1c/1c03ca15101bded5b2fb095b0de60245.gif");
   background-position: center;
   background-repeat: no-repeat;

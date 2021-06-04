@@ -58,37 +58,41 @@ function Login({setCurrentUser}){
     }
 
     return (
-        <Form className="login-form" onSubmit={handleSubmit}>
-            <Form.Field>
-                    <label id="form-labels">Username</label>
+        <div class="login-wrapper">
+            <Form className="login-form" onSubmit={handleSubmit}>
+                <Form.Field className="login-inputs">
+                        <label id="username-label">Username</label>
+                        <input 
+                            placeholder='Username' 
+                            type="text"
+                            name="username"
+                            onChange={handleChange}
+                            value={loginData.username}
+                        />
+                </Form.Field> 
+                <Form.Field className="login-inputs">
+                    <label id="password-label">Password</label>
                     <input 
-                        placeholder='Username' 
-                        type="text"
-                        name="username"
+                        placeholder='Password' 
+                        type="password"
+                        name="password"
                         onChange={handleChange}
-                        value={loginData.username}
+                        value={loginData.password}
                     />
-            </Form.Field> 
-            <Form.Field>
-                <label id="form-labels">Password</label>
-                <input 
-                    placeholder='Password' 
-                    type="password"
-                    name="password"
-                    onChange={handleChange}
-                    value={loginData.password}
-                />
-                {/* { errors ? errors.map((error) => (
-                    <p style={{ color: "red" }} key={error}>
-                        {error}
-                    </p>
-                )) : null } */}
-            </Form.Field>
-            <Button type='submit'>Submit</Button>
-            <Link id="opt-signup form-labels" to="/signup">
-                Sign up 
-            </Link>
-        </Form>
+                    {/* { errors ? errors.map((error) => (
+                        <p style={{ color: "red" }} key={error}>
+                            {error}
+                        </p>
+                    )) : null } */}
+                </Form.Field>
+                <Button type='submit' id="login-button">Submit</Button>
+                <Link id="opt-signup" to="/signup">
+                    Sign up 
+                </Link>
+            </Form>
+
+        </div>
+        
     )
         // <div class="login-wrapper">
         //     <div class="box-1"> </div>
