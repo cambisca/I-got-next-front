@@ -71,25 +71,25 @@ function NavBar({currentUser, setCurrentUser}){
                 {currentUser ? (
                 <>
                         <Link className="option" to="/" id="opt-logo">
-                            <Icon name="home" className="option" size="large"/>
+                            <Icon name="home" id="home" className="option" size="large"/>
                         </Link>
 
 
                         <Link class="option" to="/discover" id="opt-discover">
-                            <Icon name="search" className="option" size="large"/>
+                            <Icon name="search" id="away" className="option" size="large"/>
                         </Link>
 
                 
 
                         <Link class="option" to="/favorites" id="opt-home-court">
-                            <Icon name="basketball ball" className="option" size="large"/>
+                            <Icon name="basketball ball" id="home" className="option" size="large"/>
                         </Link>
                 
 
                        
 
                         <Link class="option" to="/" onClick={logout} id="opt-logout">
-                            <Icon name="hand peace" className="option" size="large"/>
+                            <Icon name="hand peace" id="away" className="option" size="large"/>
                         </Link>
 
                        
@@ -97,11 +97,7 @@ function NavBar({currentUser, setCurrentUser}){
                 ) : (
                     <>
                         <Link className="option opt-logo" to="/" id="opt-logo">
-                            I GOT NEXT
-                        </Link>
-                        
-                        <Link to="/login" class="option" id="opt-logo">
-                            Log in
+                            <Icon name="home" className="option" id="home" size="large"/>
                         </Link>
                             
                     
@@ -119,43 +115,3 @@ function NavBar({currentUser, setCurrentUser}){
 export default NavBar;
 
 
-{/* <div class="nav-wrapper">
-            <div class="nav">
-                <Link className="option opt-logo" to="/">
-                    I GOT NEXT
-                </Link>
-                
-                {currentUser ? (
-                    <>
-                        <div>
-                            
-                        </div>
-                        <Link class="option opt-discover" to="/discover">
-                            Home Courts
-                        </Link>
-                        <Link class="option opt-discover" to="/discover">
-                            Discover
-                        </Link>
-                    
-                        <Link class="option opt-login" to="/login">
-                            Profile
-                        </Link>
-
-                        <Link class="option opt-login" to="/login">
-                            Logout
-                        </Link>
-                    </>
-                ) : (
-                    <>
-                        <Link class="option opt-discover" to="/discover">
-                            Discover
-                        </Link>
-
-                        <Link class="option opt-login" to="/login">
-                            Login
-                        </Link>
-                    </>
-                )}
-                
-            </div>
-        </div> */}
