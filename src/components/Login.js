@@ -60,7 +60,7 @@ function Login({setCurrentUser}){
     return (
         <Form className="login-form" onSubmit={handleSubmit}>
             <Form.Field>
-                    <label>Username</label>
+                    <label id="form-labels">Username</label>
                     <input 
                         placeholder='Username' 
                         type="text"
@@ -70,7 +70,7 @@ function Login({setCurrentUser}){
                     />
             </Form.Field> 
             <Form.Field>
-                <label>Password</label>
+                <label id="form-labels">Password</label>
                 <input 
                     placeholder='Password' 
                     type="password"
@@ -85,7 +85,7 @@ function Login({setCurrentUser}){
                 )) : null } */}
             </Form.Field>
             <Button type='submit'>Submit</Button>
-            <Link id="opt-signup" to="/signup">
+            <Link id="opt-signup form-labels" to="/signup">
                 Sign up 
             </Link>
         </Form>

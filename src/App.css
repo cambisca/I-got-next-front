@@ -49,7 +49,25 @@ img {
   justify-content: center;
 }
 
-.login-button {
+#login-button {
+  display: block;
+  margin: auto !important;
+  width: 30%;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #2929fa, #fa7929);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.login-button-text {
   color: white;
 }
 
@@ -130,8 +148,13 @@ img {
   margin-top: 4px;
   text-align: center;
   justify-content: space-evenly;
-  background: white;
-  height: 25vh;
+  background: black;
+  height: 35vh;
+  color: white;
+}
+
+#form-labels {
+  color: rgb(216, 214, 214);
 }
 
 .animated-gif {
@@ -340,8 +363,6 @@ label{
  }
 
 
-
-
 .detail-wrapper {
   display: grid;
   grid-gap: 3em;
@@ -354,12 +375,12 @@ label{
   background-color: black;
   height: 38vh;
   width: 100%;
-  color: white;
+  color: rgb(240, 240, 240);
 }
 
 .detail-image {
   width: 100%;
-  height: 35vh;
+  height: 36vh;
 }
 
 .detail-icons {

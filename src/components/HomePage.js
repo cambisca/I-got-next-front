@@ -14,8 +14,8 @@ function Homepage(){
             </div>
 
             <div class="homepage-filler" align="center">
-                <Button inverted className="login-button">
-                    <Link to={`/login`} > Login </Link>
+                <Button id="login-button">
+                    <Link to="/login" className="login-button-text"> Login </Link>
                 </Button>
             </div>
         </div>
