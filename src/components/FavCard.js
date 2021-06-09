@@ -37,7 +37,7 @@ function FavCard({court, onDeleteFav, courts}){
                 
                 <div class="fav-name">
                     <p class="fav-card-text">
-                        <Link to={`/courts/${id}`} className="fav-card-text"> {name} </Link>
+                        <Link to={`/courts/${id}`} className="fav-card-text"> <h3> {name} </h3> </Link>
                     </p>
                     <p> {favActivity} </p>
                 </div>

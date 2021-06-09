@@ -15,13 +15,14 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   const [currentRun, setCurrentRun] = useState(0);
   const [open, setOpen] = useState(false)
   const [runErrorMessages, setRunErrorMessages] = useState(null)
+  const [comingThrough, setComingThrough] = useState(false)
+  const [showReviews, setShowReviews] = useState(false)
   // const [commentSubmit, setCommentSubmit] = useState(false)
 
   const [commentForm, setCommentForm] = useState({
     comment: "",
   });
 
-  console.log(runs)
 
   const params = useParams();
   const id = parseInt(params.id);
@@ -217,6 +218,10 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       courtDetailActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
   }
 
+  function comingThroughBehavior(){
+
+  }
+
   return (
     <div class="detail-wrapper">
       <div class="detail-image">
@@ -230,9 +235,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
             <Icon name='point'/> 
               {findCourt.address}, {findCourt.borough} {findCourt.zip_code} 
           </h3>
-        {/* <h3 align="center">
-          {findCourt.address}, {findCourt.borough} {findCourt.zip_code}
-        </h3> */}
 
           <h3> Condition: {findCourt.condition} </h3>
 
@@ -290,11 +292,13 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
       <div class="other-hoopers-box">
         <div class="other-hoopers-1">
-          <h1 class="others-coming-through">Other Hoopers coming through</h1>
+          <a class="others-coming-through" onClick={() => setComingThrough(!comingThrough)}> {!comingThrough ? "See who else is coming..." : "Hide other hoopers" }</a>
+          {/* <a class="others-coming-through" onClick={() => setShowReviews(!showReviews)}> {!showReviews ? "See reviews left by other hoopers" : "Hide reviews" }</a> */}
         </div>
-        <div class="other-hoopers-2">
+      
+        {!comingThrough ? null : <div class="other-hoopers-2">
           {displayCourtsHoopers}
-        </div>
+        </div> }
       </div>
 
       <div class="box-8">
@@ -305,9 +309,10 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       </div>
     </div>
 
-    {/* <div>
-      {displayCourtReviews} 
-    </div> */}
+    {/* {!showReviews ? null : <div>
+      {displayCourtReviews}
+        </div> } */}
+
     </div>
   );
 }

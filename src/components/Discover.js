@@ -44,11 +44,7 @@ function Discover({courts, courtActivity, search, setSearch, setBoroughSelect, c
 
     return (
         <div class="discover-container">
-            {/* <Filter 
-                search={search} 
-                onSearchChange={handleSearchChange}
-                onBoroughSelect={handleBoroughSelect}
-            /> */}
+
             <div class="map-container-wrapper">
                 <div class="map-container">
                     <CourtMap courts={courtSearch}/>
