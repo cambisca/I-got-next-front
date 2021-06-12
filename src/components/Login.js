@@ -85,7 +85,7 @@ function Login({setCurrentUser}){
                         </p>
                     )) : null } */}
                 </Form.Field>
-                <Button type='submit' id="login-button">Submit</Button>
+                <Button type='submit' id="login-button">Log in</Button>
                 <Link id="opt-signup" to="/signup">
                     Sign up 
                 </Link>

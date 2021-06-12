@@ -8,7 +8,7 @@ function ReviewCard({rev, currentUser, setCurrentUser, commentForm, onHandleUpda
     const [updatedComment, setUpdatedComment] = useState(commentForm.comment)
 
     const { id, comment, court, user } = rev
-    console.log(id)
+    console.log(user)
   
 
     function handleEditToggle(){
@@ -88,22 +88,33 @@ function ReviewCard({rev, currentUser, setCurrentUser, commentForm, onHandleUpda
       }
 
     return (
-        <Card id="review-card">
-            <Card.Content>
-                <Image
-                floated='right'
-                size='mini'
-                src={user.image}
-                />
-                <Card.Header>{user.username}</Card.Header>
-                <Card.Meta>{user.location}</Card.Meta>
-                <Card.Description>
-                    {rev.comment} 
-                </Card.Description>
-            </Card.Content>
-            {renderCommentCards}
+        <div class="court-item-wrapper">
+            <div class="court-card-pic">   
+                <img src={user.img_url} class="court-item-image"></img>
+            </div>
+            <div class="court-card-info">
+                <div> {user.username}</div>
+                <div> {user.address}, {user.borough} {user.zip_code} </div>
+                <div> {user.condition} </div>
+            </div>
+            
+        </div>
+        // <Card id="review-card">
+        //     <Card.Content>
+        //         <Image
+        //         floated='right'
+        //         size='mini'
+        //         src={user.image}
+        //         />
+        //         <Card.Header>{user.username}</Card.Header>
+        //         <Card.Meta>{user.location}</Card.Meta>
+        //         <Card.Description>
+        //             {rev.comment} 
+        //         </Card.Description>
+        //     </Card.Content>
+        //     {/* {renderCommentCards} */}
                 
-        </Card>
+        // </Card>
         // <Modal
         //     basic
         //     onClose={() => setOpen(false)}

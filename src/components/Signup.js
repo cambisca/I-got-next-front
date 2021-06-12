@@ -1,5 +1,6 @@
 import React, {useState} from 'react'  
-import { useHistory} from 'react-router-dom'
+import { useHistory, Link} from 'react-router-dom'
+import { Form, Button } from 'semantic-ui-react'
 
 function Signup({setUser}){
     const [signUpFormData, setSignUpFormData] = useState({
@@ -35,7 +36,7 @@ function Signup({setUser}){
                 const { user, token } = data 
                 localStorage.setItem("token", token)
                 setUser(user);
-                history.push("/")
+                history.push("/discover")
             })
             .catch((responseData) => {
                 setErrors(responseData.errors)
@@ -50,35 +51,69 @@ function Signup({setUser}){
     }
     
     return (
-        <div class="signup-wrapper">
-            <div class="signup-box">
-                <form onSubmit={handleSubmit} class="signup-form">
-                    <label>Username</label>
-                    <input
-                        type="text" 
-                        name="username"
-                        autoComplete="off"
-                        value={username}
-                        onChange={handleChange}
-                    />
-                    <label>Password</label>
-                    <input
+        // <div class="signup-wrapper">
+        //     <div class="signup-box">
+        //         <form onSubmit={handleSubmit} class="signup-form">
+        //             <label>Username</label>
+        //             <input
+        //                 type="text" 
+        //                 name="username"
+        //                 autoComplete="off"
+        //                 value={username}
+        //                 onChange={handleChange}
+        //             />
+        //             <label>Password</label>
+        //             <input
+        //                 type="password"
+        //                 name="password"
+        //                 autoComplete="current-password"
+        //                 value={password}
+        //                 onChange={handleChange}
+        //             />
+
+        //             { errors.map((error) => (
+        //                 <p style={{ color: "red" }} key={error}>
+        //                     {error}
+        //                 </p>
+        //             ))}
+
+        //             <input type="submit" value="Signup" />
+        //         </form>
+        //     </div>
+        // </div>
+        <div class="login-wrapper">
+            <Form className="login-form" onSubmit={handleSubmit}>
+                <Form.Field className="login-inputs">
+                        <label id="username-label">Username</label>
+                        <input 
+                            placeholder='Username' 
+                            type="text"
+                            name="username"
+                            onChange={handleChange}
+                            value={signUpFormData.username}
+                        />
+                </Form.Field> 
+                <Form.Field className="login-inputs">
+                    <label id="password-label">Password</label>
+                    <input 
+                        placeholder='Password' 
                         type="password"
                         name="password"
-                        autoComplete="current-password"
-                        value={password}
                         onChange={handleChange}
+                        value={signUpFormData.password}
                     />
-
-                    { errors.map((error) => (
+                    {/* { errors ? errors.map((error) => (
                         <p style={{ color: "red" }} key={error}>
                             {error}
                         </p>
-                    ))}
+                    )) : null } */}
+                </Form.Field>
+                <Button type='submit' id="login-button">submit</Button>
+                <Link id="opt-signup" to="/login">
+                    Already have an account? 
+                </Link>
+            </Form>
 
-                    <input type="submit" value="Signup" />
-                </form>
-            </div>
         </div>
     )
 }

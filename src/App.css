@@ -10,6 +10,7 @@ body {
 html {
   width: 100%;
   height: 100%;
+  background: black;
 }
 
 img {
@@ -80,10 +81,8 @@ img {
   height: 8vh;
   width: 100%;
   z-index: 1;
-  border: solid;
-  border-color: black;
   bottom: 0;
-  background: rgb(0, 0, 0);
+  background: rgb(12, 12, 12);;
 }
 
 .nav-login {
@@ -97,7 +96,7 @@ img {
   height: 8vh;
   width: 100%;
   z-index: 1;
-  background: black;
+  background: rgb(12, 12, 12);;
   bottom: 0;
 }
 
@@ -359,7 +358,7 @@ label{
 
 .detail-wrapper {
   display: grid;
-  grid-gap: 3em;
+  grid-template-rows: 1fr 1fr .1fr 1fr;
   background: linear-gradient(to top, #000000 57%, #53473c 100%);
 }  
 
@@ -398,10 +397,14 @@ label{
   display: grid; 
   width: 90%;
   height: 60vh;
-  grid-template-rows: .25fr 5fr ;
+  grid-template-rows: .1fr 3fr ;
   text-align: center;
   align-items: center;
   text-align: center;
+} 
+
+.other-hoopers-header {
+  color: white;
 }
 
 .other-hoopers-box::-webkit-scrollbar {
@@ -410,17 +413,16 @@ label{
 
 .other-hoopers-2 {
   display: grid;
-  grid-template-columns: auto;
-  grid-gap: 1rem;
+  background: black;
+  height: 50vh;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  scrollbar-color: black; 
-  height: 100%;
-  width: 80%;
+  overflow-x: hidden;
+  overflow-y: auto;
   text-align: center;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 5px;
   margin: auto;
 }
   
@@ -429,14 +431,11 @@ label{
   display: none;
 }
 
-.others-coming-through {
-  color: white;
-}
 
 .player-card {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  height: 28vh;
+  height: 25vh;
   width: 75%;
   border: 2px solid black;
   border-radius: 5px;
@@ -454,67 +453,37 @@ label{
   background: white;
 }
 
-.reviews-container {
-  width: 25vw;
-  height: 55vh;
-  text-align: center;
-  padding: 5px;
-  background-color: white;
-  border-color: black;
-  box-shadow: 5px 5px;
-  border-radius: 5px;
-  margin: auto;
-}
 
-.other-hoopers-box {
+/* .other-hoopers-box {
   display: grid; 
   width: 100%;
   height: 60vh;
   grid-template-rows: 1fr 5fr ;
   background-color: black;
-  /* overflow-y: scroll;
+  overflow-y: scroll;
   scrollbar-color: white; 
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 5px rgb(209, 210, 220);
   align-items: center;
   text-align: center;
+} */
+
+.review-card {
+  height: 25vh;
+  background: black;
 }
 
-.review-card-container {
-  display: grid;
-  height: 50vh;
-  width: 80%;
-  /* grid-gap: 2em; */
-  grid-template-rows: 1fr 5fr;
-  text-align: center;
-  overflow-y: scroll;
-  overflow: hidden;
-  scrollbar-color: black; 
-  align-items: center;
-  text-align: center;
-  margin: auto;
-  
+
+.review-header {
+  background: black;
 }
 
-.comment-list {
-  overflow-y: scroll;
-  scrollbar-color: black; 
-  width: 80%;
+
+.review-list {
+  background: black;
 }
 
-#review-card {
-  height: 13vh;
-  
-}
-
-.comment-list::-webkit-scrollbar {
-  display: none;
-}
-
-.comments-header {
-  color: white;
-}
 
 .signup-wrapper {
   position: absolute;

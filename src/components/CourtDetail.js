@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import PlayerCard from "./PlayerCard";
 import ReviewCard from "./ReviewCard";
 import "semantic-ui-css/semantic.min.css";
-import { Button, Modal, Icon, Popup, Form, Message, Card, Image } from "semantic-ui-react";
+import { Button, Modal, Icon, Popup, Form, Message } from "semantic-ui-react";
 // import { Button, Comment, Header, Form } from 'semantic-ui-react'
 
 function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites, findCourt, setFindCourt, runs, setRuns }) {
@@ -18,6 +18,8 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   const [comingThrough, setComingThrough] = useState(false)
   const [showReviews, setShowReviews] = useState(false)
   // const [commentSubmit, setCommentSubmit] = useState(false)
+
+  console.log(comingThrough)
 
   const [commentForm, setCommentForm] = useState({
     comment: "",
@@ -291,14 +293,24 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       </div>
 
       <div class="other-hoopers-box">
-        <div class="other-hoopers-1">
-          <a class="others-coming-through" onClick={() => setComingThrough(!comingThrough)}> {!comingThrough ? "See who else is coming..." : "Hide other hoopers" }</a>
-          {/* <a class="others-coming-through" onClick={() => setShowReviews(!showReviews)}> {!showReviews ? "See reviews left by other hoopers" : "Hide reviews" }</a> */}
-        </div>
-      
-        {!comingThrough ? null : <div class="other-hoopers-2">
+        <div class="other-hoopers-header"> 
+          <h2 class="other-hoopers-header"> Other hoopers coming through...</h2>
+        </div> 
+        
+        <div class="other-hoopers-2">
           {displayCourtsHoopers}
-        </div> }
+        </div>
+      </div>
+
+      <div class="review-box">
+        <div class="review-header" align="center">
+          <h2 class="other-hoopers-header"> Reviews </h2>
+        </div>
+
+        <div class="review-list">
+            {displayCourtReviews}
+        </div>
+
       </div>
 
       <div class="box-8">
@@ -308,10 +320,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         </Message>}
       </div>
     </div>
-
-    {/* {!showReviews ? null : <div>
-      {displayCourtReviews}
-        </div> } */}
 
     </div>
   );
