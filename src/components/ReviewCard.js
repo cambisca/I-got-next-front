@@ -2,13 +2,12 @@ import React, {useState, useEffect} from 'react'
 import { Button, Card, Image, Modal, Icon, Form } from 'semantic-ui-react'
 
 
-function ReviewCard({rev, currentUser, setCurrentUser, commentForm, onHandleUpdateComment, courtReviews, setCourtReviews}){
+function ReviewCard({rev, user, currentUser, setCurrentUser, commentForm, onHandleUpdateComment, courtReviews, setCourtReviews}){
    
     const [editToggle, setEditToggle] = useState(false)
     const [updatedComment, setUpdatedComment] = useState(commentForm.comment)
 
-    const { id, comment, court, user } = rev
-    console.log(user)
+    const { id, comment, court } = rev
   
 
     function handleEditToggle(){
@@ -90,12 +89,11 @@ function ReviewCard({rev, currentUser, setCurrentUser, commentForm, onHandleUpda
     return (
         <div class="court-item-wrapper">
             <div class="court-card-pic">   
-                <img src={user.img_url} class="court-item-image"></img>
+                <img src={user.image} class="court-item-image"></img>
             </div>
             <div class="court-card-info">
-                <div> {user.username}</div>
-                <div> {user.address}, {user.borough} {user.zip_code} </div>
-                <div> {user.condition} </div>
+                <div> {comment}</div>
+                <div> - {user.username}</div>
             </div>
             
         </div>

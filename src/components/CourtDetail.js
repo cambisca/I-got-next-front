@@ -121,6 +121,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
     return (
       <ReviewCard
         rev={rev}
+        user={rev.user}
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
         paramsId={id}
@@ -131,6 +132,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         setCourtReviews={setCourtReviews}
       />
     );
+
   });
 
   function handleFavOn(e) {
