@@ -52,9 +52,8 @@ img {
   width: 30%;
   cursor: pointer;
   border-radius: 5em;
-  color: linear-gradient(to right, #0616f7, #fc7006);;
-  background: linear-gradient(to right, #ffffff, #fcfcfc);
-  border: 0;
+  background: rgb(12, 12, 12);
+  border: 1px solid rgb(0, 30, 255);
   font-family: 'Ubuntu', sans-serif;
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -63,7 +62,7 @@ img {
 }
 
 .login-button-text {
-  background: -webkit-linear-gradient(rgb(0, 17, 255), rgb(255, 89, 0));
+  background: rgb(0, 17, 255);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

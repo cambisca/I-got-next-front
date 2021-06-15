@@ -19,7 +19,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   const [showReviews, setShowReviews] = useState(false)
   // const [commentSubmit, setCommentSubmit] = useState(false)
 
-  console.log(comingThrough)
+  console.log(courtReviews)
 
   const [commentForm, setCommentForm] = useState({
     comment: "",
@@ -222,9 +222,9 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       courtDetailActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
   }
 
-  function comingThroughBehavior(){
+  const cantReview = courtReviews.filter(rev => rev.user.id === currentUser.id )
 
-  }
+
 
   return (
     <div class="detail-wrapper">
@@ -282,8 +282,10 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
                     onChange={handleCommentChange}
                     placeholder="Leave a comment"
                 />
-                <Button type="submit" color='green' inverted> <Icon name='checkmark' /> add comment </Button>
-                <Button basic color='red' inverted onClick={() => setOpen(false)}>
+                <Button type="submit" color='blue' inverted> 
+                  <Icon name='checkmark' /> add comment 
+                </Button>
+                <Button basic color='orange' inverted onClick={() => setOpen(false)}>
                     <Icon name='remove' /> Close
                 </Button>
             </Form>

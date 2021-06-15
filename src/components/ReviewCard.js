@@ -72,7 +72,7 @@ function ReviewCard({rev, user, currentUser, setCurrentUser, commentForm, onHand
                                 onChange={e => setUpdatedComment(e.target.value)}
                                 placeholder="Leave a comment"
                             />
-                            <Button type="submit" color='green' inverted> <Icon name='checkmark' /> add comment </Button>
+                            <Button type="submit" color='green' inverted> <Icon name='checkmark' /> edit comment </Button>
                             <Button basic color='red' inverted onClick={() => setEditToggle(false)}>
                                 <Icon name='remove' /> Close
                             </Button>
@@ -94,6 +94,7 @@ function ReviewCard({rev, user, currentUser, setCurrentUser, commentForm, onHand
             <div class="court-card-info">
                 <div> {comment}</div>
                 <div> - {user.username}</div>
+                {renderCommentCards}
             </div>
             
         </div>

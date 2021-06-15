@@ -1,6 +1,5 @@
 import "semantic-ui-css/semantic.min.css";
 import { Link } from 'react-router-dom'
-import { Button } from "semantic-ui-react";
 
 function Homepage({currentUser}){
     
@@ -14,9 +13,9 @@ function Homepage({currentUser}){
             </div>
 
             <div class="homepage-filler" align="center">
-                {currentUser ? null : <Button id="login-button">
+                {currentUser ? null : <button id="login-button">
                     <Link to="/login" className="login-button-text"> Login </Link>
-                </Button>}
+                </button>}
             </div>
         </div>
     )
