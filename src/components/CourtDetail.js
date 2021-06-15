@@ -242,21 +242,21 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
           <h3> Condition: {findCourt.condition} </h3>
 
-          <p> {courtDetailActivity} </p>
+          <h4> {courtDetailActivity} </h4>
 
           <h3> <Icon name='train'/> {displayTrains} </h3>
 
             {
-              activeAyo ? (
+              !activeAyo ? (
                 <Popup
-                    trigger={<Button icon='hand peace' onClick={handleDeleteAyo}/>}
+                    trigger={<span onClick={handleDeleteAyo}> <Icon name='hand peace'/> </span>}
                     content="Nevermind I'M OUT!"
                     style={style}
                     inverted
                 />
               ) : (
                 <Popup
-                    trigger={<Button icon='basketball ball' onClick={handleAyo}/>}
+                    trigger={<span onClick={handleAyo}> AYO! </span>}
                     content='AYO! I GOT NEXT!'
                     style={style}
                     inverted
@@ -264,7 +264,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
                )
             }
 
-          <Button class="detail-icons" onClick={handleFavOn}> 🖤  </Button>
+          <span class="detail-icons" onClick={handleFavOn}> 🖤  </span>
 
           <Modal
             basic
@@ -272,7 +272,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
             onOpen={() => setOpen(true)}
             open={open}
             size='small'
-            trigger={<Button class="leave-comment" onClick={toggleLeaveComment}>Leave a comment</Button>}
+            trigger={<span class="leave-comment" onClick={toggleLeaveComment}><Icon name='comment'/></span>}
             >
             <Form class="comment-form" onSubmit={handleCommentSubmit}>
                 <label htmlFor="comment"></label>
