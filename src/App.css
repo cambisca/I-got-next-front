@@ -393,7 +393,9 @@ label{
   align-items: center;
   justify-content: center;
   margin: auto;
-  border: solid rgb(58, 58, 58);
+  /* border: solid rgb(58, 58, 58); */
+  border: solid rgb(43, 43, 43);
+  box-shadow: 5px 5px rgb(29, 29, 29);
   border-radius: 10px 10px;
   border-width: 2px;
   background: black;
@@ -421,6 +423,8 @@ label{
 
 .other-hoopers-header {
   color: white;
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
 }
 
 .other-hoopers-box::-webkit-scrollbar {
