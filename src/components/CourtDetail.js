@@ -296,7 +296,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
       <div class="other-hoopers-box">
         <div class="other-hoopers-header"> 
-          <h2 class="other-hoopers-header"> Other hoopers coming through...</h2>
+          <h2 class="other-hoopers-header court-detail-headers"> Other hoopers coming through...</h2>
         </div> 
         
         <div class="other-hoopers-2">
@@ -306,7 +306,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
       <div class="review-box">
         <div class="review-header" align="center">
-          <h2 class="other-hoopers-header"> Reviews </h2>
+          <h2 class="other-hoopers-header court-detail-headers"> Reviews </h2>
         </div>
 
         <div class="review-list">

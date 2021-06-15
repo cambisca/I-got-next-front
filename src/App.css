@@ -366,6 +366,12 @@ label{
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
 }  
 
+.court-name {
+  font-family: 'Alfa Slab One', cursive;
+  color: rgb(215, 215, 215);
+  text-shadow: 1px 7px 2px rgb(0, 0, 0), 0 0 25px rgb(124, 124, 124), 0 0 5px rgb(4, 33, 255);
+}
+
 .court-details {
   display: grid;
   grid-template-rows: .25fr 1fr;
@@ -376,6 +382,10 @@ label{
   height: 38vh;
   width: 100%;
   color: rgb(240, 240, 240);
+}
+
+.court-detail-headers {
+  font-family: 'Permanent Marker', cursive;
 }
 
 .court-specs {

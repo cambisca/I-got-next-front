@@ -28,7 +28,7 @@ function Favorites({ courts, favorites, setFavorites }){
     return (
         <div class="fav-wrapper">
             <div class="home-courts-header" align="center">
-                <h1 align="center"> Home Courts </h1>
+                <h1 class="court-detail-headers" align="center"> Home Courts </h1>
             </div>
             <div class="all-favs" align="center">
                 {renderFavorites}
