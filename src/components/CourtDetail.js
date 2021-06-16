@@ -141,35 +141,32 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
 
 
-  function handleFavOn(e) {
+  function handleFav(e) {
     e.preventDefault();
+    if (!activeFav) {
+      fetch("http://localhost:3000/favorites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          court_id: findCourt.id,
+          user_id: currentUser.id,
+        }),
+      })
+        .then((response) => response.json())
+        .then((newFavorite) => {
+          setFavorites([...favorites, newFavorite]);
+        });
+    } else {
+      let deleteId = favorites.find(fav => fav.user.id === currentUser.id && fav.court.id === id).id
+      fetch(`http://localhost:3000/favorites/${deleteId}`, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then(deleteFav(deleteId))
+    }
     setActiveFav(!activeFav);
-
-    fetch("http://localhost:3000/favorites", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        court_id: findCourt.id,
-        user_id: currentUser.id,
-      }),
-    })
-      .then((response) => response.json())
-      .then((newFavorite) => {
-        setFavorites([...favorites, newFavorite]);
-      });
-  }
-
-  function handleDeleteFavRequest(e) {
-    e.preventDefault();
-    setActiveFav(!activeFav);
-
-    fetch(`http://localhost:3000/favorites/${id}`, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then(deleteFav(id))
   }
 
   function deleteFav(id){
@@ -249,8 +246,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
   const cantReview = courtReviews.filter(rev => rev.user.id === currentUser.id )
 
-
-
   return (
     <div class="detail-wrapper">
       <div class="detail-image">
@@ -296,7 +291,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
           
 
-          { !activeFav ? <span class="detail-icons court-interactions" onClick={handleFavOn}> <Icon color='white' name='heart'/> </span> : <span class="detail-icons court-interactions" > <Icon color='red' name='heart'/> </span> }
+          { !activeFav ? <span class="detail-icons court-interactions" onClick={handleFav}> <Icon color='white' name='heart'/> </span> : <span class="detail-icons court-interactions" onClick={handleFav}> <Icon color='red' name='heart'/> </span> }
 
             <Modal
               basic

@@ -2,19 +2,26 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Image, Reveal, Icon, Button } from 'semantic-ui-react'
 
-function FavCard({court, onDeleteFav, courts}){
+function FavCard({favId, court, onDeleteFav, courts, favorites, setFavorites}){
 
-    const {id, name, address, borough, zip_code, condition, trains, img_url} = court
+    const {name, img_url} = court
 
-    const favCourtObj = courts.find(court => court.id === id)
+    const favCourtObj = courts.find(c => c.id === court.id)
 
-    function handleDeleteClick(){
-        fetch(`http://localhost:3000/favorites/${id}`, {
+    function favDeleteRequest(){
+        fetch(`http://localhost:3000/favorites/${favId}`,{
             method: 'DELETE',
         })
-        .then(resp => resp.json)
-        .then(onDeleteFav(id))
+        .then(response => response.json())
+        .then(handleDeleteFav(favId))
     }
+
+   function handleDeleteFav(id){
+       const updatedArray = favorites.filter((fav) => {
+           return fav.id !== id 
+       })
+       setFavorites(updatedArray)
+   }
 
     let favActivity;
     if (favCourtObj.runs.length > 20 && favCourtObj.runs.length < 30) {
@@ -36,13 +43,20 @@ function FavCard({court, onDeleteFav, courts}){
                 
                 <div class="fav-name">
                     <p class="fav-card-text">
-                        <Link to={`/courts/${id}`} className="fav-card-text"> <h3> {name} </h3> </Link>
+                        <Link to={`/courts/${court.id}`} className="fav-card-text"> <h3> {name} </h3> </Link>
                     </p>
                     <p> {favActivity} </p>
-                    <button class="delete-fav-button" onClick={handleDeleteClick}> <Icon name='trash'/> </button>
+                    <button class="delete-fav-button" onClick={favDeleteRequest}> <Icon name='trash'/> </button>
                 </div>
 
             </div>
+
+        // </div>
+        
+        // <div>
+        //     {court.name}
+        //     <button class="delete-fav-button" onClick={handleDeleteClick}> Delete </button>
+        // </div>
     )
 }
 

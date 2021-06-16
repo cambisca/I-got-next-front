@@ -20,6 +20,7 @@ function PlayerCard({user}){
             <div class="fav-name">
                 <h3 class="fav-card-text"> {username} </h3>
                 <h3 class="fav-card-text"> {position} </h3>
+                <h3 class="fav-card-text"> {location}, NY </h3>
             </div>
 
         </div>

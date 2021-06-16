@@ -12,19 +12,29 @@ function Favorites({ courts, favorites, setFavorites }){
         })
     },[])
 
-   function handleDeleteFav(id){
-       const updatedArray = favorites.filter((fav) => {
-           return fav.id !== id 
-       })
-       setFavorites(updatedArray)
-   }
+//     function favDeleteRequest(id){
+//         fetch(`http://localhost:3000/favorites/${id}`,{
+//             method: 'DELETE',
+//         })
+//         .then(response => response.json())
+//         .then(handleDeleteFav(id))
+//     }
+
+
+//    function handleDeleteFav(id){
+//        const updatedArray = favorites.filter((fav) => {
+//            return fav.id !== id 
+//        })
+//        setFavorites(updatedArray)
+//    }
 
 //    function handleDeleteFavCard(id){
 //        const favCardToDelete = renderFavorites.filter(fav => fav.key.parseInt() !== id)
 //    }
    
     const renderFavorites = favorites.map((fav) => {
-        return <FavCard key={fav.id} court={fav.court} onDeleteFav={handleDeleteFav} courts={courts}/>
+        console.log(fav.id)
+        return <FavCard key={fav.id} favId={fav.id} court={fav.court} favorites={favorites} setFavorites={setFavorites} courts={courts}/>
     })
     
 

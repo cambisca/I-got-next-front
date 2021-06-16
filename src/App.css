@@ -398,6 +398,7 @@ label{
   align-items: center;
   justify-content: center;
   margin: auto;
+  padding: auto;
   /* border: solid rgb(58, 58, 58); */
   border: solid rgb(43, 43, 43);
   box-shadow: 5px 5px rgb(29, 29, 29);
