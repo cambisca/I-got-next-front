@@ -275,13 +275,13 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
           {
             !activeAyo ? (
               <Popup
-                  trigger={<button onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>}
+                  trigger={<button id="comment-button" class="court-interactions" onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>}
                   content="NVM I'M OUT!"
                   style={style}
               />
             ) : (
               <Popup
-                  trigger={<span class="court-interactions" onClick={handleAyo}> AYO! </span>}
+                  trigger={<button id="comment-button" class="court-interactions" onClick={handleAyo}> AYO! </button>}
                   content='I GOT NEXT!'
                   style={style}
                   inverted
@@ -291,7 +291,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
           
 
-          { !activeFav ? <span class="detail-icons court-interactions" onClick={handleFav}> <Icon color='white' name='heart'/> </span> : <span class="detail-icons court-interactions" onClick={handleFav}> <Icon color='red' name='heart'/> </span> }
+          { !activeFav ? <button id="comment-button" class="court-interactions" class="detail-icons court-interactions" onClick={handleFav}> <Icon color='white' name='heart'/> </button> : <button id="comment-button" class="court-interactions" onClick={handleFav}> <Icon color='red' name='heart'/> </button> }
 
             <Modal
               basic
@@ -299,7 +299,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
               onOpen={() => setOpen(true)}
               open={open}
               size='small'
-              trigger={<button class="court-interactions" onClick={toggleLeaveComment}><Icon name='comment'/></button>}
+              trigger={<button id="comment-button" class="court-interactions" onClick={toggleLeaveComment}><Icon name='comment'/></button>}
               >
               <Form class="comment-form" onSubmit={handleCommentSubmit}>
                   <label htmlFor="comment"></label>
