@@ -229,8 +229,8 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   return (
     <div class="detail-wrapper">
       <div class="detail-image">
-        <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"></img>
-      <div>
+        <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"/>
+      </div>
           
       <div class="court-details">
         <h1 class="court-name"> {findCourt.name} </h1>
@@ -294,13 +294,13 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         
         </div> 
      
+      
+
+      <div class="other-hoopers-header"> 
+          <h2 class="other-hoopers-header court-detail-headers"> Other hoopers coming through...</h2>
       </div>
 
       <div class="other-hoopers-box">
-        <div class="other-hoopers-header"> 
-          <h2 class="other-hoopers-header court-detail-headers"> Other hoopers coming through...</h2>
-        </div> 
-        
         <div class="other-hoopers-2">
           {displayCourtsHoopers}
         </div>
@@ -323,8 +323,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         
         </Message>}
       </div>
-    </div>
-
     </div>
   );
 }

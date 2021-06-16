@@ -360,7 +360,7 @@ label{
 
 .detail-wrapper {
   display: grid;
-  grid-template-rows: 1fr 1fr .1fr 1fr;
+  grid-template-rows: .5fr .5fr .1fr .75fr .75fr;
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
 }  
@@ -412,7 +412,7 @@ label{
 
 .other-hoopers-box {
   display: grid; 
-  width: 90%;
+  width: 100%;
   height: 60vh;
   grid-template-rows: .1fr 3fr ;
   text-align: center;
@@ -577,8 +577,8 @@ label{
 .fav-card {
   display: grid;
   grid-template-rows: 3fr 1fr;
-  height: 28vh;
-  width: 60vw;
+  height: fit-content;
+  width: 75%;
   border: 2px solid black;
   border-radius: 5px;
   border: solid;
@@ -601,6 +601,12 @@ label{
 }
 
 .fav-card-text {
+  color: white;
+}
+
+.delete-fav-button {
+  background: black;
+  border: none;
   color: white;
 }
 

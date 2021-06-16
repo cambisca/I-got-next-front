@@ -14,7 +14,6 @@ function FavCard({court, onDeleteFav, courts}){
         })
         .then(resp => resp.json)
         .then(onDeleteFav(id))
-        onDeleteFav(id)
     }
 
     let favActivity;
@@ -40,6 +39,7 @@ function FavCard({court, onDeleteFav, courts}){
                         <Link to={`/courts/${id}`} className="fav-card-text"> <h3> {name} </h3> </Link>
                     </p>
                     <p> {favActivity} </p>
+                    <button class="delete-fav-button" onClick={handleDeleteClick}> <Icon name='trash'/> </button>
                 </div>
 
             </div>
