@@ -273,20 +273,10 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
         <div class="interact-with-court">
           {
-            !activeAyo ? (
-              <Popup
-                  trigger={<button id="comment-button" class="court-interactions" onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>}
-                  content="NVM I'M OUT!"
-                  style={style}
-              />
-            ) : (
-              <Popup
-                  trigger={<button id="comment-button" class="court-interactions" onClick={handleAyo}> AYO! </button>}
-                  content='I GOT NEXT!'
-                  style={style}
-                  inverted
-              />
-              )
+            !activeAyo ? 
+              <button id="comment-button" class="court-interactions" onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>
+             : 
+              <button id="comment-button" class="court-interactions" onClick={handleAyo}> AYO! </button>
           }
 
           

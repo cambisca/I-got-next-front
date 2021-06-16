@@ -362,8 +362,6 @@ label{
 .detail-wrapper {
   display: flex;
   flex-direction: column;
-  /* display: grid;
-  grid-template-rows: .5fr .5fr .1fr .75fr .75fr; */
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
 }  
