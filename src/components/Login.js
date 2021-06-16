@@ -9,7 +9,6 @@ function Login({setCurrentUser}){
         password: "",
     });
     const [errors, setErrors] = useState([])
-    console.log(errors)
 
     const history = useHistory()
 
@@ -35,7 +34,6 @@ function Login({setCurrentUser}){
             body: JSON.stringify(loginData),
         })
             .then((response) => {
-                console.log(response)
                 if (response.ok) {
                     return response.json();
                 } else {
@@ -46,7 +44,6 @@ function Login({setCurrentUser}){
                 }
             })
             .then((data) => {
-                console.log(data)
                 const { user, token } = data 
                 localStorage.setItem("token", token)
                 setCurrentUser(user);

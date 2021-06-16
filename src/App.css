@@ -409,6 +409,7 @@ label{
   flex-direction: row;
   align-self: center;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 .court-interactions {
