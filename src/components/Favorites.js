@@ -19,10 +19,15 @@ function Favorites({ courts, favorites, setFavorites }){
        setFavorites(updatedArray)
    }
 
+//    function handleDeleteFavCard(id){
+//        const favCardToDelete = renderFavorites.filter(fav => fav.key.parseInt() !== id)
+//    }
    
-        const renderFavorites = favorites.map((fav) => {
-            return <FavCard key={fav.id} court={fav.court} onDeleteFav={handleDeleteFav} courts={courts}/>
-        })
+    const renderFavorites = favorites.map((fav) => {
+        return <FavCard key={fav.id} court={fav.court} onDeleteFav={handleDeleteFav} courts={courts}/>
+    })
+
+    console.log(renderFavorites)
     
 
     return (

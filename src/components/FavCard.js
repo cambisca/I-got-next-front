@@ -6,6 +6,8 @@ function FavCard({court, onDeleteFav, courts}){
 
     const {id, name, address, borough, zip_code, condition, trains, img_url} = court
 
+    console.log(id)
+
     const favCourtObj = courts.find(court => court.id === id)
 
     function handleDeleteClick(){
@@ -43,13 +45,6 @@ function FavCard({court, onDeleteFav, courts}){
                 </div>
 
             </div>
-
-        // </div>
-        
-        // <div>
-        //     {court.name}
-        //     <button class="delete-fav-button" onClick={handleDeleteClick}> Delete </button>
-        // </div>
     )
 }
 

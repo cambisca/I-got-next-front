@@ -414,7 +414,7 @@ label{
   display: grid; 
   width: 100%;
   height: 60vh;
-  grid-template-rows: .1fr 3fr ;
+  grid-template-rows: 1fr ;
   text-align: center;
   align-items: center;
   text-align: center;
@@ -431,7 +431,8 @@ label{
 }
 
 .other-hoopers-2 {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
   height: 50vh;
@@ -441,7 +442,7 @@ label{
   overflow-x: hidden;
   overflow-y: auto;
   text-align: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
 }
@@ -505,8 +506,11 @@ label{
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
   align-items: center;
   justify-content: center;
-  display: grid;
-  grid-gap: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30vh;
+  overflow-y: scroll;
 }
 
 
@@ -602,6 +606,7 @@ label{
 
 .fav-card-text {
   color: white;
+  margin: auto;
 }
 
 .delete-fav-button {
