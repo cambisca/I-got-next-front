@@ -26,8 +26,6 @@ function Favorites({ courts, favorites, setFavorites }){
     const renderFavorites = favorites.map((fav) => {
         return <FavCard key={fav.id} court={fav.court} onDeleteFav={handleDeleteFav} courts={courts}/>
     })
-
-    console.log(renderFavorites)
     
 
     return (

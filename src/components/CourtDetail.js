@@ -15,11 +15,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   const [currentRun, setCurrentRun] = useState(0);
   const [open, setOpen] = useState(false)
   const [runErrorMessages, setRunErrorMessages] = useState(null)
-  const [comingThrough, setComingThrough] = useState(false)
-  const [showReviews, setShowReviews] = useState(false)
-  // const [commentSubmit, setCommentSubmit] = useState(false)
 
-  console.log(courtReviews)
 
   const [commentForm, setCommentForm] = useState({
     comment: "",
@@ -28,6 +24,15 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
   const params = useParams();
   const id = parseInt(params.id);
+
+  useEffect(() => {
+    let currentRun;
+    if (favorites.find(fav => fav.user.id === currentUser.id && fav.court.id === id)) {
+      setActiveFav(true)
+    } else {
+      setActiveFav(false)
+    }
+  }, [])
 
   useEffect(() => {
     fetch(`http://localhost:3000/courts/${id}`)
@@ -84,7 +89,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   }
 
   function deleteAyoHelper(id) {
-    console.log(id, "hello");
     const updatedArray = runs.filter((run) => {
       return run.id !== currentRun;
     });
@@ -135,6 +139,8 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
   });
 
+
+
   function handleFavOn(e) {
     e.preventDefault();
     setActiveFav(!activeFav);
@@ -154,6 +160,22 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         setFavorites([...favorites, newFavorite]);
       });
   }
+
+  function handleDeleteFavRequest(e) {
+    e.preventDefault();
+    setActiveFav(!activeFav);
+
+    fetch(`http://localhost:3000/favorites/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(deleteFav(id))
+  }
+
+  function deleteFav(id){
+    const updatedFavs = favorites.filter(fav => fav.id !== id)
+    setFavorites(updatedFavs)
+}
 
   function toggleLeaveComment() {
     setToggleComment(!toggleComment);
@@ -198,6 +220,9 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
     });
     setCourtReviews(updatedCommentsArr);
   }
+
+  
+  
 
 
     const style = {
@@ -246,58 +271,62 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
           <h3> <Icon name='train'/> {displayTrains} </h3>
 
-            {
-              !activeAyo ? (
-                <Popup
-                    trigger={<span onClick={handleDeleteAyo}> <Icon name='hand peace'/> </span>}
-                    content="Nevermind I'M OUT!"
-                    style={style}
-                    inverted
-                />
-              ) : (
-                <Popup
-                    trigger={<span onClick={handleAyo}> AYO! </span>}
-                    content='AYO! I GOT NEXT!'
-                    style={style}
-                    inverted
-                />
-               )
-            }
-
-          <span class="detail-icons" onClick={handleFavOn}> 🖤  </span>
-
-          <Modal
-            basic
-            onClose={() => setOpen(false)}
-            onOpen={() => setOpen(true)}
-            open={open}
-            size='small'
-            trigger={<span class="leave-comment" onClick={toggleLeaveComment}><Icon name='comment'/></span>}
-            >
-            <Form class="comment-form" onSubmit={handleCommentSubmit}>
-                <label htmlFor="comment"></label>
-                <textarea
-                    name="comment"
-                    value={commentForm.comment}
-                    onChange={handleCommentChange}
-                    placeholder="Leave a comment"
-                />
-                <Button type="submit" color='blue' inverted> 
-                  <Icon name='checkmark' /> add comment 
-                </Button>
-                <Button basic color='orange' inverted onClick={() => setOpen(false)}>
-                    <Icon name='remove' /> Close
-                </Button>
-            </Form>
-          </Modal> 
+            
         </div>
         
         </div> 
-     
+
+        <div class="interact-with-court">
+          {
+            !activeAyo ? (
+              <Popup
+                  trigger={<button onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>}
+                  content="NVM I'M OUT!"
+                  style={style}
+              />
+            ) : (
+              <Popup
+                  trigger={<span class="court-interactions" onClick={handleAyo}> AYO! </span>}
+                  content='I GOT NEXT!'
+                  style={style}
+                  inverted
+              />
+              )
+          }
+
+          
+
+          { !activeFav ? <span class="detail-icons court-interactions" onClick={handleFavOn}> <Icon color='white' name='heart'/> </span> : <span class="detail-icons court-interactions" > <Icon color='red' name='heart'/> </span> }
+
+            <Modal
+              basic
+              onClose={() => setOpen(false)}
+              onOpen={() => setOpen(true)}
+              open={open}
+              size='small'
+              trigger={<button class="court-interactions" onClick={toggleLeaveComment}><Icon name='comment'/></button>}
+              >
+              <Form class="comment-form" onSubmit={handleCommentSubmit}>
+                  <label htmlFor="comment"></label>
+                  <textarea
+                      name="comment"
+                      value={commentForm.comment}
+                      onChange={handleCommentChange}
+                      placeholder="Leave a comment"
+                  />
+                  <Button type="submit" color='blue' inverted> 
+                    <Icon name='checkmark' /> add comment 
+                  </Button>
+                  <Button basic color='orange' inverted onClick={() => setOpen(false)}>
+                      <Icon name='remove' /> Close
+                  </Button>
+              </Form>
+            </Modal> 
+        </div>
       
 
       <div class="other-hoopers-header"> 
-          <h2 class="other-hoopers-header court-detail-headers"> Other hoopers coming through...</h2>
+          <a class="other-hoopers-header court-detail-headers"> See who else is coming through...</a>
       </div>
 
       <div class="other-hoopers-box">
@@ -308,7 +337,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
       <div class="review-box">
         <div class="review-header" align="center">
-          <h2 class="other-hoopers-header court-detail-headers"> Reviews </h2>
+          <a class="other-hoopers-header court-detail-headers"> See reviews </a>
         </div>
 
         <div class="review-list">
