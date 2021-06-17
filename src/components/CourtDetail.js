@@ -13,7 +13,9 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   const [toggleComment, setToggleComment] = useState(false);
   const [courtReviews, setCourtReviews] = useState([]);
   const [currentRun, setCurrentRun] = useState(0);
-  const [open, setOpen] = useState(false)
+  const [openCommentForm, setOpenCommentForm] = useState(false)
+  const [openOtherHoopers, setOpenOtherHoopers] = useState(false)
+  const [openReviews, setOpenReviews] = useState(false)
   const [runErrorMessages, setRunErrorMessages] = useState(null)
 
 
@@ -42,9 +44,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       setCurrentRun(null)
     }
   }, [])
-
-  console.log(currentRun)
-
   
 
   useEffect(() => {
@@ -193,7 +192,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
   function handleCommentSubmit(e) {
     e.preventDefault();
-    setOpen(false)
+    setOpenCommentForm(false)
 
     const newReview = {
       rating: null,
@@ -298,9 +297,9 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
             <Modal
               basic
-              onClose={() => setOpen(false)}
-              onOpen={() => setOpen(true)}
-              open={open}
+              onClose={() => setOpenCommentForm(false)}
+              onOpen={() => setOpenCommentForm(true)}
+              open={openCommentForm}
               size='small'
               trigger={<button id="comment-button" class="court-interactions" onClick={toggleLeaveComment}><Icon name='comment'/></button>}
               >
@@ -315,7 +314,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
                   <Button type="submit" color='blue' inverted> 
                     <Icon name='checkmark' /> add comment 
                   </Button>
-                  <Button basic color='orange' inverted onClick={() => setOpen(false)}>
+                  <Button basic color='orange' inverted onClick={() => setOpenCommentForm(false)}>
                       <Icon name='remove' /> Close
                   </Button>
               </Form>
@@ -324,23 +323,69 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
       
 
       <div class="other-hoopers-header"> 
-          <a class="other-hoopers-header court-detail-headers"> See who else is coming through...</a>
+          {/* <a class="other-hoopers-header court-detail-headers"> See who else is coming through...</a> */}
+
+          <Modal
+            basic
+            onClose={() => setOpenOtherHoopers(false)}
+            onOpen={() => setOpenOtherHoopers(true)}
+            open={openOtherHoopers}
+            size='small'
+            dimmer='blurring'
+            trigger={<a class="court-detail-headers link"> 
+              <span class="mask">
+                <div class="link-container"> 
+                  <span class="link-title1 title">Other Hoopers </span>
+                </div>
+              </span>
+            </a>}
+          >
+            <div class="court-modal-container">
+              <div class="other-hoopers-2">
+                {displayCourtsHoopers}
+              </div>
+              <Button basic color='white' inverted onClick={() => setOpenOtherHoopers(false)}>
+                <Icon name='remove' /> Close
+              </Button>
+            </div>
+            
+          </Modal>
       </div>
 
-      <div class="other-hoopers-box">
+      {/* <div class="other-hoopers-box">
         <div class="other-hoopers-2">
           {displayCourtsHoopers}
         </div>
-      </div>
+      </div> */}
 
       <div class="review-box">
         <div class="review-header" align="center">
-          <a class="other-hoopers-header court-detail-headers"> See reviews </a>
+          <Modal
+              basic
+              onClose={() => setOpenReviews(false)}
+              onOpen={() => setOpenReviews(true)}
+              open={openReviews}
+              size='large'
+              dimmer='blurring'
+              scrolling='true'
+              centered='true'
+              trigger={<a class="court-detail-headers link"> See reviews </a>}
+          >
+            {/* <div class="court-modal-container"> */}
+              <div class="review-list">
+                {displayCourtReviews}
+              </div>
+              <Button basic color='orange' inverted onClick={() => setOpenReviews(false)}>
+                <Icon name='remove' /> Close
+              </Button>
+            {/* </div> */}
+          </Modal>
+          {/* <a class="other-hoopers-header court-detail-headers"> See reviews </a> */}
         </div>
 
-        <div class="review-list">
+        {/* <div class="review-list">
             {displayCourtReviews}
-        </div>
+        </div> */}
 
       </div>
 
@@ -355,3 +400,13 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 }
 
 export default CourtDetail;
+
+
+<a href="#" class="link ">
+  <span class="mask">
+    <div class="link-container">
+      <span class="link-title1 title">READ MORE</span>
+      <span class="link-title2 title">READ MORE</span>
+    </div>
+  </span>
+</a>

@@ -225,6 +225,8 @@ h3 {
 .filter-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
 }
 
@@ -237,7 +239,19 @@ h3 {
   align-items: center;
   text-align: center;
   padding: 5px;
-  margin: auto;
+  margin: 5px x 5px;
+}
+
+.dropdown-content {
+  border-radius: 5px;
+  background: #fff;
+  color: rgba(0,0,0,.8);
+  border: none;
+  font-size: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 95%;
+  width: 100%;
 }
 
 .borough-select-label {
@@ -364,6 +378,7 @@ label{
   flex-direction: column;
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
+  height: 100%;
 }  
 
 .court-name {
@@ -386,8 +401,67 @@ label{
 }
 
 .court-detail-headers {
+  display: flex;
+  color: white;
   font-family: 'Permanent Marker', cursive;
+  padding: 10px 10px;
+  margin-top: 5px;
+  font-size: 20px;
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
+  align-items: center;
+  justify-content: center;
 }
+
+.link {
+  height: 30px;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+}
+  
+.mask {
+  position: relative;
+  padding: 0;
+  height: 20px;
+  overflow: hidden;
+}
+
+.link-container {
+  transition: transform 0.4s ease;
+}
+
+.title {
+  display: block;
+
+  /*  Set same font-size and line height  */
+  font-size: 20px;
+  line-height: 20px;
+
+  transition: transform 0.4s ease;
+}
+
+.link-title1 {
+  transform-origin: right center;
+}
+
+.link-title2 {
+  transform-origin: left center;
+  transform: rotate(20deg);
+}
+
+.link:hover .link-container {
+  transform: translateY(-20px);
+}
+
+.link:hover .link-title1 {
+  transform: rotate(20deg);
+}
+
+.link:hover .link-title2 {
+  transform: rotate(0);
+}
+
 
 .court-specs {
   width: 75%;
@@ -433,21 +507,20 @@ label{
 }
 
 
-.other-hoopers-box {
-  display: grid; 
-  width: 100%;
-  height: 60vh;
-  grid-template-rows: 1fr ;
-  text-align: center;
+.court-modal-container {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
   align-items: center;
-  text-align: center;
 } 
 
 .other-hoopers-header {
+  display: flex;
   color: white;
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
   align-items: center;
+  justify-content: center;
 }
 
 .other-hoopers-box::-webkit-scrollbar {
@@ -457,9 +530,9 @@ label{
 .other-hoopers-2 {
   display: flex;
   flex-direction: column;
-  background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
-  height: 50vh;
+  /* background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png"); */
+  height: 75vh;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -519,19 +592,20 @@ label{
 
 
 .review-header {
-  background: black;
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
 }
 
 
 .review-list {
-  background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
+  /* background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png"); */
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 30vh;
+  height: 80%;
   overflow-y: scroll;
 }
 
@@ -575,6 +649,11 @@ label{
   height: 100vh;
   background: black;
   align-items: center;
+}
+
+#fav-header {
+  background: black;
+  font-size: 35px;
 }
 
 .all-favs {
