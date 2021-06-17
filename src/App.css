@@ -48,16 +48,30 @@ h3 {
   justify-content: center;
 }
 
+.homepage-login-button {
+  margin-top: 100px;
+}
 
+.login-inputs {
+  border-radius: 10px;
+  height: 15%;
+  border: none;
+  box-shadow: 3px 3px rgb(75, 75, 75);
+  align-items: center;
+}
 
-#login-button {
-  display: block;
-  margin: auto !important;
+.login-button {
+  display: flex;
+  flex-direction: column;
+  /* margin: auto !important; */
+  /* margin-top: 100px; */
+  height: 15%;
   width: 30%;
   cursor: pointer;
+  color: rgb(216, 216, 216);
   border-radius: 5em;
   background: rgb(12, 12, 12);
-  border: 1px solid rgb(0, 30, 255);
+  border: 1px solid rgb(216, 216, 216);
   font-family: 'Ubuntu', sans-serif;
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -65,11 +79,17 @@ h3 {
   justify-content: center;
 }
 
+#login-button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 .login-button-text {
-  background: rgb(0, 17, 255);
+  background: rgb(216, 216, 216);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 
 .nav-wrapper {
   
@@ -176,9 +196,7 @@ h3 {
 }
 
 #opt-signup {
-  background: -webkit-linear-gradient(rgb(0, 17, 255), rgb(255, 89, 0));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: rgb(216, 216, 216);
 }
 
 #opt-discover {

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import { Form, Button } from 'semantic-ui-react'
 
 function Login({setCurrentUser}){
     // const [gifs, setGifs] = useState([])
@@ -56,77 +55,34 @@ function Login({setCurrentUser}){
 
     return (
         <div class="login-wrapper">
-            <Form className="login-form" onSubmit={handleSubmit}>
-                <Form.Field className="login-inputs">
-                        <label id="username-label">Username</label>
-                        <input 
-                            placeholder='Username' 
-                            type="text"
-                            name="username"
-                            onChange={handleChange}
-                            value={loginData.username}
-                        />
-                </Form.Field> 
-                <Form.Field className="login-inputs">
-                    <label id="password-label">Password</label>
-                    <input 
-                        placeholder='Password' 
-                        type="password"
-                        name="password"
-                        onChange={handleChange}
-                        value={loginData.password}
-                    />
-                    {/* { errors ? errors.map((error) => (
-                        <p style={{ color: "red" }} key={error}>
-                            {error}
-                        </p>
-                    )) : null } */}
-                </Form.Field>
-                <button type='submit' id="login-button">Log in</button>
+            <form class="login-form" onSubmit={handleSubmit}>
+                <label id="username">Username</label>
+                <input 
+                    class="login-inputs"
+                    placeholder='Username' 
+                    type="text"
+                    name="username"
+                    onChange={handleChange}
+                    value={loginData.username}
+                />
+                <label id="username">Password</label>
+                <input 
+                    class="login-inputs"
+                    placeholder='Password' 
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                    value={loginData.password}
+                />
+                <button type='submit' class="login-button">Log in</button>
                 <Link id="opt-signup" to="/signup">
                     Sign up 
                 </Link>
-            </Form>
+            </form>
 
         </div>
         
     )
-        // <div class="login-wrapper">
-        //     <div class="box-1"> </div>
-        //     <div class="login-form-box">
-        //         <form class="login-form" onSubmit={handleSubmit}>
-        //             <h1 > Login </h1>
-        //                 <label htmlFor="username">Username</label>
-        //                 <input
-        //                     type="text"
-        //                     name="username"
-        //                     value={FormData.username}
-        //                     onChange={handleChange}
-        //                 />
-
-        //                 <label htmlFor="password">Password</label>
-        //                 <input
-        //                     type="text"
-        //                     name="password"
-        //                     value={FormData.password}
-        //                     onChange={handleChange}
-        //                 />
-        //                 { errors.map((error) => (
-        //                     <p style={{ color: "red" }} key={error}>
-        //                         {error}
-        //                     </p>
-        //                 ))}
-                        
-        //                 <input type="submit" value="Login" className='input-button' />
-        //                 <Link className="signup-option" to="/signup">
-        //                     Sign up 
-        //                 </Link>
-        //         </form>
-        //     </div>
-            
-
-        // </div>
-    
 }
 
 export default Login;

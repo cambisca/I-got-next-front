@@ -286,9 +286,10 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         <div class="interact-with-court">
           {
             !activeAyo ? 
-              <button id="comment-button" class="court-interactions" onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>
-             : 
               <button id="comment-button" class="court-interactions" onClick={handleAyo}> AYO! </button>
+              :
+              <button id="comment-button" class="court-interactions" onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>
+              
           }
 
           

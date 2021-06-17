@@ -51,70 +51,65 @@ function Signup({setUser}){
     }
     
     return (
-        // <div class="signup-wrapper">
-        //     <div class="signup-box">
-        //         <form onSubmit={handleSubmit} class="signup-form">
-        //             <label>Username</label>
-        //             <input
-        //                 type="text" 
-        //                 name="username"
-        //                 autoComplete="off"
-        //                 value={username}
-        //                 onChange={handleChange}
-        //             />
-        //             <label>Password</label>
-        //             <input
-        //                 type="password"
-        //                 name="password"
-        //                 autoComplete="current-password"
-        //                 value={password}
-        //                 onChange={handleChange}
-        //             />
-
-        //             { errors.map((error) => (
-        //                 <p style={{ color: "red" }} key={error}>
-        //                     {error}
-        //                 </p>
-        //             ))}
-
-        //             <input type="submit" value="Signup" />
-        //         </form>
-        //     </div>
-        // </div>
         <div class="login-wrapper">
-            <Form className="login-form" onSubmit={handleSubmit}>
-                <Form.Field className="login-inputs">
-                        <label id="username-label">Username</label>
-                        <input 
-                            placeholder='Username' 
-                            type="text"
-                            name="username"
-                            onChange={handleChange}
-                            value={signUpFormData.username}
-                        />
-                </Form.Field> 
-                <Form.Field className="login-inputs">
-                    <label id="password-label">Password</label>
-                    <input 
-                        placeholder='Password' 
-                        type="password"
-                        name="password"
-                        onChange={handleChange}
-                        value={signUpFormData.password}
-                    />
-                    {/* { errors ? errors.map((error) => (
-                        <p style={{ color: "red" }} key={error}>
-                            {error}
-                        </p>
-                    )) : null } */}
-                </Form.Field>
-                <Button type='submit' id="login-button">submit</Button>
-                <Link id="opt-signup" to="/login">
-                    Already have an account? 
-                </Link>
-            </Form>
+        <form class="login-form" onSubmit={handleSubmit}>
+            <label id="username">Username</label>
+            <input 
+                class="login-inputs"
+                placeholder='Username' 
+                type="text"
+                name="username"
+                onChange={handleChange}
+                value={signUpFormData.username}
+            />
+            <label id="username">Password</label>
+            <input 
+                class="login-inputs"
+                placeholder='Password' 
+                type="password"
+                name="password"
+                onChange={handleChange}
+                value={signUpFormData.password}
+            />
+            <button type='submit' class="login-button">Submit</button>
+            <Link id="opt-signup" to="/login">
+                Already have an account? 
+            </Link>
+        </form>
 
         </div>
+
+/* <Form className="login-form" onSubmit={handleSubmit}>
+<Form.Field className="login-inputs">
+        <label id="username-label">Username</label>
+        <input 
+            placeholder='Username' 
+            type="text"
+            name="username"
+            onChange={handleChange}
+            value={signUpFormData.username}
+        />
+</Form.Field> 
+<Form.Field className="login-inputs">
+    <label id="password-label">Password</label>
+    <input 
+        placeholder='Password' 
+        type="password"
+        name="password"
+        onChange={handleChange}
+        value={signUpFormData.password}
+    />
+    {/* { errors ? errors.map((error) => (
+        <p style={{ color: "red" }} key={error}>
+            {error}
+        </p>
+    )) : null } 
+</Form.Field>
+<Button type='submit' id="login-button">submit</Button>
+<Link id="opt-signup" to="/login">
+    Already have an account? 
+</Link>
+</Form> */
     )
 }
 

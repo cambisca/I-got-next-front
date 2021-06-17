@@ -13,7 +13,7 @@ function Homepage({currentUser}){
             </div>
 
             <div class="homepage-filler" align="center">
-                {currentUser ? null : <button id="login-button">
+                {currentUser ? null : <button class="login-button homepage-login-button">
                     <Link to="/login" className="login-button-text"> Login </Link>
                 </button>}
             </div>
