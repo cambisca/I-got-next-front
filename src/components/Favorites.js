@@ -12,25 +12,6 @@ function Favorites({ courts, favorites, setFavorites }){
         })
     },[])
 
-//     function favDeleteRequest(id){
-//         fetch(`http://localhost:3000/favorites/${id}`,{
-//             method: 'DELETE',
-//         })
-//         .then(response => response.json())
-//         .then(handleDeleteFav(id))
-//     }
-
-
-//    function handleDeleteFav(id){
-//        const updatedArray = favorites.filter((fav) => {
-//            return fav.id !== id 
-//        })
-//        setFavorites(updatedArray)
-//    }
-
-//    function handleDeleteFavCard(id){
-//        const favCardToDelete = renderFavorites.filter(fav => fav.key.parseInt() !== id)
-//    }
    
     const renderFavorites = favorites.map((fav) => {
         console.log(fav.id)
@@ -44,7 +25,7 @@ function Favorites({ courts, favorites, setFavorites }){
                 <h1 class="court-detail-headers" align="center"> Home Courts </h1>
             </div>
             <div class="all-favs" align="center">
-                {renderFavorites}
+                {favorites.length <= 0 ? <h3 class="no-favs"> You have no favorite courts </h3> : renderFavorites }
             </div>
         </div>
         

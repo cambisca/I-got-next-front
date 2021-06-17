@@ -600,6 +600,10 @@ label{
   margin-left: 10px;
 }
 
+.no-favs {
+  color: white;
+}
+
 .fav-card {
   display: grid;
   grid-template-rows: 3fr 1fr;

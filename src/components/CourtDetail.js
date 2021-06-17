@@ -25,14 +25,27 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
   const params = useParams();
   const id = parseInt(params.id);
 
+  const getCurrentRun = runs.find(run => run.user.id === currentUser.id && run.court_id === id)
+
   useEffect(() => {
-    let currentRun;
     if (favorites.find(fav => fav.user.id === currentUser.id && fav.court.id === id)) {
       setActiveFav(true)
     } else {
       setActiveFav(false)
     }
   }, [])
+
+  useEffect(() => {
+    if (getCurrentRun) {
+      setCurrentRun(getCurrentRun.id)
+    } else {
+      setCurrentRun(null)
+    }
+  }, [])
+
+  console.log(currentRun)
+
+  
 
   useEffect(() => {
     fetch(`http://localhost:3000/courts/${id}`)
