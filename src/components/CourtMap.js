@@ -23,7 +23,3 @@ function CourtMap({position, courts }){
 }
 
 export default CourtMap;
-
-
-// center={position}
-// position={position}

@@ -429,6 +429,11 @@ label{
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
   align-items: center;
   justify-content: center;
+  transition: transform 250ms;
+}
+
+.court-detail-headers:hover {
+  transform: translateY(-10px);
 }
 
 .link {
@@ -502,10 +507,20 @@ label{
   align-self: center;
   justify-content: space-evenly;
   width: 100%;
+  margin-bottom: 5px;
 }
 
 .court-interactions {
+  background: black;
   color: white;
+  border: solid 2px rgb(184, 184, 184);
+  box-shadow: 0 3px #999;
+}
+
+.court-interactions:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 #comment-button {
@@ -530,7 +545,12 @@ label{
   flex-direction: column;
   height: 80%;
   align-items: center;
+  justify-content: space-between;
 } 
+
+#close-reviews-btn {
+  margin: 15px;
+}
 
 .other-hoopers-header {
   display: flex;
@@ -606,6 +626,17 @@ label{
 .review-card {
   height: 25vh;
   background: black;
+}
+
+.review-card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.review-button {
+  display: flex;
+  align-self: flex-end;
 }
 
 

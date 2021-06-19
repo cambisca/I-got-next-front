@@ -55,14 +55,19 @@ function ReviewCard({rev, user, currentUser, setCurrentUser, commentForm, onHand
           renderCommentCards = 
             (user.id === currentUser.id ) ? 
                 <Card.Content extra>
-                    <div className='ui two buttons'>
+                    <div class='review-card-buttons'>
                     <Modal
                         basic
                         onClose={() => editToggle(false)}
                         onOpen={() => setEditToggle(true)}
                         open={editToggle}
                         size='small'
-                        trigger={<button class="login-button" onClick={handleEditToggle}> Edit </button>}
+                        dimmer='blurring'
+                        trigger={
+                            <button class="login-button review-button" onClick={handleEditToggle}> 
+                                Edit 
+                            </button>
+                        }
                     > 
                         <Form class="comment-form" onSubmit={handleEditReviewSubmit}>
                             <label htmlFor="comment"></label>
@@ -98,10 +103,7 @@ function ReviewCard({rev, user, currentUser, setCurrentUser, commentForm, onHand
             </div>
             
         </div>
-    
-    )
-            
-    
+    )   
 }
 
 export default ReviewCard;
