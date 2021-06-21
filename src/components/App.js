@@ -59,17 +59,20 @@ function App() {
     }
   }, [])
 
+  
+  
+  
+  
+
   let courtActivity;
-    if (runs.length > 40) {
-        courtActivity = "🔥🔥🔥🔥🔥"
-    } else if (runs.length > 20 && findCourt.runs.length < 30) {
-        courtActivity = "🔥🔥🔥🔥"
+    if (runs.length > 20 && findCourt.runs.length < 30) {
+        courtActivity = <h3 class="hot-indicator activity-indicator">hot</h3>
     } else if (runs.length > 10 && findCourt.runs.length < 20) {
-        courtActivity = "🔥🔥🔥"
+        courtActivity = <h3 class="decent-indicator activity-indicator">decent</h3>
     } else if (runs.length > 5 && findCourt.runs.length <= 10) {
-        courtActivity = "🔥🔥"
+        courtActivity = <h3 class="chill-indicator activity-indicator">chill</h3>
     } else if (runs.length < 5) {
-        courtActivity = "🔥"
+        courtActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
     }
 
     // const wholeCourtObj = courts.filter(court => key)

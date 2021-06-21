@@ -6,8 +6,6 @@ import { Dropdown } from 'semantic-ui-react'
 
 function Discover({courts, courtActivity, search, setSearch, setBoroughSelect, courtSearch}){
     
-    console.log(courtActivity)
-    
 
     function handleSearchChange(e){
         setSearch(e.target.value)
