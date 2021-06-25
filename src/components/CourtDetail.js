@@ -116,6 +116,8 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         setActiveAyo(!activeAyo);
   }
 
+  console.log(findCourt)
+
   let displayCourtsHoopers;
   if (findCourt.name !== "") {
     displayCourtsHoopers = runs.map((run) => {
@@ -153,7 +155,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
   let displayTrains;
   if (findCourt.trains.length > 0) {
-    displayTrains = findCourt.trains.map((train) => train).join(', ')
+    displayTrains = findCourt.trains.map((train) => train).join('  ,  ')
   }
 
   function handleFav(e) {
@@ -259,28 +261,23 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
   return (
     <div class="detail-wrapper">
-      <div class="detail-image">
-        <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"/>
-      </div>
+      
+      <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"/>
+
+      <h1 class="court-name"> {findCourt.name} </h1>
+      <div class="court-specs">
+        <h3 class="court-address court-specs-items"> 
+          <Icon name='point'/> 
+            {findCourt.address}, {findCourt.borough} {findCourt.zip_code} 
+        </h3>
+
+        <p class="court-detail-trains court-specs-items"> Condition: {findCourt.condition} </p>
+
+        <p class="court-detail-trains court-specs-items"> <Icon color='teal' name='train'/> {displayTrains} </p>
+
+        <p class="court-detail-trains court-specs-items"> {courtDetailActivity} </p>
           
-      <div class="court-details">
-        <h1 class="court-name"> {findCourt.name} </h1>
-        <div class="court-specs">
-          <h3> 
-            <Icon name='point'/> 
-              {findCourt.address}, {findCourt.borough} {findCourt.zip_code} 
-          </h3>
-
-          <h3> Condition: {findCourt.condition} </h3>
-
-          <h4> {courtDetailActivity} </h4>
-
-          <h3> <Icon name='train'/> {displayTrains} </h3>
-
-            
-        </div>
-        
-        </div> 
+      </div>
 
         <div class="interact-with-court">
           {
@@ -327,83 +324,68 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
             </Modal> 
         </div>
       
-
-      <div class="other-hoopers-header"> 
-          {/* <a class="other-hoopers-header court-detail-headers"> See who else is coming through...</a> */}
-
-          <Modal
-            basic
-            onClose={() => setOpenOtherHoopers(false)}
-            onOpen={() => setOpenOtherHoopers(true)}
-            open={openOtherHoopers}
-            size='small'
-            dimmer='blurring'
-            trigger={
-              <a class="court-detail-headers link"> 
-                <span class="mask">
-                  <div class="link-container"> 
-                    <span class="link-title1 title">
-                      Other Hoopers 
-                    </span>
-                  </div>
-                </span>
-              </a>
-            }
-          >
-            <div class="court-modal-container">
-              <div class="other-hoopers-2">
-                {displayCourtsHoopers}
-              </div>
-              <Button  id="close-reviews-btn"basic color='white' inverted onClick={() => setOpenOtherHoopers(false)}>
-                <Icon name='remove' /> Close
-              </Button>
-            </div>
+      <div class="court-detail-hoopers-reviews">
+        <div class="other-hoopers-header"> 
             
-          </Modal>
-      </div>
 
-      {/* <div class="other-hoopers-box">
-        <div class="other-hoopers-2">
-          {displayCourtsHoopers}
-        </div>
-      </div> */}
-
-      <div class="review-box">
-        <div class="review-header" align="center">
-          <Modal
+            <Modal
               basic
-              onClose={() => setOpenReviews(false)}
-              onOpen={() => setOpenReviews(true)}
-              open={openReviews}
-              size='large'
+              onClose={() => setOpenOtherHoopers(false)}
+              onOpen={() => setOpenOtherHoopers(true)}
+              open={openOtherHoopers}
+              size='small'
               dimmer='blurring'
-              scrolling='true'
-              centered='true'
               trigger={
-                <a class="court-detail-headers link"> 
-                  <span class="mask">
-                    <div class="link-container">
-                      <span class="link-title1 title">
-                        See reviews
-                      </span>
-                    </div>                    
-                  </span>
-                </a>
+                <div class="hoopers-reviews-button hoopers"> 
+                  Hoopers
+                </div> 
+                  
+                      
               }
-          >
-            
-              <div class="review-list">
-                {displayCourtReviews}
+            >
+              <div class="court-modal-container">
+                <div class="other-hoopers-2">
+                  {displayCourtsHoopers}
+                </div>
+                <Button  id="close-reviews-btn"basic color='white' inverted onClick={() => setOpenOtherHoopers(false)}>
+                  <Icon name='remove' /> Close
+                </Button>
               </div>
-              <Button id="close-reviews-btn" basic color='orange' inverted onClick={() => setOpenReviews(false)}>
-                <Icon name='remove' /> Close
-              </Button>
-            
-          </Modal>
-         
+              
+            </Modal>
+        </div>
+
+        <div class="review-box">
+          <div class="review-header" align="center">
+            <Modal
+                basic
+                onClose={() => setOpenReviews(false)}
+                onOpen={() => setOpenReviews(true)}
+                open={openReviews}
+                size='large'
+                dimmer='blurring'
+                scrolling='true'
+                centered='true'
+                trigger={
+                  <div class="hoopers-reviews-button reviews">
+                    Reviews
+                  </div>
+                       
+                }
+            >
+              
+                <div class="review-list">
+                  {displayCourtReviews}
+                </div>
+                <Button id="close-reviews-btn" basic color='orange' inverted onClick={() => setOpenReviews(false)}>
+                  <Icon name='remove' /> Close
+                </Button>
+              
+            </Modal>
+          
+          </div>
         </div>
       </div>
-
       <div class="box-8">
         {runErrorMessages && <Message warning list={runErrorMessages}>
           <Message.Header>We heard you the first time! </Message.Header>

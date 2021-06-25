@@ -422,10 +422,14 @@ label{
   flex-direction: column;
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
-  height: 100%;
+  height: 92vh;
+  justify-content: space-between;
+  align-content: flex-start;
 }  
 
 .court-name {
+  align-self: center;
+  margin: 0px;
   font-family: 'Alfa Slab One', cursive;
   color: rgb(215, 215, 215);
   text-shadow: 1px 7px 2px rgb(0, 0, 0), 0 0 25px rgb(124, 124, 124), 0 0 5px rgb(4, 33, 255);
@@ -433,8 +437,9 @@ label{
 }
 
 .court-details {
-  display: grid;
-  grid-template-rows: .25fr 1fr;
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: .25fr 1fr; */
   text-align: center;
   align-items: center;
   background-color: #000000;
@@ -442,6 +447,11 @@ label{
   height: 38vh;
   width: 100%;
   color: rgb(240, 240, 240);
+}
+
+.court-address {
+  align-self: center;
+  margin: 0px;
 }
 
 .court-detail-headers {
@@ -458,65 +468,33 @@ label{
   transition: transform 250ms;
 }
 
+.court-detail-trains {
+  font-size: 18px;
+  margin: 0px;
+}
+
 .court-detail-headers:hover {
   transform: translateY(-10px);
 }
 
-.link {
-  height: 30px;
-  align-items: center;
-  text-decoration: none;
+.court-detail-hoopers-reviews {
   display: flex;
-}
-  
-.mask {
-  position: relative;
-  padding: 0;
-  height: 20px;
-  overflow: hidden;
-}
-
-.link-container {
-  transition: transform 0.4s ease;
-}
-
-.title {
-  display: block;
-
-  /*  Set same font-size and line height  */
-  font-size: 20px;
-  line-height: 20px;
-
-  transition: transform 0.4s ease;
-}
-
-.link-title1 {
-  transform-origin: right center;
-}
-
-.link-title2 {
-  transform-origin: left center;
-  transform: rotate(20deg);
-}
-
-.link:hover .link-container {
-  transform: translateY(-20px);
-}
-
-.link:hover .link-title1 {
-  transform: rotate(20deg);
-}
-
-.link:hover .link-title2 {
-  transform: rotate(0);
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
 }
 
 
 .court-specs {
-  width: 75%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 80%;
+  height: 200px;
   align-items: center;
-  justify-content: center;
-  margin: auto;
+  justify-content: space-between;
+  margin: 5px 5px 5px 5px;
   padding: auto;
   /* border: solid rgb(58, 58, 58); */
   border: solid rgb(43, 43, 43);
@@ -527,13 +505,17 @@ label{
   padding: 10px 10px 10px 10px;
 }
 
+.court-specs-items {
+  margin: 5px;
+  align-self: center;
+}
+
 .interact-with-court {
   display: flex;
   flex-direction: row;
   align-self: center;
   justify-content: space-evenly;
   width: 100%;
-  margin-bottom: 5px;
 }
 
 .court-interactions {
@@ -559,6 +541,7 @@ label{
 .detail-image {
   width: 100%;
   height: 36vh;
+  object-fit: cover;
 }
 
 .detail-icons {
@@ -611,6 +594,24 @@ label{
   display: none;
 }
 
+.hoopers-reviews-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: rgb(35, 2, 82);
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+/* .hoopers {
+  margin-left: 20px;
+}
+
+.reviews {
+  margin-right: 20px;
+} */
 
 .player-card {
   display: grid;
