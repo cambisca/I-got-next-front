@@ -294,10 +294,10 @@ label{
 }
 
 .court-item-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
+  /* grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr;
-  grid-gap: .5em;
+  grid-gap: .5em; */
   height: 12vh;
   width: 95%;
   border: 2px solid black;
@@ -307,21 +307,47 @@ label{
   background: rgb(21, 20, 20);
 }
 
-.court-card-pic {
+/* .court-card-pic {
   height: 100%;
   width: 100%;
-}
+} */
 
 .court-item-image {
-  height: 100%;
-  width: 100%;
+  height: 90px;
+  width: 90px;
+
+  object-fit: cover;
+  border-radius: 5px 0px 0px 5px;
 }
 
 .court-card-info {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  line-height: 1.5;
   height: 100%;
   width: 100%;
   background: rgb(21, 20, 20);
   color: white;
+  margin-left: 5px;
+}
+
+.court-item-trains {
+  margin: 2px;
+}
+
+.court-item-condition-activity {
+  display: flex;
+  justify-content: space-between;
+}
+
+.court-item-condition {
+  align-self: flex-start;
+}
+
+.court-item-activity {
+  align-self: flex-end;
+  margin-right: 10px;
 }
 
 .court-card-name {
@@ -386,7 +412,7 @@ label{
   grid-template-columns: auto;
   grid-gap: 1rem;
   width: 100%;
-  height: 500px;
+  height: 390px;
   overflow-y: scroll;
  }
 

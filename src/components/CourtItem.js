@@ -3,32 +3,38 @@ import { Link } from 'react-router-dom'
 import { Card, Image, Icon } from 'semantic-ui-react' 
 // semantic imports removed: Reveal
 
-function CourtItem({courtObj, courtActivity }){
+function CourtItem({court, courtActivity }){
 
-    const {id, name, address, borough, zip_code, condition, trains, img_url} = courtObj
+    const {id, name, address, borough, zip_code, condition, trains, img_url} = court
 
     let fuegoActivity;
-    if (courtObj.runs.length > 20) {
+    if (court.runs.length > 20) {
         fuegoActivity = <h3 class="hot-indicator activity-indicator">hot</h3>
-    } else if (courtObj.runs.length > 10 && courtObj.runs.length < 20) {
+    } else if (court.runs.length > 10 && court.runs.length < 20) {
         fuegoActivity = <h3 class="decent-indicator activity-indicator">decent</h3>
-    } else if (courtObj.runs.length > 5 && courtObj.runs.length <= 10) {
+    } else if (court.runs.length > 5 && court.runs.length <= 10) {
         fuegoActivity = <h3 class="chill-indicator activity-indicator">chill</h3>
-    } else if (courtObj.runs.length < 5) {
+    } else if (court.runs.length < 5) {
         fuegoActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
     }
 
+    // let displayTrains;
+    // if (findCourt.trains.length > 0) {
+    //     displayTrains = findCourt.trains.map((train) => train).join(', ')
+    // }
 
     return (
         <div class="court-item-wrapper">
-            <div class="court-card-pic">   
-                <img src={img_url} alt={name} class="court-item-image"></img>
-            </div>
+            <img src={img_url} alt={name} class="court-item-image"></img>
+           
             <div class="court-card-info">
-                <div> <Link to={`/courts/${id}`} className="court-card-name"> {name} </Link> </div>
-                <div> {address}, {borough} {zip_code} </div>
-                <div> {condition} </div>
-                <div> {fuegoActivity} </div>
+                <Link to={`/courts/${id}`} className="court-card-name"> {name} </Link>
+                {address}, {borough} {zip_code}
+                <p class="court-item-trains"> <Icon color='blue' name='train'/> {trains.join(',  ')} </p>
+                <div class="court-item-condition-activity"> 
+                    <span class="court-item-condition"> {condition} </span>
+                    <span class="court-item-activity"> {fuegoActivity} </span> 
+                </div>
             </div>
             
         </div>

@@ -6,7 +6,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Button, Modal, Icon, Popup, Form, Message } from "semantic-ui-react";
 // import { Button, Comment, Header, Form } from 'semantic-ui-react'
 
-function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites, findCourt, setFindCourt, runs, setRuns }) {
+function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavorites, findCourt, setFindCourt, runs, setRuns}) {
   // const [runs, setRuns] = useState([]);
   const [activeFav, setActiveFav] = useState(false);
   const [activeAyo, setActiveAyo] = useState(false);
@@ -151,7 +151,10 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
   });
 
-
+  let displayTrains;
+  if (findCourt.trains.length > 0) {
+    displayTrains = findCourt.trains.map((train) => train).join(', ')
+  }
 
   function handleFav(e) {
     e.preventDefault();
@@ -240,10 +243,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         padding: '2em',
       }
 
-  let displayTrains;
-  if (findCourt.trains.length > 0) {
-    displayTrains = findCourt.trains.map((train) => train).join(', ')
-  }
 
   let courtDetailActivity;
   if (runs.length > 20 ) {

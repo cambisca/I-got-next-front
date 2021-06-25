@@ -117,6 +117,7 @@ function App() {
             setSearch={setSearch}
             setBoroughSelect={setBoroughSelect}
             courtSearch={courtSearch}
+            
           />
           <NavBar 
             currentUser={currentUser}
