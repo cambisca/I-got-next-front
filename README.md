@@ -1,3 +1,9 @@
+For those who have played their fair share of pickup basketball in New York City, you know how busy some of these courts can get. There are days where you can find yourself waiting an hour to just to play one game, and perhaps that's what you are looking for. Other days not so much. Sometimes I just want to show up to a quiet court and shoot around by myself.  
+
+I GOT NEXT is designed to help give you an idea of how busy a court will be on the day you decide to hoop. You can use it to see who is planning on playing that day and can gather some basic details about the court such as transportation and the condition. In the future, there will be features that offer profile customization and messaging to promote a more community like atmosphere. 
+
+Thanks for checking out I GOT NEXT!  
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
