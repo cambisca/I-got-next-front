@@ -31,10 +31,13 @@ h3 {
 
 
 .home-wrapper {
-  display: grid;
-  grid-template-rows: 1fr 1.5fr 1fr;
   height: 100vh; 
-  width: 100%; 
+  /* width: 100%;  */
+  background-image: url('images/IMG_0513.jpeg');
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .home-page-gif {
@@ -42,14 +45,16 @@ h3 {
   width: 100%; 
 }
 
-.homepage-filler {
-  background: rgb(12, 12, 12);
+.homepage-login {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .homepage-login-button {
-  margin-top: 100px;
+  margin-bottom: calc(2rem + 10vh);
 }
 
 .login-inputs {
@@ -65,13 +70,13 @@ h3 {
   flex-direction: column;
   /* margin: auto !important; */
   /* margin-top: 100px; */
-  height: 15%;
-  width: 30%;
+  height: calc(3rem + 0.5vh);
+  width: calc(5rem + 3vw);
   cursor: pointer;
-  color: rgb(216, 216, 216);
+  color: rgb(0, 0, 0);
   border-radius: 5em;
-  background: rgb(12, 12, 12);
-  border: 1px solid rgb(216, 216, 216);
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(3, 3, 3);
   font-family: 'Ubuntu', sans-serif;
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -85,7 +90,7 @@ h3 {
 }
 
 .login-button-text {
-  background: rgb(216, 216, 216);
+  background: rgb(7, 7, 7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -97,13 +102,13 @@ h3 {
 
 .nav {
   display: grid;
-  position: fixed;
+  position: sticky;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   font-family: "Permanent Marker";
   font-size: 25px;
   text-align: center;
-  height: 8vh;
-  width: 100%;
+  height: calc(1.5rem + 3vh);
+  width: 100vw;
   z-index: 1;
   bottom: 0;
   background: rgb(12, 12, 12);;
