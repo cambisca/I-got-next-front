@@ -73,7 +73,7 @@ h3 {
   height: calc(3rem + 0.5vh);
   width: calc(5rem + 3vw);
   cursor: pointer;
-  color: rgb(0, 0, 0);
+  color: rgb(167, 10, 10);
   border-radius: 5em;
   background: rgb(203, 203, 203);
   border: 1px solid rgb(3, 3, 3);

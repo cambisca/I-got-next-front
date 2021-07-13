@@ -7,11 +7,11 @@ function Homepage({currentUser}){
     return (
         <div class="home-wrapper">
             <div class="homepage-login" >
-                {currentUser ? null : <button class="login-button homepage-login-button">
-                    <Link to="/login" className="login-button-text"> 
+                {currentUser ? null : 
+                    <Link to="/login" class="login-button homepage-login-button"> 
                         Login
-                    </Link>
-                </button>}
+                    </Link>   
+                }
 
             </div>
         </div>
