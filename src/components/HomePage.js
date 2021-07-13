@@ -8,7 +8,9 @@ function Homepage({currentUser}){
         <div class="home-wrapper">
             <div class="homepage-login" >
                 {currentUser ? null : <button class="login-button homepage-login-button">
-                    <Link to="/login" className="login-button-text"> Login </Link>
+                    <Link to="/login" className="login-button-text"> 
+                        Login
+                    </Link>
                 </button>}
 
             </div>
