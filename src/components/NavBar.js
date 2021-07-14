@@ -97,7 +97,7 @@ function NavBar({currentUser, setCurrentUser}){
                 ) : (
                     <>
                         <Link className="option opt-logo" to="/" id="opt-logo">
-                            <Icon name="home" className="option" id="home" size="large"/>
+                            <Icon name="home" className="option home-opt" id="home" size="large"/>
                         </Link>
                             
                     
