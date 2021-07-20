@@ -39,7 +39,7 @@ h3 {
   background-image: url('images/IMG_0513.jpeg');
   object-fit: cover;
   background-size: cover;
-  background-position: center;
+  background-position: 70%;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
@@ -912,5 +912,18 @@ label{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+  }
+}
+
+@media screen and (max-width: 622px) {
+  .home-wrapper {
+    height: 100vh; 
+    background-image: url('images/IMG_0513.jpeg');
+    object-fit: cover;
+    background-size: cover;
+    background-position: 40%;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
   }
 }
