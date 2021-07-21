@@ -847,6 +847,25 @@ label{
   color: green;
 }
 
+/************ Smart Phones  ****************/
+
+@media screen and (max-width: 500px) {
+  .home-wrapper {
+    height: 100vh; 
+    background-image: url('https://www.wallpapertip.com/wmimgs/53-530865_new-york-basketball-court.jpg');
+    object-fit: cover;
+    background-size: cover;
+    background-position: 50%;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title-box {
+    margin: 8rem 1rem 0 0;
+  }
+}
+
 @media screen and (min-width: 1030px) {
 
   .map-container-wrapper {
@@ -905,15 +924,3 @@ label{
   }
 }
 
-@media screen and (max-width: 622px) {
-  .home-wrapper {
-    height: 100vh; 
-    background-image: url('images/IMG_0513.jpeg');
-    object-fit: cover;
-    background-size: cover;
-    background-position: 40%;
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-  }
-}
