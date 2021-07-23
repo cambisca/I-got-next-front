@@ -23,11 +23,6 @@ img {
   width: 30vw;
 }
 
-h3 {
-  /* margin: auto;
-  padding: 5px; */
-}
-
 .wrapper {
   height: 100vh; 
   width: 100%;
@@ -754,40 +749,34 @@ label{
 }
 
 .fav-wrapper {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   /* grid-template-rows: .1fr 3fr;  */
-  height: 100vh;
+  height: 100%;
   background: black;
   align-items: center;
 }
 
 #fav-header {
   background: black;
-  font-size: 35px;
+  font-size: 2rem;
 }
 
 .all-favs {
   display: grid;
+  flex-direction: column;
   justify-content: center;
   align-items: center; 
   grid-template-columns: auto;
-  grid-gap: 1rem;
-  padding: 0 2rem 2rem;
-  margin-bottom: 5px;
+  grid-gap: 2rem;
+  padding: 4rem;
   background: black;
-  height: 82vh;
+  height: calc(100vh - (1.5rem + 3vh) + (3vh + 3vw));
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.fav-card-container {
-  justify-content: space-evenly;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
 
 .no-favs {
   color: white;
@@ -796,8 +785,8 @@ label{
 .fav-card {
   display: grid;
   grid-template-rows: 3fr 1fr;
-  height: fit-content;
-  width: 75%;
+  height: calc(20rem + 3vw);
+  width: calc(18rem + 2vw);
   border: 2px solid black;
   border-radius: 5px;
   border: solid;
@@ -805,27 +794,28 @@ label{
   background: rgb(21, 20, 20);
 }
 
-.fav-image-box {
-  height: 100%;
+.fav-image-box img {
+  height: 13rem;
   width: 100%;
+  object-fit: cover;
+  border-radius: 5px 5px 0px 0px;
 }
 
-.fav-image {
-  height: 100%;
-  width: 100%;
-}
 
 .fav-name {
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .fav-card-text {
   color: white;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .delete-fav-button {
-  background: black;
+  background: rgb(21, 20, 20);
   border: none;
   color: white;
 }
@@ -836,12 +826,10 @@ label{
   position: fixed;
   justify-content: center;
   align-items: center;
+  height: calc(3vh + 3vw);
   width: 100%;
 }
 
-.activity-indicator {
-
-}
 
 .hot-indicator {
   color: red;
@@ -890,7 +878,7 @@ label{
   
   .court-item-image {
     height: 100%;
-    width: 6rem;
+    width: 7rem;
   
     object-fit: cover;
     border-radius: 5px 0px 0px 5px;
