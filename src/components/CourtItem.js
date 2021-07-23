@@ -29,7 +29,7 @@ function CourtItem({court, courtActivity }){
            
             <div class="court-card-info">
                 <Link to={`/courts/${id}`} className="court-card-name"> {name} </Link>
-                {address}, {borough} {zip_code}
+                <p class="court-address"> {address}, {borough} {zip_code} </p>
                 <p class="court-item-trains"> <Icon color='blue' name='train'/> {trains.join(',  ')} </p>
                 <div class="court-item-condition-activity"> 
                     <span class="court-item-condition"> {condition} </span>

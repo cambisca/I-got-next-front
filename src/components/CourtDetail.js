@@ -116,7 +116,6 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
         setActiveAyo(!activeAyo);
   }
 
-  console.log(findCourt)
 
   let displayCourtsHoopers;
   if (findCourt.name !== "") {

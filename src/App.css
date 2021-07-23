@@ -24,8 +24,8 @@ img {
 }
 
 h3 {
-  margin: auto;
-  padding: 5px;
+  /* margin: auto;
+  padding: 5px; */
 }
 
 .wrapper {
@@ -345,17 +345,17 @@ label{
   display: flex;
   flex-direction: column;
   align-content: flex-start;
+  justify-content: flex-start;
   line-height: 1.5;
-  /* height: 100%; */
   width: 100%;
   background: rgb(21, 20, 20);
   color: white;
-  margin-left: 5px;
+  margin-left: 0.1rem;
   padding: 0.5rem;
 }
 
 .court-item-trains {
-  margin: 2px;
+  margin: 0.2rem;
 }
 
 .court-item-condition-activity {
@@ -436,6 +436,8 @@ label{
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  padding: 0px 0px;
+  margin: 0;
  }
 
 
@@ -444,18 +446,24 @@ label{
   flex-direction: column;
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
-  height: 92vh;
+  height: calc(100vh - (1.5rem + 3vh));
   justify-content: space-between;
-  align-content: flex-start;
+  align-content: center;
 }  
 
 .court-name {
+  display: flex;
+  justify-content: center;
+  overflow-wrap: inherit;
   align-self: center;
   margin: 0px;
   font-family: 'Alfa Slab One', cursive;
   color: rgb(215, 215, 215);
-  text-shadow: 1px 7px 2px rgb(0, 0, 0), 0 0 25px rgb(124, 124, 124), 0 0 5px rgb(4, 33, 255);
-  padding: 5px 5px 5px 5px;
+  text-shadow: 1px 4px 1px rgb(0, 0, 0), 0 0 25px rgb(124, 124, 124), 0 0 5px rgb(4, 33, 255);
+  padding: 1rem;
+  letter-spacing: 0.4rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .court-details {
@@ -472,8 +480,8 @@ label{
 }
 
 .court-address {
-  align-self: center;
-  margin: 0px;
+  margin: 0 0 0 0;
+  font-size: 1rem;
 }
 
 .court-detail-headers {
@@ -513,9 +521,9 @@ label{
   flex-direction: column;
   color: white;
   width: 80%;
-  height: 200px;
+  height: calc(12rem + 3vw);
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 5px 5px 5px 5px;
   padding: auto;
   /* border: solid rgb(58, 58, 58); */
@@ -525,6 +533,10 @@ label{
   border-width: 2px;
   background: black;
   padding: 10px 10px 10px 10px;
+}
+
+.court-specs h3 {
+  text-align: center;
 }
 
 .court-specs-items {
@@ -622,8 +634,8 @@ label{
   justify-content: center;
   color: white;
   background: rgb(172, 172, 172);
-  height: 50px;
-  width: 100px;
+  height: calc(2rem + 3vw);
+  width: calc(6rem + 3vw);
   border-radius: 10px;
 }
 
@@ -863,6 +875,46 @@ label{
 
   .title-box {
     margin: 8rem 1rem 0 0;
+  }
+
+  .court-item-wrapper {
+    display: flex; 
+    height: 9rem;
+    width: 90vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    border: solid;
+    border-color: rgb(34, 34, 34);
+    background: rgb(21, 20, 20);
+  }
+  
+  .court-item-image {
+    height: 100%;
+    width: 6rem;
+  
+    object-fit: cover;
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  .court-card-info {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    line-height: 1.5rem;
+    /* height: 100%; */
+    width: 100%;
+    background: rgb(21, 20, 20);
+    color: white;
+    padding: 0.5rem;
+  }
+
+  .court-address {
+    font-size: 1.05rem;
+    margin-left: 0;
+  }
+
+  .court-card-name {
+    letter-spacing: 0.09rem;;
   }
 }
 
