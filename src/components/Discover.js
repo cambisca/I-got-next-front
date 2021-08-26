@@ -3,6 +3,7 @@ import CourtItem from "./CourtItem"
 import Filter from './Filter'
 import CourtMap from './CourtMap'
 import { Dropdown } from 'semantic-ui-react'
+import Header from './Header'
 
 function Discover({courts, courtActivity, search, setSearch, setBoroughSelect, courtSearch, displayTrains, findCourt}){
     
@@ -21,9 +22,9 @@ function Discover({courts, courtActivity, search, setSearch, setBoroughSelect, c
     })
 
     return (
-        <div class="discover-container">
-
-            <div class="map-container-wrapper">
+        <div>
+            <Header />
+            <div class="discover-container">
                 <div class="map-container">
                     <CourtMap courts={courtSearch}/>
                 </div>
@@ -32,14 +33,13 @@ function Discover({courts, courtActivity, search, setSearch, setBoroughSelect, c
                         onSearchChange={handleSearchChange}
                         onBoroughSelect={handleBoroughSelect}
                 />
+
+                <div id="court-item-list">
+                    {renderCourtItems}
+                </div>
+                    
+                    
             </div>
-            
-                
-            <div id="court-item-list">
-                {renderCourtItems}
-            </div>
-                
-                
         </div>
     )
 }

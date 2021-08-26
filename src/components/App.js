@@ -10,6 +10,7 @@ import Favorites from './Favorites'
 import Signup from './Signup'
 
 
+
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
@@ -103,10 +104,6 @@ function App() {
       <Switch>
         <Route exact path="/">
           <HomePage currentUser={currentUser}/>
-          {currentUser ? <NavBar 
-            setCurrentUser={setCurrentUser}
-            currentUser={currentUser}
-          /> : null }
         </Route>
         <Route exact path="/discover">
           <Discover 
@@ -119,10 +116,10 @@ function App() {
             courtSearch={courtSearch}
             
           />
-          <NavBar 
+          {/* <NavBar 
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
-          />
+          /> */}
         </Route>
         <Route exact path="/login">
           <Login 
@@ -175,6 +172,10 @@ function App() {
           />
         </Route>
       </Switch>
+      {currentUser ? <NavBar 
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          /> : null }
       
     </div>
   );

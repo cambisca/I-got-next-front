@@ -89,7 +89,7 @@ function NavBar({currentUser, setCurrentUser}){
                        
 
                         <Link class="option" to="/" onClick={logout} id="opt-logout">
-                            <Icon name="hand peace" id="away" className="option" size="large"/>
+                            <Icon name="hand peace" id="away" className="option" size="large" />
                         </Link>
 
                        
