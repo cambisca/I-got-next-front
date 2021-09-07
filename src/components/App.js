@@ -154,10 +154,6 @@ function App() {
             runs={runs} 
             setRuns={setRuns}
           />
-          <NavBar 
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
         </Route>
         <Route exact path="/favorites">
           <Favorites 

@@ -15,13 +15,12 @@ function Filter({search, onSearchChange, onBoroughSelect}){
 
     return (
         <div class="filter-wrapper">
-            <div class="borough-select" align="center">
-                {/* <input id="search-input" name="search" value={search} onChange={onSearchChange} placeholder = "Search..." />  */}
-                <Input focus placeholder='Search...' value={search} onChange={onSearchChange}/>
+            <div className="borough-select" align="center">
+                <input focus placeholder='Search...' value={search} onChange={onSearchChange}/>
             </div>
     
             <div class="borough-select" >
-                <select class="dropdown-content" name="borough" onChange={onBoroughSelect}> 
+                <select className="dropdown-content" name="borough" onChange={onBoroughSelect}> 
                     <option > Borough </option>
                     <option value="All"> All </option>
                     <option value="Bronx"> Bronx </option>
@@ -30,7 +29,6 @@ function Filter({search, onSearchChange, onBoroughSelect}){
                     <option value="Queens"> Queens </option>
                     <option value="Staten Island"> Staten Island </option>
                 </select>
-                {/* <Dropdown placeholder='Borough' fluid multiple selection options={options} onChange={onBoroughSelect}/> */}
             </div> 
         </div>
     )
