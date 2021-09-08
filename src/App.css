@@ -53,7 +53,7 @@ img {
 /********* LANDING PAGE  ***********/
 
 .home-wrapper {
-  height: 100%; 
+  height: calc(100% - (1.5rem + 3vh)); 
   background-image: url('images/IMG_0513.jpeg');
   object-fit: cover;
   background-size: cover;
@@ -970,7 +970,6 @@ label{
 @media screen and (min-width: 1030px) {
 
   .home-wrapper {
-    height: 100vh; 
     background-image: url('https://www.wallpapertip.com/wmimgs/53-530865_new-york-basketball-court.jpg');
     display: flex;
     flex-direction: column;
