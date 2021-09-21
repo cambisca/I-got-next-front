@@ -116,27 +116,15 @@ function App() {
             courtSearch={courtSearch}
             
           />
-          {/* <NavBar 
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          /> */}
         </Route>
         <Route exact path="/login">
           <Login 
-            setCurrentUser={setCurrentUser}
-          />
-          <NavBar 
-            currentUser={currentUser}
             setCurrentUser={setCurrentUser}
           />
         </Route>
         <Route exact path="/signup">
           <Signup 
             setUser={setCurrentUser}
-          />
-          <NavBar 
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
           />
         </Route>
         <Route exact path="/courts/:id">
@@ -161,10 +149,6 @@ function App() {
             favorites={favorites}
             setFavorites={setFavorites}
             currentUser={currentUser}
-          />
-          <NavBar 
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
           />
         </Route>
       </Switch>

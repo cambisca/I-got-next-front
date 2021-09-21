@@ -30,6 +30,7 @@ img {
 
 /********* HEADER **********/
 #header {
+  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,6 +56,19 @@ img {
 .home-wrapper {
   height: calc(100% - (1.5rem + 3vh)); 
   background-image: url('images/IMG_0513.jpeg');
+  object-fit: cover;
+  background-size: cover;
+  background-position: 70%;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-wrapper-v2 {
+  height: 100vh; 
+  background-image: url('https://www.wallpapertip.com/wmimgs/53-530865_new-york-basketball-court.jpg');
   object-fit: cover;
   background-size: cover;
   background-position: 70%;
@@ -158,10 +172,8 @@ img {
   font-size: 25px;
   text-align: center;
   height: calc(1.5rem + 3vh);
-  width: 100vw;
-  z-index: 1;
-  bottom: 0;
 }
+
 
 .option {
   transition: all .75s;
@@ -371,10 +383,11 @@ label{
   width: 90vw;
   border: 2px solid black;
   border-radius: 5px;
-  border: solid;
-  border-color: rgb(34, 34, 34);
+  border: 2px solid black;
+  border-radius: 5px;
   background: rgb(21, 20, 20);
   margin-top: .75rem;
+  
 }
 
 .court-item-image {
@@ -392,8 +405,8 @@ label{
   justify-content: flex-start;
   line-height: 1.5;
   width: 100%;
-  background: rgb(21, 20, 20);
-  color: white;
+  background: rgb(202, 202, 202);
+  color: black;
   margin-left: 0.1rem;
   padding: 0.5rem;
 }
@@ -420,7 +433,7 @@ label{
 }
 
 .court-card-name {
-  color: white;
+  color: black;
   font-family: 'Boogaloo', cursive;
 }
 
@@ -915,6 +928,29 @@ label{
     flex-direction: column;
   }
 
+  .home-wrapper-v2 {
+    background-position: 50%;
+  }
+
+  .nav-wrapper {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    background: black;
+  }
+  
+  .nav {
+    display: grid;
+    position: sticky;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-family: "Permanent Marker";
+    font-size: 25px;
+    text-align: center;
+    height: calc(1.5rem + 3vh);
+    width: 100vw;
+    z-index: 1;
+  }
+
   #header {
     background: black;
   }
@@ -927,8 +963,6 @@ label{
     width: 90vw;
     border: 2px solid black;
     border-radius: 5px;
-    border: solid;
-    border-color: rgb(34, 34, 34);
     background: rgb(21, 20, 20);
     align-self: center;
     margin-top: 0.75rem;
