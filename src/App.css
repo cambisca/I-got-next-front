@@ -313,9 +313,8 @@ img {
 
 .map-container {
   width: 100%;
-  border: 1px solid white;
+  padding: 1rem;
   border-radius: 5px;
-  box-shadow: 7px 6px 4px -1px rgb(195, 195, 195);
 }
 
 .filter-wrapper {
@@ -452,15 +451,16 @@ label{
   position: relative;
 }
 
-#map {
+/* #map {
   width: 100%;
   height: 50%;
-}
+} */
 
 
 .leaflet-container {
   height: 35vh;
   border-radius: 5px;
+  box-shadow: 7px 6px 4px -1px rgb(195, 195, 195);
 }
 
 .court-map-spacer {
@@ -1015,8 +1015,15 @@ label{
     width: 80rem;
   }
 
+  .discover-container {
+    padding: 1rem;
+  }
   .map-container {
-    width: calc(60rem + 3vw);
+    width: 70rem;
+  }
+
+  .filter-wrapper {
+    width: 70rem;
   }
 
   #court-item-list {
@@ -1062,17 +1069,9 @@ label{
     width: 75%;
   }
 
+  
+
 }
 
-@media screen and (min-width: 1500px) {
-  .login-wrapper{
-    display: grid;
-    height: 100%;
-    width: 100%;
-    background-image: url('https://www.wallpapertip.com/wmimgs/53-530865_new-york-basketball-court.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-}
+
 
