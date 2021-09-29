@@ -1,6 +1,6 @@
 import React from 'react' 
 import { Link } from 'react-router-dom'
-import { Card, Image, Reveal, Icon, Button } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 
 function FavCard({favId, court, onDeleteFav, courts, favorites, setFavorites}){
 
@@ -35,28 +35,17 @@ function FavCard({favId, court, onDeleteFav, courts, favorites, setFavorites}){
     }
 
     return (
-        // <div class="fav-card-container" align="center">
-            <div class="fav-card" align="center">
-                <div class="fav-image-box">
-                    <img src={img_url} alt={name} class="fav-image"></img>
-                </div>
-                
-                <div class="fav-name">
-                    <p class="fav-card-text">
-                        <Link to={`/courts/${court.id}`} className="fav-card-text"> <h3> {name} </h3> </Link>
-                    </p>
-                    <p> {favActivity} </p>
-                    <button class="delete-fav-button" onClick={favDeleteRequest}> <Icon name='trash'/> </button>
-                </div>
-
+        <div class="fav-card" align="center">
+            <div class="fav-image-box">
+                <img src={img_url} alt={name} class="fav-image"></img>
             </div>
+            
+            <Link to={`/courts/${court.id}`} className="fav-card-text"> <h3> {name} </h3> </Link>
+            
+            <span> {favActivity} </span>
+            <a class="delete-fav-a" onClick={favDeleteRequest}> <Icon name='trash' color='grey'/> </a>
 
-        // </div>
-        
-        // <div>
-        //     {court.name}
-        //     <button class="delete-fav-button" onClick={handleDeleteClick}> Delete </button>
-        // </div>
+        </div>
     )
 }
 
