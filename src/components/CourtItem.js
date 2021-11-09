@@ -9,13 +9,13 @@ function CourtItem({court, courtActivity }){
 
     let fuegoActivity;
     if (court.runs.length > 20) {
-        fuegoActivity = <h3 class="hot-indicator activity-indicator">hot</h3>
+        fuegoActivity = <h3 class="hot-indicator court-item-activity-indicator">hot</h3>
     } else if (court.runs.length > 10 && court.runs.length < 20) {
-        fuegoActivity = <h3 class="decent-indicator activity-indicator">decent</h3>
+        fuegoActivity = <h3 class="decent-indicator  court-item-activity-indicator">decent</h3>
     } else if (court.runs.length > 5 && court.runs.length <= 10) {
-        fuegoActivity = <h3 class="chill-indicator activity-indicator">chill</h3>
+        fuegoActivity = <h3 class="chill-indicator court-item-activity-indicator">chill</h3>
     } else if (court.runs.length < 5) {
-        fuegoActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
+        fuegoActivity = <h3 class="slow-indicator court-item-activity-indicator">slow</h3>
     }
 
     // let displayTrains;

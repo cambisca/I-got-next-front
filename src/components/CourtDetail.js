@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PlayerCard from "./PlayerCard";
 import ReviewCard from "./ReviewCard";
+import Header from './Header'
 import "semantic-ui-css/semantic.min.css";
 import { Button, Modal, Icon, Popup, Form, Message } from "semantic-ui-react";
 // import { Button, Comment, Header, Form } from 'semantic-ui-react'
@@ -122,7 +123,7 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
     displayCourtsHoopers = runs.map((run) => {
       return <PlayerCard key={run.id} user={run.user} />;
     });
-  }
+  } 
 
   let nearbyCourts = courts.filter(
     (court) => court.zip_code === findCourt.zip_code
@@ -246,150 +247,151 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 
 
   let courtDetailActivity;
-  if (runs.length > 20 ) {
-      courtDetailActivity = <h3 class="hot-indicator activity-indicator">hot</h3>
-  } else if (runs.length > 10 && findCourt.runs.length < 20) {
-      courtDetailActivity = <h3 class="decent-indicator activity-indicator">decent</h3>
+  if (runs.length > 10 && findCourt.runs.length < 20) {
+      courtDetailActivity = <span class="hot-indicator activity-indicator">HOT</span>
   } else if (runs.length > 5 && findCourt.runs.length <= 10) {
-      courtDetailActivity = <h3 class="chill-indicator activity-indicator">chill</h3>
+      courtDetailActivity = <span class="chill-indicator activity-indicator">CHILL</span>
   } else if (runs.length < 5) {
-      courtDetailActivity = <h3 class="slow-indicator activity-indicator">slow</h3>
+      courtDetailActivity = <span class="slow-indicator activity-indicator">SLOW</span>
   }
 
   const cantReview = courtReviews.filter(rev => rev.user.id === currentUser.id )
 
+
   return (
     <div class="detail-wrapper">
-      
-      <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"/>
+      <Header />
+      <div class='detail-container'>
+        <img src={findCourt.img_url} alt={findCourt.name} class="detail-image"/>
 
-      <h1 class="court-name"> {findCourt.name} </h1>
-      <div class="court-specs">
-        <h3 class="court-address court-specs-items"> 
-          <Icon name='point'/> 
-            {findCourt.address}, {findCourt.borough} {findCourt.zip_code} 
-        </h3>
+        <h1 class="court-name"> {findCourt.name} </h1>
+        <div class="court-specs">
+          <h3 class="court-address court-specs-items"> 
+            <Icon name='point'/> 
+              {findCourt.address}, {findCourt.borough} {findCourt.zip_code} 
+          </h3>
 
-        <p class="court-detail-trains court-specs-items"> Condition: {findCourt.condition} </p>
+          <p class="court-detail-trains court-specs-items">{findCourt.condition} </p>
 
-        <p class="court-detail-trains court-specs-items"> <Icon color='teal' name='train'/> {displayTrains} </p>
+          <p class="court-detail-trains court-specs-items"> <Icon color='teal' name='train'/> {displayTrains} </p>
 
-        <p class="court-detail-trains court-specs-items"> {courtDetailActivity} </p>
-          
-      </div>
-
-        <div class="interact-with-court">
-          {
-            !activeAyo ? 
-              <button id="comment-button" class="court-interactions" onClick={handleAyo}> AYO! </button>
-            :
-              <button id="comment-button" class="court-interactions" onClick={handleDeleteAyo}> <Icon className="court-interactions" name='hand peace'/> </button>
-          }
-
-          { !activeFav ? 
-            <button id="comment-button" class="court-interactions" class="detail-icons court-interactions" onClick={handleFav}> 
-              <Icon color='white' name='heart'/> 
-            </button> 
-          : 
-            <button id="comment-button" class="court-interactions" onClick={handleFav}> 
-              <Icon color='red' name='heart'/> 
-            </button> 
-          }
-
-            <Modal
-              basic
-              onClose={() => setOpenCommentForm(false)}
-              onOpen={() => setOpenCommentForm(true)}
-              open={openCommentForm}
-              size='small'
-              dimmer='blurring'
-              trigger={<button id="comment-button" class="court-interactions" onClick={toggleLeaveComment}><Icon name='comment'/></button>}
-              >
-              <Form class="comment-form" onSubmit={handleCommentSubmit}>
-                  <label htmlFor="comment"></label>
-                  <textarea
-                      name="comment"
-                      value={commentForm.comment}
-                      onChange={handleCommentChange}
-                      placeholder="Leave a comment"
-                  />
-                  <Button type="submit" color='blue' inverted> 
-                    <Icon name='checkmark' /> add comment 
-                  </Button>
-                  <Button basic color='orange' inverted onClick={() => setOpenCommentForm(false)}>
-                      <Icon name='remove' /> Close
-                  </Button>
-              </Form>
-            </Modal> 
-        </div>
-      
-      <div class="court-detail-hoopers-reviews">
-        <div class="other-hoopers-header"> 
+          <p class="court-detail-trains court-specs-items"> {courtDetailActivity} </p>
             
-
-            <Modal
-              basic
-              onClose={() => setOpenOtherHoopers(false)}
-              onOpen={() => setOpenOtherHoopers(true)}
-              open={openOtherHoopers}
-              size='small'
-              dimmer='blurring'
-              trigger={
-                <div class="hoopers-reviews-button hoopers"> 
-                  Hoopers
-                </div> 
-                  
-                      
-              }
-            >
-              <div class="court-modal-container">
-                <div class="other-hoopers-2">
-                  {displayCourtsHoopers}
-                </div>
-                <Button  id="close-reviews-btn"basic color='white' inverted onClick={() => setOpenOtherHoopers(false)}>
-                  <Icon name='remove' /> Close
-                </Button>
-              </div>
-              
-            </Modal>
         </div>
 
-        <div class="review-box">
-          <div class="review-header" align="center">
-            <Modal
+          <div class="interact-with-court">
+            {
+              !activeAyo ? 
+                <button id="comment-button" class="court-interactions" onClick={handleAyo}> AYO! </button>
+              :
+                <button id="comment-button" class="court-interactions" onClick={handleDeleteAyo}> Im out </button>
+            }
+
+            { !activeFav ? 
+              <button id="comment-button" class="court-interactions" class="detail-icons court-interactions" onClick={handleFav}> 
+                <Icon color='white' name='heart'/> 
+              </button> 
+            : 
+              <button id="comment-button" class="court-interactions" onClick={handleFav}> 
+                <Icon color='red' name='heart'/> 
+              </button> 
+            }
+
+              <Modal
                 basic
-                onClose={() => setOpenReviews(false)}
-                onOpen={() => setOpenReviews(true)}
-                open={openReviews}
-                size='large'
+                onClose={() => setOpenCommentForm(false)}
+                onOpen={() => setOpenCommentForm(true)}
+                open={openCommentForm}
+                size='small'
                 dimmer='blurring'
-                scrolling='true'
-                centered='true'
+                trigger={<button id="comment-button" class="court-interactions" onClick={toggleLeaveComment}><Icon name='comment'/></button>}
+                >
+                <Form class="comment-form" onSubmit={handleCommentSubmit}>
+                    <label htmlFor="comment"></label>
+                    <textarea
+                        name="comment"
+                        value={commentForm.comment}
+                        onChange={handleCommentChange}
+                        placeholder="Leave a comment"
+                    />
+                    <Button type="submit" color='blue' inverted> 
+                      <Icon name='checkmark' /> add comment 
+                    </Button>
+                    <Button basic color='orange' inverted onClick={() => setOpenCommentForm(false)}>
+                        <Icon name='remove' /> Close
+                    </Button>
+                </Form>
+              </Modal> 
+          </div>
+        
+        <div class="court-detail-hoopers-reviews">
+          <div class="other-hoopers-header"> 
+              
+
+              <Modal
+                basic
+                onClose={() => setOpenOtherHoopers(false)}
+                onOpen={() => setOpenOtherHoopers(true)}
+                open={openOtherHoopers}
+                size='small'
+                dimmer='blurring'
+                mouseEnterDelay={1000}
+                on='active'
                 trigger={
-                  <div class="hoopers-reviews-button reviews">
-                    Reviews
-                  </div>
-                       
+                  <a class="hoopers-reviews-button hoopers"> 
+                    Hoopers
+                  </a>  
                 }
-            >
-              
-                <div class="review-list">
-                  {displayCourtReviews}
+              >
+                <div class="court-modal-container">
+                  <div class="other-hoopers-2">
+                    {displayCourtsHoopers}
+                  </div>
+                  <Button  id="close-reviews-btn"basic color='white' inverted onClick={() => setOpenOtherHoopers(false)}>
+                    <Icon name='remove' /> Close
+                  </Button>
                 </div>
-                <Button id="close-reviews-btn" basic color='orange' inverted onClick={() => setOpenReviews(false)}>
-                  <Icon name='remove' /> Close
-                </Button>
-              
-            </Modal>
-          
+                
+              </Modal>
+          </div>
+
+          <div class="review-box">
+            <div class="review-header" align="center">
+              <Modal
+                  basic
+                  onClose={() => setOpenReviews(false)}
+                  onOpen={() => setOpenReviews(true)}
+                  open={openReviews}
+                  size='large'
+                  dimmer='blurring'
+                  scrolling='true'
+                  centered='true'
+                  trigger={
+                    <div class="hoopers-reviews-button reviews">
+                      Reviews
+                    </div>
+                        
+                  }
+              >
+                
+                  <div class="review-list">
+                    {displayCourtReviews}
+                  </div>
+                  <Button id="close-reviews-btn" basic color='orange' inverted onClick={() => setOpenReviews(false)}>
+                    <Icon name='remove' /> Close
+                  </Button>
+                
+              </Modal>
+            
+            </div>
           </div>
         </div>
-      </div>
-      <div class="box-8">
-        {runErrorMessages && <Message warning list={runErrorMessages}>
-          <Message.Header>We heard you the first time! </Message.Header>
-        
-        </Message>}
+        <div class="box-8">
+          {runErrorMessages && <Message warning list={runErrorMessages}>
+            <Message.Header>We heard you the first time! </Message.Header>
+          
+          </Message>}
+        </div>
       </div>
     </div>
   );
@@ -398,11 +400,3 @@ function CourtDetail({ currentUser, setCurrentUser, courts, favorites, setFavori
 export default CourtDetail;
 
 
-<a href="#" class="link ">
-  <span class="mask">
-    <div class="link-container">
-      <span class="link-title1 title">READ MORE</span>
-      <span class="link-title2 title">READ MORE</span>
-    </div>
-  </span>
-</a>

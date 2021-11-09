@@ -412,7 +412,6 @@ label{
 
 .court-item-trains {
   margin: 0.2rem;
-  font-family: 'Boogaloo', cursive;
   font-weight: 600;
   letter-spacing: 0.10rem;
 }
@@ -429,6 +428,11 @@ label{
 .court-item-activity {
   align-self: flex-end;
   margin-right: 10px;
+}
+
+.court-item-activity-indicator {
+  font-size: 1.25rem;
+  font-family: 'Fugaz One', cursive;
 }
 
 .court-card-name {
@@ -505,8 +509,17 @@ label{
   height: calc(100vh - (1.5rem + 3vh));
   justify-content: space-between;
   align-content: center;
-  padding: 1rem;
 }  
+
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  background: rgb(241, 241, 241);
+  height: calc(100vh - (1.5rem + 3vh));
+  justify-content: space-between;
+  align-content: center;
+  padding: .5rem;
+}
 
 .court-name {
   display: flex;
@@ -514,12 +527,11 @@ label{
   overflow-wrap: inherit;
   align-self: center;
   margin: 0;
-  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Bangers', cursive;
   color: black;
-  text-shadow: 5px 4px 1px gray;
-  padding: 1rem;
+  text-shadow: 2px 2px 2px gray;
   letter-spacing: 0.4rem;
-  font-size: 2rem;
+  font-size: 2.15rem;
   text-align: center;
 }
 
@@ -539,7 +551,6 @@ label{
 .court-address {
   margin: 0 0 0 0;
   font-size: 1rem;
-  font-family: 'Boogaloo', cursive;
   letter-spacing: 0.10rem;
   font-weight: 600;
 }
@@ -561,6 +572,7 @@ label{
 .court-detail-trains {
   font-size: 18px;
   margin: 0px;
+  color: black;
 }
 
 .court-detail-headers:hover {
@@ -591,7 +603,7 @@ label{
   box-shadow: 5px 5px rgb(29, 29, 29);
   border-radius: 10px 10px;
   border-width: 2px;
-  background: black;
+  background: rgb(222, 222, 222);
   padding: 10px 10px 10px 10px;
 }
 
@@ -617,12 +629,17 @@ label{
   color: white;
   border: solid 2px rgb(184, 184, 184);
   box-shadow: 0 3px #999;
+  transition: all .25s;
 }
 
 .court-interactions:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+#hand-peace {
+  text-decoration: none;
 }
 
 #comment-button {
@@ -660,11 +677,9 @@ label{
 
 .other-hoopers-header {
   display: flex;
-  color: white;
-  background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
   align-items: center;
   justify-content: center;
+  perspective: 1000px;
 }
 
 .other-hoopers-box::-webkit-scrollbar {
@@ -692,23 +707,20 @@ label{
 }
 
 .hoopers-reviews-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background: rgb(172, 172, 172);
-  height: calc(2rem + 3vw);
-  width: calc(6rem + 3vw);
-  border-radius: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: linear-gradient(to bottom, #7c7c7c, #000000);
+  padding: 15px;
+  color: white; 
+  font-size: 1.15rem;
+  border-radius: 100px;
+  transition: all 0.2s;
 }
 
-/* .hoopers {
-  margin-left: 20px;
+.hoopers {
+
 }
 
-.reviews {
-  margin-right: 20px;
-} */
 
 .player-card {
   display: grid;
@@ -732,21 +744,6 @@ label{
 }
 
 
-/* .other-hoopers-box {
-  display: grid; 
-  width: 100%;
-  height: 60vh;
-  grid-template-rows: 1fr 5fr ;
-  background-color: black;
-  overflow-y: scroll;
-  scrollbar-color: white; 
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 5px 5px rgb(209, 210, 220);
-  align-items: center;
-  text-align: center;
-} */
-
 .review-card {
   height: 25vh;
   background: black;
@@ -764,15 +761,7 @@ label{
 }
 
 
-.review-header {
-  background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
-}
-
-
 .review-list {
-  /* background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png"); */
   align-items: center;
   justify-content: center;
   display: flex;
@@ -857,6 +846,7 @@ label{
   border: solid;
   border-color: rgb(34, 34, 34);
   background: rgb(21, 20, 20);
+  box-shadow: 7px 8px 3px -1px rgb(195, 195, 195);
 }
 
 .fav-image-box {
@@ -872,7 +862,6 @@ label{
 
 .fav-card-text {
   color: white;
-  /* margin: auto; */
 }
 
 .delete-fav-button {
@@ -881,16 +870,10 @@ label{
   color: white;
 }
 
-/* .home-courts-header {
-  color: white;
-  top: 0;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  height: calc(3vh + 3vw);
-  width: 100%;
-} */
-
+.activity-indicator {
+  font-family: 'Fugaz One', cursive;
+  font-size: 1.5rem;
+}
 
 .hot-indicator {
   color: red;
@@ -982,6 +965,7 @@ label{
   }
 
   .court-address {
+    color: black;
     font-size: 1.05rem;
     margin-left: 0;
   }

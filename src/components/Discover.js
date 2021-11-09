@@ -22,7 +22,7 @@ function Discover({courts, courtActivity, search, setSearch, setBoroughSelect, c
     })
 
     return (
-        <div>
+        <div class='discover-wrapper'>
             <Header />
             <div class="discover-container">
                 <div class="map-container">
